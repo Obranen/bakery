@@ -1,0 +1,22 @@
+.textGradient {
+  background: #e05810;
+  background: -webkit-linear-gradient(
+    to right,
+    #e05810 0%,
+    #efa03c 50%,
+    #e05810 100%
+  );
+  background: -moz-linear-gradient(
+    to right,
+    #e05810 0%,
+    #efa03c 50%,
+    #e05810 100%
+  );
+  background: linear-gradient(to right, #e05810 0%, #efa03c 50%, #e05810 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  display: inline-block;
+  font-size: 30px;
+}
