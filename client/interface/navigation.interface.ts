@@ -1,4 +1,4 @@
-export interface INavItems {
+export interface INavigation {
   id: string
   href: string
   title: string

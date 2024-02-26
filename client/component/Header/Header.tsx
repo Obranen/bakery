@@ -1,8 +1,8 @@
 import Brand from './Brand/Brand'
 import FindSite from './FindSite'
-import NavigationList from './NavigationList/NavigationList'
-import SliderHome from './SliderHome/SliderHome'
+import NavigationList from './Navigation/Navigation'
 import Image from 'next/image'
+import SliderPromotion from './SliderPromotion/SliderPromotion'
 
 const Header = () => {
   return (
@@ -13,7 +13,7 @@ const Header = () => {
         <NavigationList />
       </div>
       <div className='container'>
-        {/* <SliderHome /> */}
+        <SliderPromotion />
       </div>
       <Image
           src='/image/wave.jpg'

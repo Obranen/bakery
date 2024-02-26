@@ -1,9 +1,9 @@
-import { INavItems } from '@/interface/navigation.interface'
+import { INavigation } from '@/interface/navigation.interface'
 import Link from 'next/link'
 import { FC } from 'react'
 
 interface INavigationItem {
-  navItem: INavItems
+  navItem: INavigation
   lastIndex: number
   index: number
 }

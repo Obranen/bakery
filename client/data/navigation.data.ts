@@ -1,6 +1,6 @@
-import { INavItems } from '@/interface/navigation.interface'
+import { INavigation } from '@/interface/navigation.interface'
 
-export const navItems: INavItems[] = [
+export const navigation: INavigation[] = [
   {
     id: '1',
     href: '#',
