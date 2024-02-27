@@ -5,20 +5,30 @@ export const navigation: INavigation[] = [
     id: '1',
     href: '#',
     title: 'Увійти',
+    dropdown: false
   },
   {
     id: '2',
-    href: '/contact',
-    title: 'Контакти',
+    href: '',
+    title: 'Продукція',
+    dropdown: true
   },
   {
     id: '3',
-    href: '/promotion',
-    title: 'Акції',
+    href: '/contact',
+    title: 'Контакти',
+    dropdown: false
   },
   {
     id: '4',
+    href: '/promotion',
+    title: 'Акції',
+    dropdown: false
+  },
+  {
+    id: '5',
     href: '#',
     title: 'Кошик',
+    dropdown: false
   },
 ]

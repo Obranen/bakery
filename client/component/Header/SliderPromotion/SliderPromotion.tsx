@@ -19,8 +19,9 @@ const SliderPromotion = () => {
   }
 
   return (
-    <div className='w-[657px] h-[382px] relative'>
+    <div className='relative w-[657px] h-[382px]'>
       <Swiper
+        // className='[&>.swiper-pagination]:!bottom-[-20px] [&>.swiper-pagination]:!z-20'
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={10}
         slidesPerView={1}
@@ -30,8 +31,6 @@ const SliderPromotion = () => {
         }}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
       >
         {sliderPromotion.map((item, index) => (
           <SwiperSlide key={item.id} virtualIndex={index}>

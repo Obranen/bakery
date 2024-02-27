@@ -1,21 +1,21 @@
 import { navigation } from '@/data/navigation.data'
-import NavigationDropdown from './NavigationDropdown/NavigationDropdown'
 import NavigationItem from './NavigationItem/NavigationItem'
 import ToggleTheme from './ToggleTheme/ToggleTheme'
 
 const Navigation = () => {
   return (
-    <nav className='w-4/12 flex items-start justify-end mt-[5px]'>
+    <nav className='flex items-start justify-end w-4/12 mt-[6px] font-robotoRegula'>
       <ToggleTheme />
-      <NavigationDropdown />
-      {navigation.map((navItem, index) => (
-        <NavigationItem
-          key={navItem.id}
-          navItem={navItem}
-          lastIndex={navigation.length}
-          index={index}
-        />
-      ))}
+      <div className='m-[-3px]'>
+        {navigation.map((navItem, index) => (
+          <NavigationItem
+            key={navItem.id}
+            navItem={navItem}
+            lastIndex={navigation.length}
+            index={index}
+          />
+        ))}
+      </div>
     </nav>
   )
 }

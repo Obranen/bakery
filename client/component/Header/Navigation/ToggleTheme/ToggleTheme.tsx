@@ -44,12 +44,12 @@ const ToggleTheme = () => {
   }
 
   return (
-    <label className='swap swap-rotate'>
+    <label className='mr-2 swap swap-rotate'>
       <input type='checkbox' ref={inputRef} onClick={toggleThemeChange} />
 
       {/* sun icon */}
       <svg
-        className='swap-on fill-current w-10 h-10'
+        className='w-5 h-5 fill-current swap-on'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 24 24'
       >
@@ -58,7 +58,7 @@ const ToggleTheme = () => {
 
       {/* moon icon */}
       <svg
-        className='swap-off fill-current w-10 h-10'
+        className='w-5 h-5 fill-current swap-off'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 24 24'
       >

@@ -18,9 +18,13 @@ export default function RootLayout({
       className={`${robotoSerifRegular.variable} ${abrilFatface.variable} ${caveatRegular.variable} ${robotoRegular.variable}`}
     >
       <ProviderLayout>
-        <Header />
-        {children}
-        <Footer />
+        <header>
+          <Header />
+        </header>
+        <main>{children}</main>
+        <footer>
+          <Footer />
+        </footer>
       </ProviderLayout>
     </html>
   )

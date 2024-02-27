@@ -1,5 +1,8 @@
+'use client'
+
 import { INavigation } from '@/interface/navigation.interface'
 import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { FC } from 'react'
 
 interface INavigationItem {
@@ -9,18 +12,53 @@ interface INavigationItem {
 }
 
 const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index }) => {
-  return (
-    <Link
-      href={navItem.href}
-      className='font-robotoRegular font-black text-[14px] pr-[4px]'
-    >
-      {navItem.title}
+  const pathname = usePathname()
+
+  return navItem.dropdown === true ? (
+    <div className='dropdown dropdown-hover'>
+      <div
+        tabIndex={0}
+        role='button'
+        className='p-0 text-[15px] font-semibold font-robotoRegular'
+      >
+        {navItem.title}
+        {lastIndex - 1 !== index ? (
+          <span className='inline-block w-0.5 h-[16px] translate-y-[3px] bg-gray-500 mx-1'></span>
+        ) : (
+          <></>
+        )}
+      </div>
+      <ul
+        tabIndex={0}
+        className='p-2 shadow dropdown-content menu bg-base-100 rounded-box min-w-48'
+      >
+        <li>
+          <a>Випічка</a>
+        </li>
+        <li>
+          <a>Хліб</a>
+        </li>
+        <li>
+          <a>Десерт</a>
+        </li>
+      </ul>
+    </div>
+  ) : (
+    <span className='inline-block text-base font-semibold font-robotoRegula'>
+      <Link
+        href={navItem.href}
+        className={
+          pathname == navItem.href ? 'text-myHighlightLight' : 'hover:underline'
+        }
+      >
+        {navItem.title}
+      </Link>
       {lastIndex - 1 !== index ? (
-        <span className='after:content-["_|_"] ml-[2px]'></span>
+        <span className='inline-block w-0.5 h-[16px] translate-y-[3px] bg-gray-500 mx-1'></span>
       ) : (
         <></>
       )}
-    </Link>
+    </span>
   )
 }
 
