@@ -1,0 +1,19 @@
+.slider-promotion .swiper-pagination-bullet-active {
+  @apply bg-myHighlightLight;
+}
+
+.slider-promotion .swiper-pagination-bullet-active-prev {
+  @apply bg-myPrimaryLight opacity-100;
+}
+
+.slider-promotion .swiper-pagination-bullet-active-next {
+  @apply bg-myPrimaryLight opacity-100;
+}
+
+.slider-promotion .swiper-pagination-bullet-active-prev-prev {
+  @apply bg-myPrimaryLight opacity-100;
+}
+
+.slider-promotion .swiper-pagination-bullet-active-next-next {
+  @apply bg-myPrimaryLight opacity-100;
+}

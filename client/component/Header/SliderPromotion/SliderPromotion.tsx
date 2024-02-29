@@ -5,8 +5,9 @@ import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import 'swiper/css/scrollbar'
-import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules'
+import 'swiper/css/autoplay'
+import './SliderPromotion.css'
+import { A11y, Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { sliderPromotion } from '../../../data/sliderPromotion.data'
 import SliderPromotionItem from './SliderPromotionItem/SliderPromotionItem'
@@ -19,18 +20,23 @@ const SliderPromotion = () => {
   }
 
   return (
-    <div className='relative w-[657px] h-[382px]'>
+    <div className='relative w-[657px] h-[382px] mt-[316px] ml-[142px]'>
       <Swiper
-        // className='[&>.swiper-pagination]:!bottom-[-20px] [&>.swiper-pagination]:!z-20'
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        className='slider-promotion'
+        modules={[Navigation, Pagination, A11y, Autoplay]}
         spaceBetween={10}
         slidesPerView={1}
+        loop={true}
+        cssMode={true}
         navigation={{
           nextEl: '.swiper-next',
           prevEl: '.swiper-prev',
         }}
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
+        pagination={{
+          dynamicBullets: true,
+          type: 'bullets',
+        }}
+        // autoplay={{pauseOnMouseEnter: true, delay: 5000}}
       >
         {sliderPromotion.map((item, index) => (
           <SwiperSlide key={item.id} virtualIndex={index}>

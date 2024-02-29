@@ -2,7 +2,7 @@
 
 import { INavigation } from '@/interface/navigation.interface'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { FC } from 'react'
 
 interface INavigationItem {

@@ -16,4 +16,9 @@ export const sliderPromotion: ISliderPromotion[] = [
     src: '/image/slide-main-1.webp',
     alt: 'slide-main-3',
   },
+  {
+    id: '4',
+    src: '/image/slide-main-1.webp',
+    alt: 'slide-main-4',
+  },
 ]

@@ -16,14 +16,14 @@ const ImageBg = () => {
         width={74}
         height={83}
         alt='cake'
-        className={'absolute right-[295px] top-[65px] h-[83px] w-[74px]'}
+        className={'absolute right-[295px] top-[65px] h-[83px] w-[74px] z-[1]'}
       />
       <Image
         src='/image/bread.webp'
         width={666}
         height={747}
         alt='bread'
-        className={'absolute right-[137px] top-[125px] h-[747px] w-[666px]'}
+        className={'absolute right-[137px] top-[125px] h-[747px] w-[666px] z-[0]'}
       />
       <Image
         src='/image/egg.jpg'
