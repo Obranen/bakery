@@ -12,7 +12,7 @@ const FindSite = () => {
 
   return (
     <div className='flex justify-center w-4/12'>
-      <label className='flex items-center text-xs w-[74%] h-5 mt-2 input input-bordered p-0 !outline-1 !outline-offset-0 !outline-gray-300'>
+      <label className='flex items-center text-xs w-[74%] h-5 mt-2 input input-bordered p-0 !outline-1 !outline-offset-0 !outline-gray-500'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 16 16'

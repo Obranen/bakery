@@ -6,7 +6,7 @@ import WaveImage from './WaveImage/WaveImage'
 
 const Header = () => {
   return (
-    <div className='relative bg-myPrimaryLight pb-[79px]'>
+    <div className='relative pb-[117px]'>
       <div className={'container relative z-10 flex'}>
         <Brand />
         <FindSite />
@@ -15,7 +15,7 @@ const Header = () => {
       <div className='container'>
         <SliderPromotion />
       </div>
-      <WaveImage />
+      {/* <WaveImage /> */}
     </div>
   )
 }
