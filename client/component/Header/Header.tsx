@@ -2,11 +2,11 @@ import Brand from './Brand/Brand'
 import FindSite from './FindSite/FindSite'
 import NavigationList from './Navigation/Navigation'
 import SliderPromotion from './SliderPromotion/SliderPromotion'
-import WaveImage from './WaveImage/WaveImage'
+import Image from 'next/legacy/image'
 
 const Header = () => {
   return (
-    <div className='relative pb-[117px]'>
+    <div className='relative pb-[185px]'>
       <div className={'container relative z-10 flex'}>
         <Brand />
         <FindSite />
@@ -15,7 +15,14 @@ const Header = () => {
       <div className='container'>
         <SliderPromotion />
       </div>
-      {/* <WaveImage /> */}
+      <Image
+        src='/image/main-header.webp'
+        alt='main-header'
+        priority
+        layout='fill'
+        objectFit='cover'
+        quality={100}
+      />
     </div>
   )
 }

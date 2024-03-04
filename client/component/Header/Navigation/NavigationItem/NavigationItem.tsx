@@ -44,7 +44,7 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index }) => {
       </ul>
     </div>
   ) : (
-    <span className='inline-block text-base font-semibold font-robotoRegula'>
+    <span className='inline-block text-base font-semibold font-robotoRegula 3xl:text-red-600'>
       <Link
         href={navItem.href}
         className={

@@ -20,7 +20,7 @@ const SliderPromotion = () => {
   }
 
   return (
-    <div className='w-[657px] h-[382px] mt-[277px] ml-[142px]'>
+    <div className='w-[657px] h-[382px] mt-[277px] ml-[142px] relative z-10'>
       <h3 className='font-semibold text-center -translate-x-1 -translate-y-2.5 font-caveatRegular text-[26px]'>
         Акції Та Новинки
       </h3>

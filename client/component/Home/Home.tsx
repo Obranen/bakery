@@ -1,9 +1,7 @@
-import ImagesBg from './ImageBg/ImageBg'
-
 const Home = () => {
   return (
     <>
-      <ImagesBg />
+      <h1>Main</h1>
     </>
   )
 }

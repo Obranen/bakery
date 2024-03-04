@@ -8,10 +8,16 @@ const config: Config = {
   theme: {
     container: {
       center: true,
+      padding: '1.5rem',
     },
     extend: {
       screens: {
-        '3xl': '1640px',
+        sm: '576px',
+        md: '768px',
+        lg: '992px',
+        xl: '1200px',
+        '2xl': '1400px',
+        '3xl': '1686px',
       },
       colors: {
         myDefaultLight: '#fcfcfc',
@@ -43,7 +49,7 @@ const config: Config = {
           accent: '#37cdbe',
           neutral: '#3d4451',
           'base-100': '#ffffff',
-          "--bg-primary": "red",
+          '--bg-primary': 'red',
         },
         dark: {
           ...require('daisyui/src/theming/themes')['dark'],
