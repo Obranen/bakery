@@ -52,7 +52,7 @@ const SliderPromotion = () => {
         <div className='swiper-next cursor-pointer opacity-[.3] hover:opacity-[1] transition-all select-none'>
           <MdArrowForwardIos
             className={
-              'text-myHighlightLight text-[50px] absolute top-[calc(50%-25px)] right-[-50px]'
+              'text-highlightLight text-[50px] absolute top-[calc(50%-25px)] right-[-50px]'
             }
           />
         </div>
@@ -60,7 +60,7 @@ const SliderPromotion = () => {
         <div className='swiper-prev cursor-pointer opacity-[.3] hover:opacity-[1] transition-all select-none'>
           <MdArrowBackIos
             className={
-              'text-myHighlightLight text-[50px] absolute top-[calc(50%-25px)] left-[-40px]'
+              'text-highlightLight text-[50px] absolute top-[calc(50%-25px)] left-[-40px]'
             }
           />
         </div>

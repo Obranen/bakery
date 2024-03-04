@@ -19,11 +19,11 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index }) => {
       <div
         tabIndex={0}
         role='button'
-        className='p-0 text-[15px] font-semibold font-robotoRegular'
+        className='p-0 font-semibold text-[15px] font-robotoRegular'
       >
         {navItem.title}
         {lastIndex - 1 !== index ? (
-          <span className='inline-block w-0.5 h-[16px] translate-y-[3px] bg-gray-500 mx-1'></span>
+          <span className='inline-block w-0.5 h-[16px] translate-y-[3px] bg-gray-500 mx-2'></span>
         ) : (
           <></>
         )}
@@ -44,17 +44,17 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index }) => {
       </ul>
     </div>
   ) : (
-    <span className='inline-block text-base font-semibold font-robotoRegula 3xl:text-red-600'>
+    <span className='inline-block text-sm font-semibold  font-robotoRegular'>
       <Link
         href={navItem.href}
         className={
-          pathname == navItem.href ? 'text-myHighlightLight' : 'hover:underline'
+          pathname == navItem.href ? 'text-highlightLight' : 'hover:underline'
         }
       >
-        {navItem.title}
+        <div className='bg-yellow-500 dark:bg-slate-800'>{navItem.title}</div>
       </Link>
       {lastIndex - 1 !== index ? (
-        <span className='inline-block w-0.5 h-[16px] translate-y-[3px] bg-gray-500 mx-1'></span>
+        <span className='inline-block w-0.5 h-[16px] translate-y-[3px] bg-gray-500 mx-2'></span>
       ) : (
         <></>
       )}

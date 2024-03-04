@@ -7,7 +7,7 @@ import Image from 'next/legacy/image'
 const Header = () => {
   return (
     <div className='relative pb-[185px]'>
-      <div className={'container relative z-10 flex'}>
+      <div className='container relative z-10 flex'>
         <Brand />
         <FindSite />
         <NavigationList />
