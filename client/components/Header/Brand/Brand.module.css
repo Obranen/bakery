@@ -16,7 +16,5 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-  display: inline-block;
-  font-size: 30px;
+  @apply text-3xl inline-block uppercase translate-x-[-1px] translate-y-[5px];
 }

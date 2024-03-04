@@ -16,7 +16,7 @@ const Brand = () => {
           width={42}
           height={48}
           alt='bread'
-          className={'absolute top-[0px] left-[calc(50%-42px)] w-[42px] h-[48px]'}
+          className={'absolute bottom-[39px] left-[calc(50%-23px)] w-[42px] h-[48px]'}
         />
         <div className='w-full border-t-2 border-myHighlightLight translate-y-[6px]'></div>
         <span className={styles.textGradient}>Bakery</span>

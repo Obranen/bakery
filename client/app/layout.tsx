@@ -1,8 +1,8 @@
 import ProviderLayout from '@/library/ProviderLayout'
 import './globals.css'
-import { useFontHook } from '@/hook/useFont.hook'
-import Footer from '@/component/Footer/Footer'
-import Header from '@/component/Header/Header'
+import { useFontHook } from '@/hooks/useFont.hook'
+import Footer from '@/components/Footer/Footer'
+import Header from '@/components/Header/Header'
 
 export default function RootLayout({
   children,
