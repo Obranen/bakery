@@ -39,7 +39,8 @@ const config: Config = {
         robotoRegular: ['var(--font-robotoRegular)'],
       },
     },
-  }, 
+  },
+  darkMode: ['selector', '[data-theme="dark"]'],
   plugins: [require('daisyui')],
   daisyui: {
     themes: [

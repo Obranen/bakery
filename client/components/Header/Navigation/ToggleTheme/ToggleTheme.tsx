@@ -1,8 +1,8 @@
 'use client'
 
 import { useThemeStore } from '@/store/useTheme.store'
-import { MouseEvent, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import { MouseEvent, useEffect, useRef } from 'react'
 
 const ToggleTheme = () => {
   const setThemeColor = useThemeStore((state) => state.setThemeColor)
@@ -52,14 +52,15 @@ const ToggleTheme = () => {
         alt={'sun'}
         width={5}
         height={5}
-        className='w-5 h-5 fill-current swap-on'
+        className='w-5 h-5 text-red-500 fill-orange-500 swap-on'
       />
+
       <Image
         src='/image/toggleTheme/moon.svg'
         alt={'moon'}
         width={5}
         height={5}
-        className='w-5 h-5 fill-current swap-off'
+        className='w-5 h-5 fill-orange-500 swap-off'
       />
     </label>
   )
