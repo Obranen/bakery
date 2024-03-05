@@ -1,7 +1,8 @@
 'use client'
 
+import MoonSVG from '@/components/common/svg/MoonSVG'
+import SunSVG from '@/components/common/svg/SunSVG'
 import { useThemeStore } from '@/store/useTheme.store'
-import Image from 'next/image'
 import { MouseEvent, useEffect, useRef } from 'react'
 
 const ToggleTheme = () => {
@@ -47,21 +48,8 @@ const ToggleTheme = () => {
   return (
     <label className='mr-2 swap swap-rotate'>
       <input type='checkbox' ref={inputRef} onClick={toggleThemeChange} />
-      <Image
-        src='/image/toggleTheme/sun.svg'
-        alt={'sun'}
-        width={5}
-        height={5}
-        className='w-5 h-5 text-red-500 fill-orange-500 swap-on'
-      />
-
-      <Image
-        src='/image/toggleTheme/moon.svg'
-        alt={'moon'}
-        width={5}
-        height={5}
-        className='w-5 h-5 fill-orange-500 swap-off'
-      />
+      <SunSVG className='w-5 h-5 fill-tertiaryLight swap-on' />
+      <MoonSVG className='w-5 h-5 fill-tertiaryDark swap-off' />
     </label>
   )
 }

@@ -11,7 +11,7 @@ const Brand = () => {
     <div className='w-4/12 mt-[55px] font-abrilFatface'>
       <Link href='/' className='relative inline-block'>
         <Image
-          src='/image/bread.png'
+          src='/images/bread.png'
           width={42}
           height={48}
           alt='bread'

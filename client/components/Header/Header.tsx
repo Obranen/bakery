@@ -16,7 +16,7 @@ const Header = () => {
         <SliderPromotion />
       </div>
       <Image
-        src='/image/main-header.webp'
+        src='/images/main-header.webp'
         alt='main-header'
         priority
         layout='fill'

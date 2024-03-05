@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 const abrilFatface = localFont({
   src: [
     {
-      path: '../public/font/AbrilFatface-Regular.ttf',
+      path: '../public/fonts/AbrilFatface-Regular.ttf',
       weight: '400',
     },
   ],
@@ -13,7 +13,7 @@ const abrilFatface = localFont({
 const robotoSerifRegular = localFont({
   src: [
     {
-      path: '../public/font/RobotoSerif-Regular.ttf',
+      path: '../public/fonts/RobotoSerif-Regular.ttf',
       weight: '500',
     },
   ],
@@ -23,7 +23,7 @@ const robotoSerifRegular = localFont({
 const caveatRegular = localFont({
   src: [
     {
-      path: '../public/font/Caveat-Regular.ttf',
+      path: '../public/fonts/Caveat-Regular.ttf',
       weight: '500',
     },
   ],
@@ -33,7 +33,7 @@ const caveatRegular = localFont({
 const robotoRegular = localFont({
   src: [
     {
-      path: '../public/font/Roboto-Regular.ttf',
+      path: '../public/fonts/Roboto-Regular.ttf',
       weight: '500',
     },
   ],
