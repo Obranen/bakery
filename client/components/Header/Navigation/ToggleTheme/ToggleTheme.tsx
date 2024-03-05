@@ -45,8 +45,22 @@ const ToggleTheme = () => {
     }
   }
 
+  const pressKeyButton = (e: any) => {
+    if (e.key === 'Enter') {
+      if (themeColor === 'dark') {
+        localStorage.setItem('theme', JSON.stringify('light'))
+        setThemeColor('light')
+        inputRef.current!.checked = false
+      } else {
+        localStorage.setItem('theme', JSON.stringify('dark'))
+        setThemeColor('dark')
+        inputRef.current!.checked = true
+      }
+    }
+  }
+
   return (
-    <label className='mr-2 swap swap-rotate'>
+    <label className='mr-2 swap swap-rotate' onKeyDown={pressKeyButton}>
       <input type='checkbox' ref={inputRef} onClick={toggleThemeChange} />
       <SunSVG className='w-5 h-5 fill-tertiaryLight swap-on' />
       <MoonSVG className='w-5 h-5 fill-tertiaryDark swap-off' />

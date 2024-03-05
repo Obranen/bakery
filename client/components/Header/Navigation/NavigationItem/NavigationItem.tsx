@@ -15,7 +15,7 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index }) => {
   const pathname = usePathname()
 
   return navItem.dropdown === true ? (
-    <div className='dropdown dropdown-hover'>
+    <li className='dropdown dropdown-hover'>
       <div
         tabIndex={0}
         role='button'
@@ -42,9 +42,9 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index }) => {
           <a>Десерт</a>
         </li>
       </ul>
-    </div>
+    </li>
   ) : (
-    <span className='inline-block text-sm font-semibold text-tertiaryLight dark:text-tertiaryDark font-robotoRegular'>
+    <li className='inline-block text-sm font-semibold text-tertiaryLight dark:text-tertiaryDark font-robotoRegular'>
       <Link
         href={navItem.href}
         className={
@@ -58,7 +58,7 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index }) => {
       ) : (
         <></>
       )}
-    </span>
+    </li>
   )
 }
 

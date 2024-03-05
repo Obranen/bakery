@@ -20,10 +20,10 @@ const SliderPromotion = () => {
   }
 
   return (
-    <div className='relative z-10 w-[657px] h-[382px] mt-[286px] ml-[140px]'>
-      <h3 className='font-semibold text-center -translate-x-1 -translate-y-2.5 font-caveatRegular text-[26px]'>
+    <section className='relative z-10 w-[657px] h-[382px] translate-y-[286px] translate-x-[140px]'>
+      <h2 className='font-semibold text-center -translate-x-1 -translate-y-2.5 font-caveatRegular text-[26px]'>
         Акції Та Новинки
-      </h3>
+      </h2>
       <div className='relative'>
         <Swiper
           className='slider-promotion'
@@ -49,23 +49,19 @@ const SliderPromotion = () => {
           ))}
         </Swiper>
 
-        <div className='swiper-next cursor-pointer opacity-[.3] hover:opacity-[1] transition-all select-none'>
-          <MdArrowForwardIos
-            className={
-              'text-highlightLight text-[50px] absolute top-[calc(50%-25px)] right-[-50px]'
-            }
-          />
-        </div>
-
-        <div className='swiper-prev cursor-pointer opacity-[.3] hover:opacity-[1] transition-all select-none'>
+        <button className='btn btn-link p-0 swiper-prev cursor-pointer opacity-[.3] hover:opacity-[1] transition-all select-none absolute top-[calc(50%-25px)] left-[-40px]'>
           <MdArrowBackIos
             className={
-              'text-highlightLight text-[50px] absolute top-[calc(50%-25px)] left-[-40px]'
+              'text-highlightLight text-[50px]'
             }
           />
-        </div>
+        </button>
+
+        <button className='btn btn-link p-0 swiper-next cursor-pointer opacity-[.3] hover:opacity-[1] transition-all select-none absolute top-[calc(50%-25px)] right-[-50px]'>
+          <MdArrowForwardIos className={'text-highlightLight text-[50px]'} />
+        </button>
       </div>
-    </div>
+    </section>
   )
 }
 

@@ -6,7 +6,7 @@ const Navigation = () => {
   return (
     <nav className='flex items-start justify-end w-4/12 mt-[6px] font-robotoRegula'>
       <ToggleTheme />
-      <div className='m-[-3px]'>
+      <ul className='m-[-3px]'>
         {navigation.map((navItem, index) => (
           <NavigationItem
             key={navItem.id}
@@ -15,7 +15,7 @@ const Navigation = () => {
             index={index}
           />
         ))}
-      </div>
+      </ul>
     </nav>
   )
 }
