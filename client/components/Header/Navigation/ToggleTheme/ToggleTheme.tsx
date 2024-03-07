@@ -60,10 +60,13 @@ const ToggleTheme = () => {
   }
 
   return (
-    <label className='mr-2 swap swap-rotate' onKeyDown={pressKeyButton}>
+    <label
+      className='mr-2 [&>svg]:hover:fill-highlightLight swap swap-rotate '
+      onKeyDown={pressKeyButton}
+    >
       <input type='checkbox' ref={inputRef} onClick={toggleThemeChange} />
-      <SunSVG className='w-5 h-5 fill-tertiaryLight swap-on' />
-      <MoonSVG className='w-5 h-5 fill-tertiaryDark swap-off' />
+      <SunSVG className='w-5 h-5 transition duration-150 ease-linear fill-tertiaryLight swap-on' />
+      <MoonSVG className='w-5 h-5 transition duration-150 ease-linear fill-tertiaryDark swap-off' />
     </label>
   )
 }
