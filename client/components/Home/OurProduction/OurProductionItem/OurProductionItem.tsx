@@ -28,7 +28,7 @@ const OurProductionItem: FC<IOurProductionItem> = ({ product }) => {
           {product.description}
         </p>
       </div>
-      <button className='w-full text-base font-bold rounded-t-none btn btn-ghost font-robotoRegular hover:bg-opacity-5 hover:bg-tertiaryLight rounded-b-xl'>
+      <button className='w-full h-[60px] text-base font-bold rounded-t-none btn btn-ghost font-robotoRegular hover:bg-opacity-5 hover:bg-tertiaryLight rounded-b-xl'>
         Детальніше...
       </button>
     </section>

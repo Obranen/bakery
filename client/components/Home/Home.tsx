@@ -1,12 +1,11 @@
+import AboutUs from './AboutUs/AboutUs'
 import OurProduction from './OurProduction/OurProduction'
 
 const Home = () => {
   return (
     <>
       <OurProduction />
-      <article className='container'>
-        <section className='mt-6'></section>
-      </article>
+      <AboutUs />
     </>
   )
 }

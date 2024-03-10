@@ -1,6 +1,7 @@
 import { product } from '@/data/product.data'
 import OurProductionItem from './OurProductionItem/OurProductionItem'
 import OurProductionNav from './OurProductionNav/OurProductionNav'
+import Link from 'next/link'
 
 const OurProduction = () => {
   return (
@@ -15,6 +16,14 @@ const OurProduction = () => {
         {product.map((item) => (
           <OurProductionItem product={item} key={item.id} />
         ))}
+      </div>
+      <div className='text-right mt-4 mr-16'>
+        <Link
+          href=''
+          className='inline-block text-xl font-caveatRegular font-bold underline underline-offset-4 decoration-tertiaryLight decoration-2 transition ease-linear duration-150 hover:text-highlightLight hover:decoration-highlightLight'
+        >
+          Дивитись все...
+        </Link>
       </div>
     </article>
   )
