@@ -3,10 +3,10 @@ import OurProduction from './OurProduction/OurProduction'
 
 const Home = () => {
   return (
-    <>
+    <main>
       <OurProduction />
       <AboutUs />
-    </>
+    </main>
   )
 }
 

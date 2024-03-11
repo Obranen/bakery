@@ -1,7 +1,7 @@
 'use client'
 
-import MoonSVG from '@/components/common/svg/MoonSVG'
-import SunSVG from '@/components/common/svg/SunSVG'
+import MoonSVG from '@/public/images/svg/MoonSVG'
+import SunSVG from '@/public/images/svg/SunSVG'
 import { useThemeStore } from '@/store/useTheme.store'
 import { MouseEvent, useEffect, useRef } from 'react'
 

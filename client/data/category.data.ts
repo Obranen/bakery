@@ -18,8 +18,8 @@ export const category: ICategory[] = [
     title: 'Хліб',
     slug: '',
     icon: GiSlicedBread,
-    classesIcon: 'text-xl',
-    classesBorder: 'translate-y-0.5',
+    classesIcon: 'text-xl mr-1',
+    classesBorder: 'translate-y-[2px]',
   },
   {
     id: '3',
@@ -27,7 +27,7 @@ export const category: ICategory[] = [
     title: 'Десерт',
     slug: '',
     icon: GiCakeSlice,
-    classesIcon: 'text-xl',
-    classesBorder: 'translate-y-0.5',
+    classesIcon: 'text-xl mr-1',
+    classesBorder: 'translate-y-[2px]',
   },
 ]

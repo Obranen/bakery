@@ -1,16 +1,16 @@
 import Brand from './Brand/Brand'
 import FindSite from './FindSite/FindSite'
-import NavigationList from './Navigation/Navigation'
+import Navigation from './Navigation/Navigation'
 import SliderPromotion from './SliderPromotion/SliderPromotion'
 import Image from 'next/legacy/image'
 
 const Header = () => {
   return (
-    <div className='relative h-[952px]'>
+    <header className='relative h-[952px]'>
       <div className='container relative z-10 flex'>
         <Brand />
         <FindSite />
-        <NavigationList />
+        <Navigation />
       </div>
       <div className='container'>
         <SliderPromotion />
@@ -22,8 +22,9 @@ const Header = () => {
         layout='fill'
         objectFit='cover'
         quality={100}
+        className='opacity-90'
       />
-    </div>
+    </header>
   )
 }
 

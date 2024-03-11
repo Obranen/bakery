@@ -1,6 +1,7 @@
 'use client'
 
 import { INavigation } from '@/interface/navigation.interface'
+import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
@@ -9,13 +10,14 @@ interface INavigationItem {
   navItem: INavigation
   lastIndex: number
   index: number
+  dropdownPosition?: string
 }
 
-const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index }) => {
+const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index, dropdownPosition = '' }) => {
   const pathname = usePathname()
 
   return navItem.dropdown === true ? (
-    <li className='dropdown dropdown-hover'>
+    <li className={classNames('dropdown dropdown-hover', dropdownPosition)}>
       <div
         tabIndex={0}
         role='button'
@@ -30,16 +32,31 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index }) => {
       </div>
       <ul
         tabIndex={0}
-        className='p-2 shadow dropdown-content menu rounded-box min-w-48 bg-primaryLight'
+        className='p-2 shadow dropdown-content menu rounded-box min-w-48 bg-primaryLight z-10'
       >
         <li>
-          <Link href='' className='hover:bg-highlightLight hover:text-secondaryLight'>Випічка</Link>
+          <Link
+            href=''
+            className='hover:bg-highlightLight hover:text-secondaryLight'
+          >
+            Випічка
+          </Link>
         </li>
         <li>
-          <Link href='' className='hover:bg-highlightLight hover:text-secondaryLight'>Хліб</Link>
+          <Link
+            href=''
+            className='hover:bg-highlightLight hover:text-secondaryLight'
+          >
+            Хліб
+          </Link>
         </li>
         <li>
-          <Link href='' className='hover:bg-highlightLight hover:text-secondaryLight'>Десерт</Link>
+          <Link
+            href=''
+            className='hover:bg-highlightLight hover:text-secondaryLight'
+          >
+            Десерт
+          </Link>
         </li>
       </ul>
     </li>
