@@ -3,7 +3,7 @@ import { TbTruckDelivery } from 'react-icons/tb'
 const Delivery = () => {
   return (
     <section className='flex flex-col items-center w-6/12'>
-      <div className='flex items-center justify-center mt-6 text-center rounded-3xl w-28 h-28 bg-primaryLight'>
+      <div className='flex items-center mt-6 text-center rounded-3xl w-28 h-28 bg-primaryLight'>
         <h2 className='text-2xl font-semibold font-caveatRegular'>
           <TbTruckDelivery className='inline-block text-3xl text-highlightLight' />
           Доставка

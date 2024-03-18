@@ -13,7 +13,7 @@ const Header = () => {
         <Navigation />
       </div>
       <div className='container'>
-        <SliderPromotion />
+        {/* <SliderPromotion /> */}
       </div>
       <Image
         src='/images/main-header.webp'
