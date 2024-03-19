@@ -7,7 +7,7 @@ export default function ProviderLayout({ children }: { children: ReactNode }) {
   const themeColor = useThemeStore((state) => state.themeColor)
   
   return (
-    <body data-theme={themeColor}>
+    <body data-theme={themeColor} className='bg-secondaryLight sm:bg-transparent'>
       {children}
     </body>
   )

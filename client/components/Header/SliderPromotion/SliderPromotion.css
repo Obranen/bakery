@@ -1,3 +1,7 @@
+.slider-promotion .swiper-pagination {
+  @apply bg-opacity-20 bg-black rounded-lg
+}
+
 .slider-promotion .swiper-pagination-bullet-active {
   @apply bg-highlightLight;
 }

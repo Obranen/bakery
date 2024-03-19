@@ -1,11 +1,12 @@
 import { FaInstagram, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import { MdPhoneInTalk } from 'react-icons/md'
 import NavigationList from '../Header/Navigation/NavigationList/NavigationList'
+import TabsMobile from './TabsMobile/TabsMobile'
 
 const Footer = () => {
   return (
     <footer className='bg-secondaryLight border-t-2 border-primaryLight'>
-      <div className='container flex py-3'>
+      <div className='container py-3 hidden sm:flex'>
         <nav className='w-4/12'>
           <NavigationList dropdownPosition='dropdown-top' />
         </nav>
@@ -27,6 +28,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <TabsMobile />
     </footer>
   )
 }

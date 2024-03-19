@@ -8,7 +8,7 @@ const Brand = () => {
   const pathname = usePathname()
 
   return pathname === '/' ? (
-    <div className='w-4/12 mt-[55px] font-abrilFatface'>
+    <div className='w-4/12 mt-[55px] font-abrilFatface hidden sm:block'>
       <Link href='/' className='relative inline-block'>
         <Image
           src='/images/bread.png'
@@ -26,7 +26,7 @@ const Brand = () => {
       </Link>
     </div>
   ) : (
-    <div className='w-4/12 font-abrilFatface'>
+    <div className='w-4/12 font-abrilFatface hidden sm:block'>
       <Link href='/' className='inline-block'>
         <span className='inline-block text-3xl text-transparent uppercase translate-x-[-1px] translate-y-[5px] bg-clip-text bg-gradient-to-r from-highlightLight via-brandViaLight to-highlightLight'>
           Bakery

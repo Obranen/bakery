@@ -1,29 +1,28 @@
 import Brand from './Brand/Brand'
 import FindSite from './FindSite/FindSite'
+import MainImg from './MainImg/MainImg'
 import Navigation from './Navigation/Navigation'
 import SliderPromotion from './SliderPromotion/SliderPromotion'
-import Image from 'next/legacy/image'
 
 const Header = () => {
   return (
-    <header className='relative h-[952px]'>
+    <header className='relative sm:h-[952px]'>
       <div className='container relative z-10 flex'>
         <Brand />
-        <FindSite />
+        <div className='hidden sm:flex sm:justify-center sm:w-4/12'>
+          <FindSite />
+        </div>
         <Navigation />
       </div>
       <div className='container'>
-        {/* <SliderPromotion /> */}
+        <SliderPromotion />
+        <div className='sm:hidden'>
+          <FindSite />
+        </div>
       </div>
-      <Image
-        src='/images/main-header.webp'
-        alt='main-header'
-        priority
-        layout='fill'
-        objectFit='cover'
-        quality={100}
-        className='opacity-90'
-      />
+      <div className='hidden sm:block'>
+        <MainImg />
+      </div>
     </header>
   )
 }

@@ -3,7 +3,7 @@ import ToggleTheme from './ToggleTheme/ToggleTheme'
 
 const Navigation = () => {
   return (
-    <nav className='flex items-start justify-end w-4/12 mt-[6px] font-robotoRegular'>
+    <nav className='items-start justify-end w-4/12 mt-[6px] font-robotoRegular hidden sm:flex'>
       <ToggleTheme />
       <NavigationList />
     </nav>
