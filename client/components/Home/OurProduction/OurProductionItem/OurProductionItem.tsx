@@ -9,7 +9,7 @@ interface IOurProductionItem {
 
 const OurProductionItem: FC<IOurProductionItem> = ({ product }) => {
   return (
-    <section className='w-3/12 bg-secondaryLight rounded-xl'>
+    <div className='w-3/12 bg-secondaryLight rounded-xl'>
       <div className='px-8 pb-2 border-b-2 border-primaryLight'>
         <Image
           src={product.src}
@@ -31,7 +31,7 @@ const OurProductionItem: FC<IOurProductionItem> = ({ product }) => {
       <button className='w-full h-[60px] text-base font-bold rounded-t-none btn btn-ghost font-robotoRegular hover:bg-opacity-5 hover:bg-tertiaryLight rounded-b-xl'>
         Детальніше...
       </button>
-    </section>
+    </div>
   )
 }
 

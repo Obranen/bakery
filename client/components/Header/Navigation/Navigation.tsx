@@ -1,12 +1,24 @@
-import NavigationList from './NavigationList/NavigationList'
-import ToggleTheme from './ToggleTheme/ToggleTheme'
+import { navigation } from '@/data/navigation.data'
+import NavigationItem from './NavigationItem/NavigationItem'
+import { FC } from 'react'
 
-const Navigation = () => {
+interface INavigation {
+  dropdownPosition?: string
+}
+
+const Navigation: FC<INavigation> = ({ dropdownPosition = '' }) => {
   return (
-    <nav className='items-start justify-end w-4/12 mt-[6px] font-robotoRegular hidden sm:flex'>
-      <ToggleTheme />
-      <NavigationList />
-    </nav>
+    <ul className='m-[-3px]'>
+      {navigation.map((navItem, index) => (
+        <NavigationItem
+          key={navItem.id}
+          navItem={navItem}
+          lastIndex={navigation.length}
+          index={index}
+          dropdownPosition={dropdownPosition}
+        />
+      ))}
+    </ul>
   )
 }
 
