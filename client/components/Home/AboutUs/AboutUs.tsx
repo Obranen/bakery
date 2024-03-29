@@ -4,7 +4,7 @@ import Contacts from './Contacts/Contacts'
 
 const AboutUs = () => {
   return (
-    <div className='relative bg-secondaryLight hidden sm:block'>
+    <div className='relative bg-secondaryLight hidden lg:block'>
       <div className='container relative z-10 flex mt-12 pb-10'>
         <Delivery />
         <Contacts />

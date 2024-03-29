@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const TabsMobile = () => {
   return (
-    <nav className='bg-primaryLight sm:hidden'>
+    <nav className='bg-primaryLight md:hidden'>
       <ul className='container flex justify-between pt-1'>
         <li className='flex flex-col items-center justify-center hover:text-highlightLight [&>svg]:hover:fill-highlightLight'>
           <HomeSVG className='inline-block w-5 h-5' />

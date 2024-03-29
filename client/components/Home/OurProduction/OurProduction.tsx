@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const OurProduction = () => {
   return (
-    <section className='container hidden sm:block'>
+    <section className='container hidden lg:block'>
       <h2 className='text-2xl font-semibold translate-x-12 -translate-y-3 font-caveatRegular'>
         Наша продукція
       </h2>

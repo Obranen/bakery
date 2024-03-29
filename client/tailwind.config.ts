@@ -10,10 +10,7 @@ const config: Config = {
       center: true,
       padding: {
         DEFAULT: '10px',
-        sm: '1.5rem',
-        // lg: '4rem',
-        // xl: '5rem',
-        // '2xl': '6rem',
+        md: '1.5rem',
       },
     },
     extend: {

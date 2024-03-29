@@ -8,10 +8,10 @@ const Header = () => {
     <header>
       <div className='container relative z-10 flex'>
         <Brand />
-        <div className='hidden sm:flex sm:justify-center sm:w-4/12'>
+        <div className='hidden lg:flex lg:justify-center lg:w-4/12'>
           <FindSite />
         </div>
-        <div className='items-start justify-end w-4/12 mt-[6px] font-robotoRegular hidden sm:flex'>
+        <div className='items-center justify-end hidden lg:items-start lg:w-4/12 md:w-8/12 mt-[6px] font-robotoRegular md:flex'>
           <ToggleTheme />
           <nav>
             <Navigation />

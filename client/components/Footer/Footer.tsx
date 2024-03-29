@@ -7,7 +7,7 @@ import Navigation from '../Header/Navigation/Navigation'
 const Footer = () => {
   return (
     <footer className='bg-secondaryLight border-t-2 border-primaryLight'>
-      <div className='container py-3 hidden sm:flex'>
+      <div className='container py-3 hidden md:flex'>
         <nav className='w-4/12'>
           <Navigation dropdownPosition='dropdown-top' />
         </nav>
