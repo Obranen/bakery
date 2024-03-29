@@ -10,7 +10,7 @@ const Home = () => {
       <div className='relative lg:h-[952px] lg:mt-[-93px]'>
         <div className='container'>
           <SliderPromotion />
-          <div className='lg:hidden'>
+          <div className='md:mt-6 lg:hidden'>
             <FindSite />
           </div>
         </div>

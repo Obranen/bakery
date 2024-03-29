@@ -7,17 +7,15 @@ import Navigation from '../Header/Navigation/Navigation'
 const Footer = () => {
   return (
     <footer className='bg-secondaryLight border-t-2 border-primaryLight'>
-      <div className='container py-3 hidden md:flex'>
-        <nav className='w-4/12'>
+      <div className='container py-3 hidden md:justify-between md:flex'>
+        <nav>
           <Navigation dropdownPosition='dropdown-top' />
         </nav>
-        <div className='w-4/12'>
-          <div className='flex items-center justify-center'>
-            <MdPhoneInTalk className='mr-1 text-base' />
-            <b>097-123-45-67</b>
-          </div>
+        <div className='flex items-center justify-center'>
+          <MdPhoneInTalk className='mr-1 text-base' />
+          <b>097-123-45-67</b>
         </div>
-        <div className='w-4/12 flex justify-end text-2xl'>
+        <div className='flex justify-end text-2xl'>
           <div className='tooltip ml-5' data-tip='Viber'>
             <FaViber className='hover:text-highlightLight transition ease-linear duration-150 cursor-pointer' />
           </div>
