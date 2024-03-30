@@ -6,12 +6,12 @@ import ToggleTheme from './ToggleTheme/ToggleTheme'
 const Header = () => {
   return (
     <header>
-      <div className='container relative z-10 flex'>
+      <div className='container relative z-10 flex justify-between lg:justify-around'>
         <Brand />
-        <div className='hidden lg:flex lg:justify-center lg:w-4/12'>
+        <div className='hidden lg:flex lg:justify-center'>
           <FindSite />
         </div>
-        <div className='items-center justify-end hidden lg:items-start lg:w-4/12 md:w-8/12 mt-[6px] font-robotoRegular md:flex'>
+        <div className='items-center justify-end hidden lg:items-start mt-[6px] font-robotoRegular md:flex'>
           <ToggleTheme />
           <nav>
             <Navigation />

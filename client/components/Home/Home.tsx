@@ -6,17 +6,15 @@ import SliderPromotion from './SliderPromotion/SliderPromotion'
 
 const Home = () => {
   return (
-    <main>
-      <div className='relative lg:h-[952px] lg:mt-[-93px]'>
+    <main className='lg:bg-primaryLight'>
+      <div className='relative xl:h-[952px] lg:h-[492px] lg:-mt-10 xl:mt-[-93px]'>
         <div className='container'>
           <SliderPromotion />
           <div className='md:mt-6 lg:hidden'>
             <FindSite />
           </div>
         </div>
-        <div className='hidden lg:block'>
-          <MainImg />
-        </div>
+        <MainImg />
       </div>
       <OurProduction />
       <AboutUs />

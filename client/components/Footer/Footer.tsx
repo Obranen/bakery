@@ -22,7 +22,7 @@ const Footer = () => {
           <div className='tooltip ml-5' data-tip='Telegram'>
             <FaTelegramPlane className='hover:text-highlightLight transition ease-linear duration-150 cursor-pointer' />
           </div>
-          <div className='tooltip ml-5' data-tip='Instagram'>
+          <div className='tooltip tooltip-left ml-5' data-tip='Instagram'>
             <FaInstagram className='hover:text-highlightLight transition ease-linear duration-150 cursor-pointer' />
           </div>
         </div>

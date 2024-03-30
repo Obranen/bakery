@@ -9,8 +9,8 @@ interface IOurProductionItem {
 
 const OurProductionItem: FC<IOurProductionItem> = ({ product }) => {
   return (
-    <div className='w-3/12 bg-secondaryLight rounded-xl'>
-      <div className='px-8 pb-2 border-b-2 border-primaryLight'>
+    <div className='bg-secondaryLight rounded-xl'>
+      <div className='px-8 pb-2 border-b-2 border-primaryLight lg:px-2'>
         <Image
           src={product.src}
           alt={product.alt}
