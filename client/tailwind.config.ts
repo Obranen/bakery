@@ -41,6 +41,9 @@ const config: Config = {
         caveatRegular: ['var(--font-caveatRegular)'],
         robotoRegular: ['var(--font-robotoRegular)'],
       },
+      // fontSize: {
+      //   clamp: "clamp(300px, 50vw, 992px)",
+      // }
     },
   },
   darkMode: ['selector', '[data-theme="dark"]'],

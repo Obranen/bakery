@@ -5,7 +5,7 @@ import { MdImportContacts, MdPhoneInTalk } from 'react-icons/md'
 
 const Contacts = () => {
   return (
-    <section className='relative mt-6'>
+    <section className='relative mt-6 xl:mt-0'>
       <div className='flex items-center xl:flex-col'>
         <div className='w-6/12 flex justify-center'>
           <div className='flex items-center text-center rounded-3xl w-28 h-28 bg-primaryLight xl:mt-6'>
@@ -15,8 +15,8 @@ const Contacts = () => {
             </h2>
           </div>
         </div>
-        <div className='w-6/12'>
-          <div className='flex flex-col font-robotoRegular xl:justify-around xl:mt-10 xl:w-full'>
+        <div className='w-6/12 xl:w-full'>
+          <div className='flex flex-col font-robotoRegular xl:justify-around xl:mt-10 xl:w-full xl:flex-row'>
             <div className='flex items-center'>
               <BsClock className='mr-4 text-4xl' />
               <div className='flex flex-col'>
@@ -44,7 +44,7 @@ const Contacts = () => {
           height={432}
           alt='map'
           className={
-            'mt-10 opacity-85 border-4 border-primaryLight lg:w-full lg:h-full lg:mt-6 xl:w-[801px] xl:h-[432px]'
+            'mt-10 opacity-85 border-4 border-primaryLight lg:w-full lg:h-full lg:mt-6 2xl:w-[801px] 2xl:h-[432px]'
           }
         />
       </div>

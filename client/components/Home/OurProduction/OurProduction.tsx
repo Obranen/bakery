@@ -5,14 +5,14 @@ import Link from 'next/link'
 
 const OurProduction = () => {
   return (
-    <section className='container hidden lg:block lg:mt-6'>
+    <section className='container hidden lg:block lg:mt-6 3xl:-mt-6'>
       <h2 className='text-2xl font-semibold translate-x-12 -translate-y-3 font-caveatRegular'>
         Наша продукція
       </h2>
 
       <OurProductionNav />
 
-      <div className='flex mt-2.5 lg:space-x-2 xl:space-x-10'>
+      <div className='flex mt-2.5 lg:space-x-2 2xl:space-x-4 3xl:space-x-10'>
         {product.map((item) => (
           <OurProductionItem product={item} key={item.id} />
         ))}

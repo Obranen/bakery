@@ -19,7 +19,7 @@ const AboutUs = () => {
         width={760}
         height={521}
         alt='croissant'
-        className={'absolute bottom-0 left-0 w-[760px] h-[521px] opacity-90 hidden xl:block'}
+        className={'absolute bottom-0 left-0 w-[760px] h-[521px] opacity-90 hidden xl:block xl:w-[590px] xl:h-[390px]'}
       />
     </div>
   )

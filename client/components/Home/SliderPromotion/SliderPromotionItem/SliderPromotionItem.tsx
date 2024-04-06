@@ -13,7 +13,7 @@ const SliderPromotionItem: FC<ISliderPromotionItem> = ({ sliderItem }) => {
       width={657}
       height={382}
       alt={sliderItem.alt}
-      className={'h-40 rounded-md border-[2px] border-primaryLight md:border-[4px] sm:w-full sm:h-full'}
+      className={'h-40 rounded-md border-[2px] border-primaryLight md:border-[4px] sm:w-full sm:h-full 3xl:h-[386px] 3xl:rounded-none'}
       priority
     />
   )
