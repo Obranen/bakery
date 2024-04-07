@@ -1,0 +1,23 @@
+.our-production-carousel .swiper-pagination {
+  @apply bg-opacity-20 bg-black rounded-lg
+}
+
+.our-production-carousel .swiper-pagination-bullet-active {
+  @apply bg-highlightLight;
+}
+
+.our-production-carousel .swiper-pagination-bullet-active-prev {
+  @apply bg-secondaryLight opacity-100;
+}
+
+.our-production-carousel .swiper-pagination-bullet-active-next {
+  @apply bg-secondaryLight opacity-100;
+}
+
+.our-production-carousel .swiper-pagination-bullet-active-prev-prev {
+  @apply bg-secondaryLight opacity-100;
+}
+
+.our-production-carousel .swiper-pagination-bullet-active-next-next {
+  @apply bg-secondaryLight opacity-100;
+}

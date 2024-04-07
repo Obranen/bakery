@@ -2,21 +2,27 @@ import { product } from '@/data/product.data'
 import OurProductionItem from './OurProductionItem/OurProductionItem'
 import OurProductionNav from './OurProductionNav/OurProductionNav'
 import Link from 'next/link'
+import OurProductionCarousel from './OurProductionCarousel/OurProductionCarousel'
 
 const OurProduction = () => {
   return (
-    <section className='container hidden lg:block lg:mt-6 3xl:-mt-6'>
+    <section className='container lg:mt-6 3xl:-mt-6'>
       <h2 className='text-2xl font-semibold translate-x-12 -translate-y-3 font-caveatRegular'>
         Наша продукція
       </h2>
 
       <OurProductionNav />
 
-      <div className='flex mt-2.5 lg:space-x-2 2xl:space-x-4 3xl:space-x-10'>
+      <div className='hidden mt-2.5 lg:flex lg:space-x-2 2xl:space-x-4 3xl:space-x-10'>
         {product.map((item) => (
           <OurProductionItem product={item} key={item.id} />
         ))}
       </div>
+
+      <div className='lg:hidden'>
+        <OurProductionCarousel />
+      </div>
+
       <div className='text-right lg:mt-2 xl:mt-4 xl:mr-16'>
         <Link
           href=''

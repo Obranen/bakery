@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 
 const PromotionPage = () => {
   return (
-    <>
+    <main>
       PromotionPage
-    </>
+    </main>
   )
 }
 

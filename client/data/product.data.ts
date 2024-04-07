@@ -10,7 +10,7 @@ export const product: IProduct[] = [
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
     currency: 10,
-    title: 'Житній хліб',
+    title: 'Житній хліб-1',
     slug: 'hleb',
     code: 2615,
   },
@@ -23,7 +23,7 @@ export const product: IProduct[] = [
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
     currency: 10,
-    title: 'Житній хліб',
+    title: 'Житній хліб-2',
     slug: 'hleb',
     code: 2615,
   },
@@ -36,7 +36,7 @@ export const product: IProduct[] = [
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
     currency: 10,
-    title: 'Житній хліб',
+    title: 'Житній хліб-3',
     slug: 'hleb',
     code: 2615,
   },
@@ -49,7 +49,7 @@ export const product: IProduct[] = [
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
     currency: 10,
-    title: 'Житній хліб',
+    title: 'Житній хліб-4',
     slug: 'hleb',
     code: 2615,
   },

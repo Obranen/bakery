@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 
 const ContactPage = () => {
   return (
-    <>
+    <main>
       Contact
-    </>
+    </main>
   )
 }
 
