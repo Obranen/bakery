@@ -9,9 +9,10 @@ const OurProductBlock = () => {
       <OurProductionNav />
 
       <div className='mt-2.5 lg:flex lg:space-x-2 2xl:space-x-4 3xl:space-x-10'>
-        {product.map((item) => (
-          <OurProductionItem product={item} key={item.id} />
-        ))}
+        {product.map(
+          (item, index) =>
+            index < 4 && <OurProductionItem product={item} key={item.id} />
+        )}
       </div>
 
       <div className='text-right lg:mt-2 xl:mt-4 xl:mr-16'>
