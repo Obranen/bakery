@@ -9,7 +9,7 @@ const Brand = () => {
 
   return pathname === '/' ? (
     <div className='hidden lg:mt-[55px] font-abrilFatface md:block'>
-      <Link href='/' className='relative inline-block'>
+      <Link href='/' className='relative inline-block' aria-label='Главная страница'>
         <Image
           src='/images/bread.png'
           width={42}

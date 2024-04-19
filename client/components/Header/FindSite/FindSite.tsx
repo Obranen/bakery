@@ -19,6 +19,7 @@ const FindSite = () => {
         type='text'
         className='pl-1 grow font-robotoRegular focus:opacity-100 text-tertiaryLight placeholder:text-tertiaryLight md:border-transparent md:opacity-50'
         placeholder='Я шукаю...'
+        aria-label='Поиск по сайту'
       />
     </div>
   )
