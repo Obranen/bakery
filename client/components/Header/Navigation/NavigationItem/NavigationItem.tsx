@@ -13,7 +13,12 @@ interface INavigationItem {
   dropdownPosition?: string
 }
 
-const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index, dropdownPosition = '' }) => {
+const NavigationItem: FC<INavigationItem> = ({
+  navItem,
+  lastIndex,
+  index,
+  dropdownPosition = '',
+}) => {
   const pathname = usePathname()
 
   return navItem.dropdown === true ? (
@@ -32,11 +37,13 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index, dropdo
       </div>
       <ul
         tabIndex={0}
+        aria-label='Список категории - продукция.'
         className='p-2 shadow dropdown-content menu rounded-box min-w-48 bg-primaryLight z-10'
       >
         <li>
           <Link
             href=''
+            aria-label='Випічка: категория - продукция.'
             className='hover:bg-highlightLight hover:text-secondaryLight'
           >
             Випічка
@@ -45,6 +52,7 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index, dropdo
         <li>
           <Link
             href=''
+            aria-label='Хліб: категория - продукция.'
             className='hover:bg-highlightLight hover:text-secondaryLight'
           >
             Хліб
@@ -53,6 +61,7 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, lastIndex, index, dropdo
         <li>
           <Link
             href=''
+            aria-label='Десерт: категория - продукция.'
             className='hover:bg-highlightLight hover:text-secondaryLight'
           >
             Десерт

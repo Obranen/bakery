@@ -13,7 +13,7 @@ const Header = () => {
         </div>
         <div className='items-center justify-end hidden lg:items-start mt-[6px] font-robotoRegular md:flex'>
           <ToggleTheme />
-          <nav>
+          <nav tabIndex={0} aria-label='Основная.'>
             <Navigation />
           </nav>
         </div>

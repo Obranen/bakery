@@ -8,7 +8,7 @@ const OurProductionNav = () => {
   const listRef = useRef<HTMLUListElement>(null)
 
   return (
-    <nav>
+    <nav tabIndex={0} aria-label='Продукция'>
       <ul
         ref={listRef}
         className='flex items-center font-medium font-robotoRegular'
