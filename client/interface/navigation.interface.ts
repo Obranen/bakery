@@ -1,6 +1,11 @@
+import { INavigationDropdown } from './navigationDropdown'
+
 export interface INavigation {
   id: string
   href: string
   title: string
-  dropdown: boolean
+  isDropdown: boolean
+  dropdown?: INavigationDropdown[]
+  isModal: boolean
+  modalId?: string
 }

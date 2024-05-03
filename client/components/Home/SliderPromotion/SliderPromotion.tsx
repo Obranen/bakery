@@ -25,7 +25,7 @@ const SliderPromotion = () => {
         <Swiper
           className='slider-promotion'
           modules={[Navigation, Pagination, A11y, Autoplay]}
-          spaceBetween={10}
+          spaceBetween={4}
           slidesPerView={1}
           loop={true}
           cssMode={true}
