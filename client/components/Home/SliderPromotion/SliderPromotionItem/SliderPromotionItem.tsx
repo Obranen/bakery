@@ -1,9 +1,9 @@
-import { ISliderPromotion } from '@/interface/sliderPromotion.interface'
+import { ISliderPromotionState } from '@/interface/sliderPromotion.interface'
 import Image from 'next/image'
 import { FC } from 'react'
 
 interface ISliderPromotionItem {
-  sliderItem: ISliderPromotion
+  sliderItem: ISliderPromotionState
 }
 
 const SliderPromotionItem: FC<ISliderPromotionItem> = ({ sliderItem }) => {

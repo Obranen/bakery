@@ -1,10 +1,10 @@
-import { ICategory } from '@/interface/category.interface'
+import { ICategoryState } from '@/interface/category.interface'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { FC, MouseEvent, RefObject } from 'react'
 
 interface IOurProductionNavItem {
-  category: ICategory
+  category: ICategoryState
   listRef: RefObject<HTMLUListElement>
 }
 

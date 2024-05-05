@@ -1,10 +1,10 @@
-import { IProduct } from '@/interface/product.interface'
+import { IProductState } from '@/interface/product.interface'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
 interface IOurProductionItem {
-  product: IProduct
+  product: IProductState
 }
 
 const OurProductionItem: FC<IOurProductionItem> = ({ product }) => {

@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navigations",
+  "info": {
+    "singularName": "navigation",
+    "pluralName": "navigations",
+    "displayName": "Navigation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "isDropdown": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "isModal": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "modalId": {
+      "type": "string"
+    },
+    "dropdowns": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dropdown.dropdown",
+      "mappedBy": "navigation"
+    }
+  }
+}

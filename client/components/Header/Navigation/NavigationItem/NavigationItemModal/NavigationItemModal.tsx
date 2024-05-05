@@ -1,8 +1,8 @@
-import { INavigation } from '@/interface/navigation.interface'
+import { INavigationAttrState } from '@/interface/navigation.interface'
 import { FC } from 'react'
 
 interface INavigationItemModal {
-  navItem: INavigation
+  navItem: INavigationAttrState
 }
 
 const NavigationItemModal: FC<INavigationItemModal> = ({ navItem }) => {

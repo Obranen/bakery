@@ -677,6 +677,87 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiDropdownDropdown extends Schema.CollectionType {
+  collectionName: 'dropdowns';
+  info: {
+    singularName: 'dropdown';
+    pluralName: 'dropdowns';
+    displayName: 'Dropdown';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    href: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    navigation: Attribute.Relation<
+      'api::dropdown.dropdown',
+      'manyToOne',
+      'api::navigation.navigation'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::dropdown.dropdown',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::dropdown.dropdown',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNavigationNavigation extends Schema.CollectionType {
+  collectionName: 'navigations';
+  info: {
+    singularName: 'navigation';
+    pluralName: 'navigations';
+    displayName: 'Navigation';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    href: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    isDropdown: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    isModal: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    modalId: Attribute.String;
+    dropdowns: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToMany',
+      'api::dropdown.dropdown'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -693,6 +774,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::dropdown.dropdown': ApiDropdownDropdown;
+      'api::navigation.navigation': ApiNavigationNavigation;
     }
   }
 }

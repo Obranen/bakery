@@ -1,11 +1,12 @@
-import { INavigationDropdown } from './navigationDropdown'
+export interface INavigationState {
+  id: number
+  attributes: INavigationAttrState
+}
 
-export interface INavigation {
-  id: string
+export interface INavigationAttrState {
   href: string
   title: string
   isDropdown: boolean
-  dropdown?: INavigationDropdown[]
   isModal: boolean
   modalId?: string
 }

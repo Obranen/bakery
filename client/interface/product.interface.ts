@@ -1,4 +1,4 @@
-export interface IProduct {
+export interface IProductState {
   id: string
   src: string
   alt: string

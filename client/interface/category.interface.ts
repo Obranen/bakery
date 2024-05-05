@@ -1,4 +1,4 @@
-export interface ICategory {
+export interface ICategoryState {
   id: string
   src: string
   title: string

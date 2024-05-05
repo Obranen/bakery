@@ -1,10 +1,12 @@
+'use client'
+
 import React, { FC } from 'react'
 import { usePathname } from 'next/navigation'
-import { INavigation } from '@/interface/navigation.interface'
+import { INavigationAttrState } from '@/interface/navigation.interface'
 import Link from 'next/link'
 
 interface INavigationItemLink {
-  navItem: INavigation
+  navItem: INavigationAttrState
   lastIndex: number
   index: number
 }

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dropdowns",
+  "info": {
+    "singularName": "dropdown",
+    "pluralName": "dropdowns",
+    "displayName": "Dropdown",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "navigation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::navigation.navigation",
+      "inversedBy": "dropdowns"
+    }
+  }
+}

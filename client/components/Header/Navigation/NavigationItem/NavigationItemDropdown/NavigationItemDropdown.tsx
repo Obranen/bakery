@@ -1,21 +1,25 @@
-import { INavigation } from '@/interface/navigation.interface'
-import React, { FC } from 'react'
+import { navigationDropdownGetAll } from '@/fetch/navigationDropdown.fetch'
+import { INavigationAttrState } from '@/interface/navigation.interface'
+import { INavigationDropdownState } from '@/interface/navigationDropdown.interface'
 import classNames from 'classnames'
 import Link from 'next/link'
+import { FC } from 'react'
 
 interface INavigationItemDropdown {
-  navItem: INavigation
+  navItem: INavigationAttrState
   lastIndex: number
   index: number
   dropdownPosition: string
 }
 
-const NavigationItemDropdown: FC<INavigationItemDropdown> = ({
+const NavigationItemDropdown: FC<INavigationItemDropdown> = async ({
   navItem,
   lastIndex,
   index,
   dropdownPosition,
 }) => {
+  const navigationDropdown = await navigationDropdownGetAll()
+
   return (
     <li className={classNames('dropdown dropdown-hover', dropdownPosition)}>
       <div
@@ -35,16 +39,16 @@ const NavigationItemDropdown: FC<INavigationItemDropdown> = ({
         aria-label='Список категории - продукция.'
         className='p-2 shadow dropdown-content menu rounded-box min-w-48 bg-primaryLight z-10'
       >
-        {navItem.dropdown?.map((dropdownItem) => (
-          <li key={dropdownItem.id}>
+        {navigationDropdown.data.map((data: INavigationDropdownState) => (
+          <li key={data.id}>
             <Link
-              href={dropdownItem.href}
+              href={data.attributes.href}
               aria-label={
-                dropdownItem.title + ': категория - ' + navItem.title + '.'
+                data.attributes.title + ': категория - ' + data.attributes.title + '.'
               }
               className='hover:bg-highlightLight hover:text-secondaryLight'
             >
-              {dropdownItem.title}
+              {data.attributes.title}
             </Link>
           </li>
         ))}
