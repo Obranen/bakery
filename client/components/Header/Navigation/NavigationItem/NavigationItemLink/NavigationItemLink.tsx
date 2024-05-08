@@ -2,16 +2,17 @@
 
 import React, { FC } from 'react'
 import { usePathname } from 'next/navigation'
-import { INavigationAttrState } from '@/interface/navigation.interface'
+import { INavigationAttrState, INavigationModalAttrState } from '@/interface/navigation.interface'
 import Link from 'next/link'
 
 interface INavigationItemLink {
   navItem: INavigationAttrState
   lastIndex: number
   index: number
+  modals?: INavigationModalAttrState
 }
 
-const NavigationItemLink: FC<INavigationItemLink> = ({ navItem, index, lastIndex }) => {
+const NavigationItemLink: FC<INavigationItemLink> = ({ navItem, index, lastIndex, modals }) => {
   const pathname = usePathname()
 
   return (
@@ -25,8 +26,8 @@ const NavigationItemLink: FC<INavigationItemLink> = ({ navItem, index, lastIndex
               : 'block [&>div]:hover:opacity-100'
           }
           onClick={() =>
-            navItem.isModal &&
-            document.getElementById(navItem.modalId).showModal()
+            navItem.modals.data.length &&
+            document.getElementById(modals.modalId).showModal()
           }
         >
           {navItem.title}

@@ -8,15 +8,16 @@ interface INavigation {
 }
 
 const Navigation: FC<INavigation> = async ({ dropdownPosition = '' }) => {
-  const navigation = await navigationGetAll()
+  const navigation: INavigationState = await navigationGetAll()
+  const navigationSort = navigation.data.sort((a, b) => a.attributes.position - b.attributes.position)
 
   return (
     <ul className='m-[-3px]'>
-      {navigation.data.map((data: INavigationState, index: number) => (
+      {navigationSort.map((data, index) => (
         <NavigationItem
           key={data.id}
           navItem={data.attributes}
-          lastIndex={navigation.length}
+          lastIndex={navigation.data.length}
           index={index}
           dropdownPosition={dropdownPosition}
         />

@@ -20,24 +20,20 @@
       "type": "string",
       "required": true
     },
-    "isDropdown": {
-      "type": "boolean",
-      "default": false,
-      "required": true
-    },
-    "isModal": {
-      "type": "boolean",
-      "default": false,
-      "required": true
-    },
-    "modalId": {
-      "type": "string"
-    },
     "dropdowns": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::dropdown.dropdown",
       "mappedBy": "navigation"
+    },
+    "modals": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::modal.modal",
+      "mappedBy": "navigation"
+    },
+    "position": {
+      "type": "integer"
     }
   }
 }

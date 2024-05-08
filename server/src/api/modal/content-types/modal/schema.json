@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "modals",
+  "info": {
+    "singularName": "modal",
+    "pluralName": "modals",
+    "displayName": "Modal",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "modalId": {
+      "type": "string",
+      "required": true
+    },
+    "navigation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::navigation.navigation",
+      "inversedBy": "modals"
+    }
+  }
+}

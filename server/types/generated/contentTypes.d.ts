@@ -714,6 +714,42 @@ export interface ApiDropdownDropdown extends Schema.CollectionType {
   };
 }
 
+export interface ApiModalModal extends Schema.CollectionType {
+  collectionName: 'modals';
+  info: {
+    singularName: 'modal';
+    pluralName: 'modals';
+    displayName: 'Modal';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    modalId: Attribute.String & Attribute.Required;
+    navigation: Attribute.Relation<
+      'api::modal.modal',
+      'manyToOne',
+      'api::navigation.navigation'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::modal.modal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::modal.modal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNavigationNavigation extends Schema.CollectionType {
   collectionName: 'navigations';
   info: {
@@ -728,18 +764,17 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
   attributes: {
     href: Attribute.String & Attribute.Required;
     title: Attribute.String & Attribute.Required;
-    isDropdown: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    isModal: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    modalId: Attribute.String;
     dropdowns: Attribute.Relation<
       'api::navigation.navigation',
       'oneToMany',
       'api::dropdown.dropdown'
     >;
+    modals: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToMany',
+      'api::modal.modal'
+    >;
+    position: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -775,6 +810,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::dropdown.dropdown': ApiDropdownDropdown;
+      'api::modal.modal': ApiModalModal;
       'api::navigation.navigation': ApiNavigationNavigation;
     }
   }

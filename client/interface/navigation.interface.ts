@@ -1,12 +1,43 @@
 export interface INavigationState {
-  id: number
-  attributes: INavigationAttrState
+  data: [
+    {
+      id: number
+      attributes: INavigationAttrState
+    }
+  ]
 }
 
 export interface INavigationAttrState {
   href: string
   title: string
-  isDropdown: boolean
-  isModal: boolean
-  modalId?: string
+  position: number
+  dropdowns: INavigationDropdownState
+  modals: INavigationModalState
+}
+
+export interface INavigationDropdownState {
+  data: [
+    {
+      id: number
+      attributes: INavigationDropdownAttrState
+    }
+  ]
+}
+
+export interface INavigationDropdownAttrState {
+  href: string
+  title: string
+}
+
+export interface INavigationModalState {
+  data: [
+    {
+      id: number
+      attributes: INavigationModalAttrState
+    }
+  ]
+}
+
+export interface INavigationModalAttrState {
+  modalId: string
 }

@@ -1,5 +1,5 @@
 export const navigationGetAll = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/navigations`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/navigations/?populate=*`, {
     method: 'GET',
     cache: 'no-store'
   })

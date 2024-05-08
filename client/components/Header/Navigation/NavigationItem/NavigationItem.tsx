@@ -17,7 +17,7 @@ const NavigationItem: FC<INavigationItem> = ({
   index,
   dropdownPosition = '',
 }) => {
-  if (navItem.isDropdown === true) {
+  if (navItem.dropdowns.data.length) {
     return (
       <NavigationDropdown
         navItem={navItem}
@@ -26,13 +26,10 @@ const NavigationItem: FC<INavigationItem> = ({
         dropdownPosition={dropdownPosition}
       />
     )
-  } else if (navItem.isModal === true) {
-    return (
-      <>
-        <NavigationLink navItem={navItem} lastIndex={lastIndex} index={index} />
-        <NavigationModal navItem={navItem} />
-      </>
-    )
+  } else if (navItem.modals.data.length) {
+    return navItem.modals.data.map((data) => (
+      <NavigationModal key={data.id} modals={data.attributes} navItem={navItem} lastIndex={lastIndex} index={index} />
+    ))
   } else {
     return (
       <NavigationLink navItem={navItem} lastIndex={lastIndex} index={index} />

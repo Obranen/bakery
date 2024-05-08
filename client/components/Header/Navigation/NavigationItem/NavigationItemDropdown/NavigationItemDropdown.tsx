@@ -18,8 +18,6 @@ const NavigationItemDropdown: FC<INavigationItemDropdown> = async ({
   index,
   dropdownPosition,
 }) => {
-  const navigationDropdown = await navigationDropdownGetAll()
-
   return (
     <li className={classNames('dropdown dropdown-hover', dropdownPosition)}>
       <div
@@ -39,7 +37,7 @@ const NavigationItemDropdown: FC<INavigationItemDropdown> = async ({
         aria-label='Список категории - продукция.'
         className='p-2 shadow dropdown-content menu rounded-box min-w-48 bg-primaryLight z-10'
       >
-        {navigationDropdown.data.map((data: INavigationDropdownState) => (
+        {navItem.dropdowns.data.map((data: INavigationDropdownState) => (
           <li key={data.id}>
             <Link
               href={data.attributes.href}
