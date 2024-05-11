@@ -1,6 +1,6 @@
-import { IProduct } from '@/interface/product.interface'
+import { IProductState } from '@/interface/product.interface'
 
-export const product: IProduct[] = [
+export const product: IProductState[] = [
   {
     id: '1',
     src: '/images/product-example-main.jpg',
