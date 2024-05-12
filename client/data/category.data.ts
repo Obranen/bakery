@@ -1,11 +1,10 @@
-import { ICategory } from '@/interface/category.interface'
+import { ICategoryState } from '@/interface/category.interface'
 import { MdBakeryDining } from 'react-icons/md'
 import { GiSlicedBread, GiCakeSlice } from 'react-icons/gi'
 
-export const category: ICategory[] = [
+export const category: ICategoryState[] = [
   {
     id: '1',
-    src: '',
     title: 'Випічка',
     slug: '',
     icon: MdBakeryDining,
@@ -14,7 +13,6 @@ export const category: ICategory[] = [
   },
   {
     id: '2',
-    src: '',
     title: 'Хліб',
     slug: '',
     icon: GiSlicedBread,
@@ -23,7 +21,6 @@ export const category: ICategory[] = [
   },
   {
     id: '3',
-    src: '',
     title: 'Десерт',
     slug: '',
     icon: GiCakeSlice,

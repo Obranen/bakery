@@ -9,7 +9,7 @@ export const product: IProductState[] = [
     stock: 100,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
-    currency: 10,
+    // currency: 10,
     title: 'Житній хліб-1',
     slug: 'hleb',
     code: 2615,
@@ -22,7 +22,7 @@ export const product: IProductState[] = [
     stock: 100,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
-    currency: 10,
+    // currency: 10,
     title: 'Житній хліб-2',
     slug: 'hleb',
     code: 2615,
@@ -35,7 +35,7 @@ export const product: IProductState[] = [
     stock: 100,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
-    currency: 10,
+    // currency: 10,
     title: 'Житній хліб-3',
     slug: 'hleb',
     code: 2615,
@@ -48,7 +48,7 @@ export const product: IProductState[] = [
     stock: 100,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
-    currency: 10,
+    // currency: 10,
     title: 'Житній хліб-4',
     slug: 'hleb',
     code: 2615,
@@ -61,7 +61,7 @@ export const product: IProductState[] = [
     stock: 100,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
-    currency: 10,
+    // currency: 10,
     title: 'Житній хліб-5',
     slug: 'hleb',
     code: 2615,
@@ -74,7 +74,7 @@ export const product: IProductState[] = [
     stock: 100,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
-    currency: 10,
+    // currency: 10,
     title: 'Житній хліб-6',
     slug: 'hleb',
     code: 2615,
@@ -87,7 +87,7 @@ export const product: IProductState[] = [
     stock: 100,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
-    currency: 10,
+    // currency: 10,
     title: 'Житній хліб-7',
     slug: 'hleb',
     code: 2615,
@@ -100,7 +100,7 @@ export const product: IProductState[] = [
     stock: 100,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, aliquam modi corrupti qui earum voluptas dignissimos possimus mollitia voluptatibus. Dolorum labore, corporis nisi.',
-    currency: 10,
+    // currency: 10,
     title: 'Житній хліб-8',
     slug: 'hleb',
     code: 2615,

@@ -17,17 +17,17 @@ export const navigation: INavigation[] = [
     dropdown: [
       {
         id: '1',
-        href: '',
+        href: 'baking',
         title: 'Випічка',
       },
       {
         id: '2',
-        href: '',
+        href: 'bread',
         title: 'Хліб',
       },
       {
         id: '3',
-        href: '',
+        href: 'dessert',
         title: 'Десерт',
       },
     ],

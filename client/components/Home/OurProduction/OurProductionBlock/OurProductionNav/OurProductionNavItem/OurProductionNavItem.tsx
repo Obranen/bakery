@@ -16,7 +16,7 @@ const OurProductionNavItem: FC<IOurProductionNavItem> = ({
     $element: HTMLElement,
     $ref: RefObject<HTMLUListElement>
   ) => {
-    const $links = $ref.current?.querySelectorAll('a.text-highlightLight')
+    const $links = $ref.current?.querySelectorAll('button.text-highlightLight')
     if ($links) {
       $links.forEach((element: any) => {
         element.classList.remove('text-highlightLight')
@@ -31,8 +31,7 @@ const OurProductionNavItem: FC<IOurProductionNavItem> = ({
   return (
     <>
       <li className='first:ml-11 ml-8'>
-        <Link
-          href={category.src}
+        <button
           onClick={linkClick}
           className='block [&>div]:hover:opacity-100'
         >
@@ -41,7 +40,7 @@ const OurProductionNavItem: FC<IOurProductionNavItem> = ({
           />
           {category.title}
           <div className={classNames('opacity-0 transition ease-linear duration-150 w-full h-0.5 bg-highlightLight', category.classesBorder)}></div>
-        </Link>
+        </button>
       </li>
     </>
   )

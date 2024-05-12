@@ -1,3 +1,4 @@
+import Product from '@/components/Product/Product'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -7,9 +8,7 @@ export const metadata: Metadata = {
 
 const ProductPage = () => {
   return (
-    <>
-      Product
-    </>
+    <Product />
   )
 }
 
