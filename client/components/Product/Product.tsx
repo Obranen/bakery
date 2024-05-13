@@ -8,10 +8,11 @@ import LoadingMessage from '../ui/LoadingMessage/LoadingMessage'
 
 const Product = () => {
   const [pageIndex, setPageIndex] = useState(1)
+  let pages = []
 
   const products = useQuery({
     queryKey: ['product', pageIndex],
-    queryFn: () => productGetClient(pageIndex)
+    queryFn: () => productGetClient(pageIndex),
   })
 
   if (products.isLoading) {
@@ -20,6 +21,12 @@ const Product = () => {
 
   if (products.error) {
     return <ErrorMessage message={'Error product'} />
+  }
+
+  if (products.data?.meta.pagination.pageCount) {
+    for (let i = 1; i <= products.data?.meta.pagination.pageCount; i++) {
+      pages.push(i)
+    }
   }
 
   return (
@@ -32,30 +39,49 @@ const Product = () => {
         </div>
       ))}
 
-      <div className='join'>
-        <button
-          className='join-item btn'
-          disabled={pageIndex === 1}
-          onClick={() => pageIndex > 1 && setPageIndex((prev) => prev - 1)}
-        >
-          «
-        </button>
-        <button className='join-item btn'>{pageIndex}</button>
-        <button
-          className='join-item btn'
-          disabled={pageIndex === products.data?.meta.pagination.pageCount}
-          onClick={() =>
-            // @ts-ignore
-            pageIndex < products.data?.meta.pagination.pageCount &&
-            setPageIndex((prev) => prev + 1)
-          }
-        >
-          »
-        </button>
+      <div className='flex justify-around'>
+        {/* Pagination variant one */}
+        <div className='join'>
+          <button
+            className='join-item btn btn-xs'
+            disabled={pageIndex === 1}
+            onClick={() => pageIndex > 1 && setPageIndex((prev) => prev - 1)}
+          >
+            «
+          </button>
+          <button className='join-item btn btn-xs'>{pageIndex}</button>
+          <button
+            className='join-item btn btn-xs'
+            disabled={pageIndex === products.data?.meta.pagination.pageCount}
+            onClick={() =>
+              // @ts-ignore
+              pageIndex < products.data?.meta.pagination.pageCount &&
+              setPageIndex((prev) => prev + 1)
+            }
+          >
+            »
+          </button>
+          <button className="join-item btn btn-xs btn-disabled">...</button>
+          <button className="join-item btn btn-xs">{products.data?.meta.pagination.total}</button>
+        </div>
+
+        {/* Pagination variant two */}
+        <div className='join'>
+          {pages.map((page) => (
+            <button
+              key={page}
+              onClick={() => setPageIndex(page)}
+              className={
+                pageIndex === page
+                  ? 'join-item btn btn-xs btn-active'
+                  : 'join-item btn btn-xs'
+              }
+            >
+              {page}
+            </button>
+          ))}
+        </div>
       </div>
-      {/* <div>
-        Всего <b>{products.data?.meta.pagination.total}</b> товара
-      </div> */}
     </main>
   )
 }
