@@ -22,7 +22,7 @@ const Product = () => {
   if (products.error) {
     return <ErrorMessage message={'Error product'} />
   }
-
+  
   if (products.data?.meta.pagination.pageCount) {
     for (let i = 1; i <= products.data?.meta.pagination.pageCount; i++) {
       pages.push(i)

@@ -793,6 +793,41 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
   };
 }
 
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Product';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    code: Attribute.BigInteger & Attribute.Required & Attribute.Unique;
+    price: Attribute.Integer & Attribute.DefaultTo<0>;
+    stock: Attribute.Integer & Attribute.DefaultTo<100>;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -812,6 +847,7 @@ declare module '@strapi/types' {
       'api::dropdown.dropdown': ApiDropdownDropdown;
       'api::modal.modal': ApiModalModal;
       'api::navigation.navigation': ApiNavigationNavigation;
+      'api::product.product': ApiProductProduct;
     }
   }
 }
