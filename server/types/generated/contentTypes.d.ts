@@ -799,17 +799,18 @@ export interface ApiProductProduct extends Schema.CollectionType {
     singularName: 'product';
     pluralName: 'products';
     displayName: 'Product';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     code: Attribute.BigInteger & Attribute.Required & Attribute.Unique;
     price: Attribute.Integer & Attribute.DefaultTo<0>;
     stock: Attribute.Integer & Attribute.DefaultTo<100>;
     description: Attribute.Text;
+    slug: Attribute.UID<'api::product.product', 'title'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
