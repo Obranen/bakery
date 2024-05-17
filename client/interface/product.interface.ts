@@ -12,13 +12,24 @@ export interface IProductState {
 
 export interface IProductAttrState {
   id: string
-  src?: string
-  alt?: string
   price: number
   stock: number
   description: string
-  // currency: number
   title: string
   slug: string
   code: number
+  image: IProductImageState
+}
+
+export interface IProductImageState {
+  data: {
+    id: number
+    attributes: IProductImageAttrState
+  }
+}
+
+export interface IProductImageAttrState {
+  name: string
+  url: string
+  alternativeText: string
 }
