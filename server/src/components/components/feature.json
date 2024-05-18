@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_components_features",
+  "info": {
+    "displayName": "Feature",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "BsClock",
+        "FaMapMarkerAlt",
+        "MdPhoneInTalk"
+      ]
+    },
+    "subHeading": {
+      "type": "blocks"
+    }
+  }
+}

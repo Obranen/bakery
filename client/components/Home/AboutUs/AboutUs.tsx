@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Delivery from './Delivery/Delivery'
 import Contacts from './Contacts/Contacts'
 
-const AboutUs = () => {
+const AboutUs = async () => {
   return (
     <div className='relative bg-secondaryLight hidden md:block'>
       <div className='container relative z-10 pb-10 xl:flex md:mt-10 lg:pt-4 lg:pb-6'>

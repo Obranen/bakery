@@ -1,38 +1,33 @@
+import { contactGetServer } from '@/fetch/contact.fetch'
+import { IHomePageState } from '@/interface/homePage.interface'
 import Image from 'next/image'
 import { BsClock } from 'react-icons/bs'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { MdImportContacts, MdPhoneInTalk } from 'react-icons/md'
+import ContactsItem from './ContactsItem/ContactsItem'
 
-const Contacts = () => {
+const Contacts = async () => {
+  const contacts: IHomePageState = await contactGetServer()
+
   return (
     <section className='relative mt-6 xl:mt-0'>
       <div className='flex items-center xl:flex-col'>
         <div className='w-6/12 flex justify-center'>
           <div className='flex items-center text-center rounded-3xl w-28 h-28 bg-primaryLight xl:mt-6'>
             <h2 className='text-2xl font-semibold font-caveatRegular'>
-              <MdImportContacts className='inline-block text-3xl text-highlightLight' />
-              Контакти
+              {contacts.data.attributes.blocks[0].icon ===
+                'MdImportContacts' && (
+                <MdImportContacts className='inline-block text-3xl text-highlightLight' />
+              )}
+              {contacts.data.attributes.blocks[0].title}
             </h2>
           </div>
         </div>
         <div className='w-6/12 xl:w-full'>
           <div className='flex flex-col font-robotoRegular xl:justify-around xl:mt-10 xl:w-full xl:flex-row'>
-            <div className='flex items-center'>
-              <BsClock className='mr-4 text-4xl' />
-              <div className='flex flex-col'>
-                <span>Працюємо</span>
-                <b className='text-lg'>09:00-21:00</b>
-                <span>Щоденно</span>
-              </div>
-            </div>
-            <div className='flex items-center mt-2'>
-              <MdPhoneInTalk className='mr-1 text-3xl' />
-              <span>097-123-45-67</span>
-            </div>
-            <div className='flex items-center mt-2'>
-              <FaMapMarkerAlt className='mr-1 text-3xl' />
-              <span>Вулиця Валентинівська 108 </span>
-            </div>
+            {contacts.data.attributes.blocks[0].feature.map((section) => (
+              <ContactsItem key={section.id} section={section} />
+            ))}
           </div>
         </div>
       </div>
