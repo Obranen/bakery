@@ -1,8 +1,10 @@
-import NavigationItem from './NavigationItem/NavigationItem'
-import { FC } from 'react'
+import ErrorMessage from '@/components/ui/ErrorMessage/ErrorMessage'
 import { navigationGetAll } from '@/fetch/navigation.fetch'
 import { INavigationState } from '@/interface/navigation.interface'
-import ErrorMessage from '@/components/ui/ErrorMessage/ErrorMessage'
+import { FC } from 'react'
+import NavigationItem from './NavigationItem/NavigationItem'
+import { navigation } from '@/data/navigation.data'
+import { log } from 'console'
 
 interface INavigation {
   dropdownPosition?: string
@@ -10,7 +12,7 @@ interface INavigation {
 
 const Navigation: FC<INavigation> = async ({ dropdownPosition = '' }) => {
   const navigation: INavigationState = await navigationGetAll()
-
+  
   if (!navigation) {
     return <ErrorMessage message={'Навигация не загрузилась!'} />
   }

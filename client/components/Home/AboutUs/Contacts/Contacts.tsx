@@ -1,9 +1,7 @@
 import { contactGetServer } from '@/fetch/contact.fetch'
 import { IHomePageState } from '@/interface/homePage.interface'
 import Image from 'next/image'
-import { BsClock } from 'react-icons/bs'
-import { FaMapMarkerAlt } from 'react-icons/fa'
-import { MdImportContacts, MdPhoneInTalk } from 'react-icons/md'
+import { MdImportContacts } from 'react-icons/md'
 import ContactsItem from './ContactsItem/ContactsItem'
 
 const Contacts = async () => {
