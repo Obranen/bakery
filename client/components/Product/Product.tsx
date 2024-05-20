@@ -5,6 +5,8 @@ import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import ErrorMessage from '../ui/ErrorMessage/ErrorMessage'
 import LoadingMessage from '../ui/LoadingMessage/LoadingMessage'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Product = () => {
   const [pageIndex, setPageIndex] = useState(1)
@@ -22,7 +24,7 @@ const Product = () => {
   if (products.error) {
     return <ErrorMessage message={'Error product'} />
   }
-  
+
   if (products.data?.meta.pagination.pageCount) {
     for (let i = 1; i <= products.data?.meta.pagination.pageCount; i++) {
       pages.push(i)
@@ -33,7 +35,24 @@ const Product = () => {
     <main>
       {products.data?.data.map((product) => (
         <div key={product.id} className='border-b-2 mb-4 border-red-500'>
-          <h2>{product.attributes.title}</h2>
+          <h2>
+            <Link href={'/product/' + product.attributes.slug}>
+              {product.attributes.title}
+            </Link>
+          </h2>
+          {product.attributes.image.data !== null && (
+            <Image
+              src={
+                process.env.NEXT_PUBLIC_STRAPI_URL +
+                product.attributes.image.data.attributes.url
+              }
+              width={238}
+              height={205}
+              alt={product.attributes.image.data.attributes.alternativeText}
+              className={''}
+              priority
+            />
+          )}
           <p>{product.attributes.description}</p>
           <p>{product.attributes.price}</p>
         </div>
@@ -61,8 +80,10 @@ const Product = () => {
           >
             »
           </button>
-          <button className="join-item btn btn-xs btn-disabled">...</button>
-          <button className="join-item btn btn-xs">{products.data?.meta.pagination.total}</button>
+          <button className='join-item btn btn-xs btn-disabled'>...</button>
+          <button className='join-item btn btn-xs'>
+            {products.data?.meta.pagination.total}
+          </button>
         </div>
 
         {/* Pagination variant two */}
