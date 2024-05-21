@@ -19,7 +19,7 @@ const NavigationItemLink: FC<INavigationItemLink> = ({ navItem, index, lastIndex
     <>
       <li className='inline-block text-sm font-semibold text-tertiaryLight dark:text-tertiaryDark font-robotoRegular'>
         <Link
-          href={navItem.href}
+          href={navItem.modals.data.length ? '' :navItem.href}
           className={
             pathname == navItem.href
               ? 'block text-highlightLight'

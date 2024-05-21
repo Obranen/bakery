@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className='bg-secondaryLight border-t-2 border-primaryLight'>
       <div className='container py-3 hidden md:justify-between md:flex'>
         <nav>
-          <Navigation dropdownPosition='dropdown-top' />
+          <Navigation dropdownPosition='dropdown-top' activeEntry={false} />
         </nav>
         <div className='flex items-center justify-center'>
           <MdPhoneInTalk className='mr-1 text-base' />

@@ -8,9 +8,10 @@ import { log } from 'console'
 
 interface INavigation {
   dropdownPosition?: string
+  activeEntry?: boolean
 }
 
-const Navigation: FC<INavigation> = async ({ dropdownPosition = '' }) => {
+const Navigation: FC<INavigation> = async ({ dropdownPosition = '', activeEntry = true }) => {
   const navigation: INavigationState = await navigationGetAll()
   
   if (!navigation) {
@@ -30,6 +31,7 @@ const Navigation: FC<INavigation> = async ({ dropdownPosition = '' }) => {
           lastIndex={navigation.data.length}
           index={index}
           dropdownPosition={dropdownPosition}
+          activeEntry={activeEntry}
         />
       ))}
     </ul>
