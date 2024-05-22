@@ -1,38 +1,39 @@
-'use client'
+import React, { FC } from 'react'
+import Registration from './Registration/Registration'
+import Login from './Login/Login'
 
-const EntryModal = () => {
+interface IEntryModalProps {
+  nameModal: string
+}
+
+const EntryModal: FC<IEntryModalProps> = ({ nameModal }) => {
   return (
     <div className='modal-box'>
       <div role='tablist' className='tabs tabs-bordered'>
         <input
           type='radio'
-          name='my_tabs_1'
+          name={nameModal}
           role='tab'
           className='tab'
-          aria-label='Tab 1'
+          aria-label='Login'
           defaultChecked
         />
         <div role='tabpanel' className='tab-content col-span-2'>
-          Tab content 1 sdfsfsf sdfds sf sf sdf sdf ds dfrdgdgfdg dfgfd gfdg dfg fdg fdgf d sfsfsefse 
+          <Login />
         </div>
 
         <input
           type='radio'
-          name='my_tabs_1'
+          name={nameModal}
           role='tab'
           className='tab'
-          aria-label='Tab 2'
+          aria-label='Registration'
         />
         <div role='tabpanel' className='tab-content col-span-2'>
-          Tab content 2
+          <Registration />
         </div>
       </div>
 
-      <div className='modal-action'>
-        <form method='dialog'>
-          <button className='btn'>Close</button>
-        </form>
-      </div>
     </div>
   )
 }

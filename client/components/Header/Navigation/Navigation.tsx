@@ -3,17 +3,18 @@ import { navigationGetAll } from '@/fetch/navigation.fetch'
 import { INavigationState } from '@/interface/navigation.interface'
 import { FC } from 'react'
 import NavigationItem from './NavigationItem/NavigationItem'
-import { navigation } from '@/data/navigation.data'
-import { log } from 'console'
 
 interface INavigation {
   dropdownPosition?: string
-  activeEntry?: boolean
+  nameModal: string
 }
 
-const Navigation: FC<INavigation> = async ({ dropdownPosition = '', activeEntry = true }) => {
+const Navigation: FC<INavigation> = async ({
+  dropdownPosition = '',
+  nameModal = 'my_tabs_1',
+}) => {
   const navigation: INavigationState = await navigationGetAll()
-  
+
   if (!navigation) {
     return <ErrorMessage message={'Навигация не загрузилась!'} />
   }
@@ -31,7 +32,7 @@ const Navigation: FC<INavigation> = async ({ dropdownPosition = '', activeEntry 
           lastIndex={navigation.data.length}
           index={index}
           dropdownPosition={dropdownPosition}
-          activeEntry={activeEntry}
+          nameModal={nameModal}
         />
       ))}
     </ul>

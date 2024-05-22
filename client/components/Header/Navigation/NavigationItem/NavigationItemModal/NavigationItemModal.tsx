@@ -11,6 +11,7 @@ interface INavigationItemModal {
   navItem: INavigationAttrState
   lastIndex: number
   index: number
+  nameModal: string
 }
 
 const NavigationItemModal: FC<INavigationItemModal> = ({
@@ -18,13 +19,14 @@ const NavigationItemModal: FC<INavigationItemModal> = ({
   navItem,
   index,
   lastIndex,
+  nameModal,
 }) => {
   return (
     <>
       <NavigationLink modals={modals} navItem={navItem} lastIndex={lastIndex} index={index} />
 
       <dialog id={modals.modalId} className='modal'>
-        <EntryModal />
+        <EntryModal nameModal={nameModal} />
       </dialog>
     </>
   )

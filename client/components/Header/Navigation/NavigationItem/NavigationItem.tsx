@@ -9,7 +9,7 @@ interface INavigationItem {
   lastIndex: number
   index: number
   dropdownPosition?: string
-  activeEntry?: boolean
+  nameModal: string
 }
 
 const NavigationItem: FC<INavigationItem> = ({
@@ -17,7 +17,7 @@ const NavigationItem: FC<INavigationItem> = ({
   lastIndex,
   index,
   dropdownPosition = '',
-  activeEntry
+  nameModal
 }) => {
   if (navItem.dropdowns.data.length) {
     return (
@@ -28,9 +28,16 @@ const NavigationItem: FC<INavigationItem> = ({
         dropdownPosition={dropdownPosition}
       />
     )
-  } else if (navItem.modals.data.length && activeEntry) {
+  } else if (navItem.modals.data.length) {
     return navItem.modals.data.map((data) => (
-      <NavigationModal key={data.id} modals={data.attributes} navItem={navItem} lastIndex={lastIndex} index={index} />
+      <NavigationModal
+        key={data.id}
+        modals={data.attributes}
+        navItem={navItem}
+        lastIndex={lastIndex}
+        index={index}
+        nameModal={nameModal}
+      />
     ))
   } else {
     return (
