@@ -1,10 +1,11 @@
 'use client'
 
+import { userCreate } from '@/fetch/user.fetch'
 import { IUserState } from '@/interface/user.interface'
 import EmailSVG from '@/public/images/svg/EmailSVG'
 import KeySVG from '@/public/images/svg/KeySVG'
 import UserSVG from '@/public/images/svg/UserSVG'
-import { useState } from 'react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   Controller,
   SubmitHandler,
@@ -13,32 +14,33 @@ import {
 } from 'react-hook-form'
 
 const SignUp = () => {
-  const [userProps, setUserProps] = useState<IUserState>({
-    userName: '',
-    email: '',
-    password: '',
-  })
-  // const queryClient = useQueryClient()
+  const queryClient = useQueryClient()
 
-  // const commentCreateMutation = useMutation({
-  //   mutationFn: createCommentFetch,
-  //   onSuccess: async () => {
-  //     await queryClient.invalidateQueries({ queryKey: ['comment'] })
-  //   },
-  // })
+  const userCreateMutation = useMutation({
+    mutationFn: userCreate,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['user'] })
+    },
+  })
 
   const { handleSubmit, control, resetField } = useForm<IUserState>({
-    defaultValues: { userName: '', email: '', password: '', confirmPassword: '' },
-    values: userProps,
+    defaultValues: {
+      userName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+    values: { userName: '', email: '', password: '', confirmPassword: '' },
   })
 
   const { errors } = useFormState({ control })
 
-  const createUser: SubmitHandler<IUserState> = (data) => {
-    // commentCreateMutation.mutate({
-    //   name: data.name,
-    //   description: data.description,
-    // })
+  const userCreateClick: SubmitHandler<IUserState> = (data) => {
+    userCreateMutation.mutate({
+      userName: data.userName,
+      email: data.email,
+      password: data.password,
+    })
 
     console.log('data', data)
 
@@ -126,22 +128,22 @@ const SignUp = () => {
       <Controller
         control={control}
         name='password'
-        rules={{
-          required: 'Заполните поле!',
-          minLength: {
-            value: 3,
-            message: `Минимум 3 символа`,
-          },
-          maxLength: {
-            value: 15,
-            message: `Максимум 15 символов`,
-          },
-          pattern: {
-            value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
-            message:
-              'Минимум одна заглавная буква, одна строчная буква, одна цифра и один специальный символ',
-          },
-        }}
+        // rules={{
+        //   required: 'Заполните поле!',
+        //   minLength: {
+        //     value: 3,
+        //     message: `Минимум 3 символа`,
+        //   },
+        //   maxLength: {
+        //     value: 15,
+        //     message: `Максимум 15 символов`,
+        //   },
+        //   pattern: {
+        //     value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
+        //     message:
+        //       'Минимум одна заглавная буква, одна строчная буква, одна цифра и один специальный символ',
+        //   },
+        // }}
         render={({ field: { value, onChange, onBlur } }) => (
           <label className='form-control'>
             <div className='label'>
@@ -172,7 +174,7 @@ const SignUp = () => {
           </label>
         )}
       />
-      <Controller
+      {/* <Controller
         control={control}
         name='confirmPassword'
         rules={{
@@ -220,12 +222,15 @@ const SignUp = () => {
             </div>
           </label>
         )}
-      />
+      /> */}
       <div className='flex justify-between mt-4'>
         <form method='dialog'>
-          <button className='btn'>Close</button>
+          <button className='btn'>Закрыть</button>
         </form>
-        <button className='btn join-item' onClick={handleSubmit(createUser)}>
+        <button
+          className='btn join-item'
+          onClick={handleSubmit(userCreateClick)}
+        >
           Регистрация
         </button>
       </div>

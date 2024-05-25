@@ -1,4 +1,4 @@
-import LoadingMessage from '@/components/ui/LoadingMessage/LoadingMessage'
+import LoadingMessage from '@/components/ui/LoadingMessage'
 
 const Loading = () => {
   return <LoadingMessage />

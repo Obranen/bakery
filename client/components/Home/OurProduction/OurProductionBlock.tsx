@@ -1,7 +1,7 @@
 import { product } from '@/data/product.data'
-import OurProductionItem from '../OurProductionItem/OurProductionItem'
+import OurProductionItem from './OurProductionItem'
 import Link from 'next/link'
-import OurProductionNav from './OurProductionNav/OurProductionNav'
+import OurProductionNav from './OurProductionNav'
 
 const OurProductBlock = () => {
   return (

@@ -1,8 +1,8 @@
 import { INavigationAttrState } from '@/interface/navigation.interface'
 import { FC } from 'react'
-import NavigationDropdown from './NavigationItemDropdown/NavigationItemDropdown'
-import NavigationLink from './NavigationItemLink/NavigationItemLink'
-import NavigationModal from './NavigationItemModal/NavigationItemModal'
+import NavigationDropdown from './NavigationItemDropdown'
+import NavigationLink from './NavigationItemLink'
+import NavigationModal from './NavigationItemModal'
 
 interface INavigationItem {
   navItem: INavigationAttrState

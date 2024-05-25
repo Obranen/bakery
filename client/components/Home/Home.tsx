@@ -1,7 +1,7 @@
 import WaveSVG from '@/public/images/svg/WaveSVG'
-import FindSite from '../Header/FindSite/FindSite'
+import FindSite from '../Header/FindSite'
 import AboutUs from './AboutUs/AboutUs'
-import MainImg from './MainImg/MainImg'
+import MainImg from './MainImg'
 import OurProduction from './OurProduction/OurProduction'
 import SliderPromotion from './SliderPromotion/SliderPromotion'
 

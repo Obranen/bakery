@@ -173,7 +173,7 @@ const SignIn = () => {
       />
       <div className='flex justify-between mt-4'>
         <form method='dialog'>
-          <button className='btn'>Close</button>
+          <button className='btn'>Закрыть</button>
         </form>
         <button className='btn join-item' onClick={handleSubmit(loginUser)}>
           Войти

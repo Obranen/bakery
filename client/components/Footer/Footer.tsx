@@ -1,7 +1,7 @@
 import { FaInstagram, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import { MdPhoneInTalk } from 'react-icons/md'
 
-import TabsMobile from './TabsMobile/TabsMobile'
+import TabsMobile from './TabsMobile'
 import Navigation from '../Header/Navigation/Navigation'
 
 const Footer = () => {

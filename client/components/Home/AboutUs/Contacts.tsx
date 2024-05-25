@@ -2,7 +2,7 @@ import { contactGetServer } from '@/fetch/contact.fetch'
 import { IHomePageState } from '@/interface/homePage.interface'
 import Image from 'next/image'
 import { MdImportContacts } from 'react-icons/md'
-import ContactsItem from './ContactsItem/ContactsItem'
+import ContactsItem from './ContactsItem'
 
 const Contacts = async () => {
   const contacts: IHomePageState = await contactGetServer()

@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
-import SignUp from './SignUp/SignUp'
-import SignIn from './SignIn/SignIn'
+import SignUp from './SignUp'
+import SignIn from './SignIn'
 
-interface IAuthModalProps {
+interface IAuthProps {
   nameModal: string
 }
 
-const AuthModal: FC<IAuthModalProps> = ({ nameModal }) => {
+const Auth: FC<IAuthProps> = ({ nameModal }) => {
   return (
     <div className='modal-box'>
       <div role='tablist' className='tabs tabs-bordered'>
@@ -37,4 +37,4 @@ const AuthModal: FC<IAuthModalProps> = ({ nameModal }) => {
   )
 }
 
-export default AuthModal
+export default Auth

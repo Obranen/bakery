@@ -1,5 +1,5 @@
-import OurProductBlock from './OurProductionBlock/OurProductionBlock'
-import OurProductionCarousel from './OurProductionCarousel/OurProductionCarousel'
+import OurProductBlock from './OurProductionBlock'
+import OurProductionCarousel from './OurProductionCarousel'
 
 const OurProduction = () => {
   return (

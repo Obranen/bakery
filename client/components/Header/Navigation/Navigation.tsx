@@ -1,8 +1,8 @@
-import ErrorMessage from '@/components/ui/ErrorMessage/ErrorMessage'
+import ErrorMessage from '@/components/ui/ErrorMessage'
 import { navigationGetAll } from '@/fetch/navigation.fetch'
 import { INavigationState } from '@/interface/navigation.interface'
 import { FC } from 'react'
-import NavigationItem from './NavigationItem/NavigationItem'
+import NavigationItem from './NavigationItem'
 
 interface INavigation {
   dropdownPosition?: string

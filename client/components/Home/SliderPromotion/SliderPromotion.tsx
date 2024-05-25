@@ -9,7 +9,7 @@ import { A11y, Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { sliderPromotion } from '../../../data/sliderPromotion.data'
 import './SliderPromotion.css'
-import SliderPromotionItem from './SliderPromotionItem/SliderPromotionItem'
+import SliderPromotionItem from './SliderPromotionItem'
 
 const SliderPromotion = () => {
   return (

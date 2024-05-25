@@ -4,7 +4,7 @@ import { product } from '@/data/product.data'
 import 'swiper/css'
 import { A11y } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import OurProductionItem from '../OurProductionItem/OurProductionItem'
+import OurProductionItem from './OurProductionItem'
 
 const OurProductionCarousel = () => {
   return (

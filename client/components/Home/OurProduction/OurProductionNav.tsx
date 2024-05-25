@@ -2,7 +2,7 @@
 
 import { category } from '@/data/category.data'
 import { useRef } from 'react'
-import OurProductionNavItem from './OurProductionNavItem/OurProductionNavItem'
+import OurProductionNavItem from './OurProductionNavItem'
 
 const OurProductionNav = () => {
   const listRef = useRef<HTMLUListElement>(null)

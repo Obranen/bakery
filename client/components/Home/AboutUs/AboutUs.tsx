@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import Delivery from './Delivery/Delivery'
-import Contacts from './Contacts/Contacts'
+import Delivery from './Delivery'
+import Contacts from './Contacts'
 
 const AboutUs = async () => {
   return (
