@@ -1,5 +1,6 @@
 'use client'
 
+import ErrorMessage from '@/components/ui/ErrorMessage'
 import { userCreate } from '@/fetch/user.fetch'
 import { IUserState } from '@/interface/user.interface'
 import EmailSVG from '@/public/images/svg/EmailSVG'
@@ -42,13 +43,20 @@ const SignUp = () => {
       password: data.password,
     })
 
-    console.log('data', data)
-
     resetField('userName')
     resetField('email')
     resetField('password')
     resetField('confirmPassword')
   }
+
+  // if (userCreateMutation.isError) {
+  //   return <ErrorMessage message={'Пользователь с таким email уже существует!'} />
+  // }
+
+  // if (userCreateMutation.isSuccess) {
+  //   return <ErrorMessage message={'Вы успешно зарегистрировались!'} />
+  // }
+
   return (
     <div role='form'>
       <Controller
