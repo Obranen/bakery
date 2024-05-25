@@ -6,7 +6,7 @@ import NavigationItem from './NavigationItem/NavigationItem'
 
 interface INavigation {
   dropdownPosition?: string
-  nameModal: string
+  nameModal?: string
 }
 
 const Navigation: FC<INavigation> = async ({

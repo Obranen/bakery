@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
-import Registration from './Registration/Registration'
-import Login from './Login/Login'
+import SignUp from './SignUp/SignUp'
+import SignIn from './SignIn/SignIn'
 
-interface IEntryModalProps {
+interface IAuthModalProps {
   nameModal: string
 }
 
-const EntryModal: FC<IEntryModalProps> = ({ nameModal }) => {
+const AuthModal: FC<IAuthModalProps> = ({ nameModal }) => {
   return (
     <div className='modal-box'>
       <div role='tablist' className='tabs tabs-bordered'>
@@ -15,11 +15,11 @@ const EntryModal: FC<IEntryModalProps> = ({ nameModal }) => {
           name={nameModal}
           role='tab'
           className='tab'
-          aria-label='Login'
+          aria-label='SignIn'
           defaultChecked
         />
         <div role='tabpanel' className='tab-content col-span-2'>
-          <Login />
+          <SignIn />
         </div>
 
         <input
@@ -27,15 +27,14 @@ const EntryModal: FC<IEntryModalProps> = ({ nameModal }) => {
           name={nameModal}
           role='tab'
           className='tab'
-          aria-label='Registration'
+          aria-label='SignUp'
         />
         <div role='tabpanel' className='tab-content col-span-2'>
-          <Registration />
+          <SignUp />
         </div>
       </div>
-
     </div>
   )
 }
 
-export default EntryModal
+export default AuthModal

@@ -4,7 +4,7 @@ import {
 } from '@/interface/navigation.interface'
 import { FC } from 'react'
 import NavigationLink from '../NavigationItemLink/NavigationItemLink'
-import EntryModal from '@/components/Header/EntryModal/EntryModal'
+import AuthModal from '@/components/Header/AuthModal/AuthModal'
 
 interface INavigationItemModal {
   modals: INavigationModalAttrState
@@ -26,7 +26,7 @@ const NavigationItemModal: FC<INavigationItemModal> = ({
       <NavigationLink modals={modals} navItem={navItem} lastIndex={lastIndex} index={index} />
 
       <dialog id={modals.modalId} className='modal'>
-        <EntryModal nameModal={nameModal} />
+        <AuthModal nameModal={nameModal} />
       </dialog>
     </>
   )

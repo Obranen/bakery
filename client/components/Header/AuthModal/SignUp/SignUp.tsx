@@ -12,7 +12,7 @@ import {
   useFormState,
 } from 'react-hook-form'
 
-const Login = () => {
+const SignUp = () => {
   const [userProps, setUserProps] = useState<IUserState>({
     userName: '',
     email: '',
@@ -28,7 +28,7 @@ const Login = () => {
   // })
 
   const { handleSubmit, control, resetField } = useForm<IUserState>({
-    defaultValues: { userName: '', email: '', password: '' },
+    defaultValues: { userName: '', email: '', password: '', confirmPassword: '' },
     values: userProps,
   })
 
@@ -45,6 +45,7 @@ const Login = () => {
     resetField('userName')
     resetField('email')
     resetField('password')
+    resetField('confirmPassword')
   }
   return (
     <div role='form'>
@@ -171,16 +172,65 @@ const Login = () => {
           </label>
         )}
       />
+      <Controller
+        control={control}
+        name='confirmPassword'
+        rules={{
+          required: 'Заполните поле!',
+          minLength: {
+            value: 3,
+            message: `Минимум 3 символа`,
+          },
+          maxLength: {
+            value: 15,
+            message: `Максимум 15 символов`,
+          },
+          pattern: {
+            value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
+            message:
+              'Минимум одна заглавная буква, одна строчная буква, одна цифра и один специальный символ',
+          },
+        }}
+        render={({ field: { value, onChange, onBlur } }) => (
+          <label className='form-control'>
+            <div className='label'>
+              <span className='label-text'>Repeat Password</span>
+            </div>
+            <label
+              className={
+                !!errors.confirmPassword?.message
+                  ? 'input input-bordered flex items-center gap-2 input-error'
+                  : 'input input-bordered flex items-center gap-2'
+              }
+            >
+              <KeySVG className='w-4 h-4 opacity-70' />
+              <input
+                type='password'
+                className='grow'
+                placeholder='Repeat Password'
+                value={value}
+                onChange={onChange}
+                onBlur={onBlur}
+              />
+            </label>
+            <div className='label'>
+              <span className='label-text-alt text-error'>
+                {errors.confirmPassword?.message}
+              </span>
+            </div>
+          </label>
+        )}
+      />
       <div className='flex justify-between mt-4'>
         <form method='dialog'>
           <button className='btn'>Close</button>
         </form>
         <button className='btn join-item' onClick={handleSubmit(createUser)}>
-          Войти
+          Регистрация
         </button>
       </div>
     </div>
   )
 }
 
-export default Login
+export default SignUp
