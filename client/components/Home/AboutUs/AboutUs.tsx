@@ -10,7 +10,7 @@ const AboutUs = async () => {
           <Delivery />
         </div>
         <div className='xl:w-6/12'>
-          <Contacts />
+          {/* <Contacts /> */}
         </div>
       </div>
 

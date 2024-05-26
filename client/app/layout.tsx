@@ -1,8 +1,9 @@
-import ProviderLayout from '@/library/ProviderLayout'
-import './globals.css'
-import { useFontHook } from '@/hooks/useFont.hook'
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
+import ToastMessage from '@/components/ui/ToastMessage'
+import { useFontHook } from '@/hooks/useFont.hook'
+import ProviderLayout from '@/library/ProviderLayout'
+import './globals.css'
 
 export default function RootLayout({
   children,
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <ToastMessage />
       </ProviderLayout>
     </html>
   )

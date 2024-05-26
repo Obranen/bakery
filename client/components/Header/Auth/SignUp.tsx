@@ -1,20 +1,24 @@
 'use client'
 
-import ErrorMessage from '@/components/ui/ErrorMessage'
 import { userCreate } from '@/fetch/user.fetch'
 import { IUserState } from '@/interface/user.interface'
 import EmailSVG from '@/public/images/svg/EmailSVG'
+import EyeSlashSVG from '@/public/images/svg/EyeSlashSVG'
+import EyeViewSVG from '@/public/images/svg/EyeViewSVG'
 import KeySVG from '@/public/images/svg/KeySVG'
 import UserSVG from '@/public/images/svg/UserSVG'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
 import {
   Controller,
   SubmitHandler,
   useForm,
   useFormState,
 } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 const SignUp = () => {
+  const [showPassword, setShowPassword] = useState(false)
   const queryClient = useQueryClient()
 
   const userCreateMutation = useMutation({
@@ -29,9 +33,8 @@ const SignUp = () => {
       userName: '',
       email: '',
       password: '',
-      confirmPassword: '',
     },
-    values: { userName: '', email: '', password: '', confirmPassword: '' },
+    values: { userName: '', email: '', password: '' },
   })
 
   const { errors } = useFormState({ control })
@@ -46,23 +49,48 @@ const SignUp = () => {
     resetField('userName')
     resetField('email')
     resetField('password')
-    resetField('confirmPassword')
   }
 
-  // if (userCreateMutation.isError) {
-  //   return <ErrorMessage message={'Пользователь с таким email уже существует!'} />
-  // }
+  const validation = () => {
+    if (
+      userCreateMutation.data?.error &&
+      userCreateMutation.data.error.name === 'ApplicationError'
+    ) {
+      const notify = () =>
+        toast.error('Пользователь с таким email уже существует!')
+      notify()
+    }
 
-  // if (userCreateMutation.isSuccess) {
-  //   return <ErrorMessage message={'Вы успешно зарегистрировались!'} />
-  // }
+    if (
+      userCreateMutation.data?.error &&
+      userCreateMutation.data.error.name === 'ValidationError'
+    ) {
+      const notify = () => toast.error('Не правильно введены данные!')
+      notify()
+    }
+
+    if (userCreateMutation.data?.user) {
+      const notify = () => toast.success('Регистрация прошла успешно!')
+      notify()
+    }
+  }
+
+  useEffect(() => {
+    validation()
+  }, [userCreateMutation.data])
 
   return (
     <div role='form'>
       <Controller
         control={control}
         name='userName'
-        rules={{ required: 'Заполните поле!' }}
+        rules={{
+          required: 'Обязательное поле для заполнения!',
+          minLength: {
+            value: 3,
+            message: `Минимум 3 символа`,
+          },
+        }}
         render={({ field: { value, onChange, onBlur } }) => (
           <label className='form-control mt-2'>
             <div className='label'>
@@ -97,7 +125,11 @@ const SignUp = () => {
         control={control}
         name='email'
         rules={{
-          required: 'Заполните поле!',
+          required: 'Обязательное поле для заполнения!',
+          minLength: {
+            value: 6,
+            message: `Минимум 6 символа`,
+          },
           pattern: {
             value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
             message: 'Не правильно введён email',
@@ -136,22 +168,22 @@ const SignUp = () => {
       <Controller
         control={control}
         name='password'
-        // rules={{
-        //   required: 'Заполните поле!',
-        //   minLength: {
-        //     value: 3,
-        //     message: `Минимум 3 символа`,
-        //   },
-        //   maxLength: {
-        //     value: 15,
-        //     message: `Максимум 15 символов`,
-        //   },
-        //   pattern: {
-        //     value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
-        //     message:
-        //       'Минимум одна заглавная буква, одна строчная буква, одна цифра и один специальный символ',
-        //   },
-        // }}
+        rules={{
+          required: 'Обязательное поле для заполнения!',
+          minLength: {
+            value: 6,
+            message: `Минимум 6 символа`,
+          },
+          // maxLength: {
+          //   value: 15,
+          //   message: `Максимум 15 символов`,
+          // },
+          // pattern: {
+          //   value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
+          //   message:
+          //     'Минимум одна заглавная буква, одна строчная буква, одна цифра и один специальный символ',
+          // },
+        }}
         render={({ field: { value, onChange, onBlur } }) => (
           <label className='form-control'>
             <div className='label'>
@@ -166,13 +198,24 @@ const SignUp = () => {
             >
               <KeySVG className='w-4 h-4 opacity-70' />
               <input
-                type='password'
+                type={showPassword ? 'text' : 'password'}
                 className='grow'
                 placeholder='Password'
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}
               />
+              {showPassword ? (
+                <EyeViewSVG
+                  onClick={() => setShowPassword(!showPassword)}
+                  className='w-4 h-4 opacity-70 cursor-pointer'
+                />
+              ) : (
+                <EyeSlashSVG
+                  onClick={() => setShowPassword(!showPassword)}
+                  className='w-4 h-4 opacity-70 cursor-pointer'
+                />
+              )}
             </label>
             <div className='label'>
               <span className='label-text-alt text-error'>
@@ -182,55 +225,6 @@ const SignUp = () => {
           </label>
         )}
       />
-      {/* <Controller
-        control={control}
-        name='confirmPassword'
-        rules={{
-          required: 'Заполните поле!',
-          minLength: {
-            value: 3,
-            message: `Минимум 3 символа`,
-          },
-          maxLength: {
-            value: 15,
-            message: `Максимум 15 символов`,
-          },
-          pattern: {
-            value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
-            message:
-              'Минимум одна заглавная буква, одна строчная буква, одна цифра и один специальный символ',
-          },
-        }}
-        render={({ field: { value, onChange, onBlur } }) => (
-          <label className='form-control'>
-            <div className='label'>
-              <span className='label-text'>Repeat Password</span>
-            </div>
-            <label
-              className={
-                !!errors.confirmPassword?.message
-                  ? 'input input-bordered flex items-center gap-2 input-error'
-                  : 'input input-bordered flex items-center gap-2'
-              }
-            >
-              <KeySVG className='w-4 h-4 opacity-70' />
-              <input
-                type='password'
-                className='grow'
-                placeholder='Repeat Password'
-                value={value}
-                onChange={onChange}
-                onBlur={onBlur}
-              />
-            </label>
-            <div className='label'>
-              <span className='label-text-alt text-error'>
-                {errors.confirmPassword?.message}
-              </span>
-            </div>
-          </label>
-        )}
-      /> */}
       <div className='flex justify-between mt-4'>
         <form method='dialog'>
           <button className='btn'>Закрыть</button>
