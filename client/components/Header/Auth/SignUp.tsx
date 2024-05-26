@@ -8,7 +8,9 @@ import EyeViewSVG from '@/public/images/svg/EyeViewSVG'
 import KeySVG from '@/public/images/svg/KeySVG'
 import UserSVG from '@/public/images/svg/UserSVG'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
+import { setCookie } from 'cookies-next'
+import { useRouter } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
 import {
   Controller,
   SubmitHandler,
@@ -20,6 +22,8 @@ import { toast } from 'react-toastify'
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false)
   const queryClient = useQueryClient()
+  const router = useRouter()
+  const refCloseButton = useRef<any>(null)
 
   const userCreateMutation = useMutation({
     mutationFn: userCreate,
@@ -29,11 +33,7 @@ const SignUp = () => {
   })
 
   const { handleSubmit, control, resetField } = useForm<IUserState>({
-    defaultValues: {
-      userName: '',
-      email: '',
-      password: '',
-    },
+    defaultValues: { userName: '', email: '', password: '' },
     values: { userName: '', email: '', password: '' },
   })
 
@@ -51,7 +51,7 @@ const SignUp = () => {
     resetField('password')
   }
 
-  const validation = () => {
+  const responseMessage = () => {
     if (
       userCreateMutation.data?.error &&
       userCreateMutation.data.error.name === 'ApplicationError'
@@ -75,8 +75,25 @@ const SignUp = () => {
     }
   }
 
+  const createCookie = () => {
+    if (!userCreateMutation.data?.jwt) return
+
+    const config = {
+      maxAge: 60 * 60 * 24 * 7,
+      path: '/',
+      domain: process.env.HOST ?? 'localhost',
+      secure: process.env.NODE_ENV === 'production',
+    }
+
+    setCookie('jwt', userCreateMutation.data?.jwt, config)
+
+    refCloseButton.current?.click()
+    router.push('/dashboard')
+  }
+
   useEffect(() => {
-    validation()
+    responseMessage()
+    createCookie()
   }, [userCreateMutation.data])
 
   return (
@@ -174,15 +191,6 @@ const SignUp = () => {
             value: 6,
             message: `Минимум 6 символа`,
           },
-          // maxLength: {
-          //   value: 15,
-          //   message: `Максимум 15 символов`,
-          // },
-          // pattern: {
-          //   value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
-          //   message:
-          //     'Минимум одна заглавная буква, одна строчная буква, одна цифра и один специальный символ',
-          // },
         }}
         render={({ field: { value, onChange, onBlur } }) => (
           <label className='form-control'>
@@ -227,13 +235,16 @@ const SignUp = () => {
       />
       <div className='flex justify-between mt-4'>
         <form method='dialog'>
-          <button className='btn'>Закрыть</button>
+          <button className='btn' ref={refCloseButton}>
+            Закрыть
+          </button>
         </form>
         <button
           className='btn join-item'
           onClick={handleSubmit(userCreateClick)}
+          disabled={userCreateMutation.isPending}
         >
-          Регистрация
+          {userCreateMutation.isPending ? 'Загрузка...' : 'Регистрация'}
         </button>
       </div>
     </div>

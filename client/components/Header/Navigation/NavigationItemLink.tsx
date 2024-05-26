@@ -27,6 +27,7 @@ const NavigationItemLink: FC<INavigationItemLink> = ({ navItem, index, lastIndex
           }
           onClick={() =>
             navItem.modals.data.length &&
+            // @ts-ignore
             document.getElementById(modals.modalId).showModal()
           }
         >

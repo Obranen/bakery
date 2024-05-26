@@ -2,8 +2,9 @@
 
 import { IUserState } from '@/interface/user.interface'
 import EmailSVG from '@/public/images/svg/EmailSVG'
+import EyeSlashSVG from '@/public/images/svg/EyeSlashSVG'
+import EyeViewSVG from '@/public/images/svg/EyeViewSVG'
 import KeySVG from '@/public/images/svg/KeySVG'
-import UserSVG from '@/public/images/svg/UserSVG'
 import { useState } from 'react'
 import {
   Controller,
@@ -12,37 +13,20 @@ import {
   useFormState,
 } from 'react-hook-form'
 
+type IUserSignInState = Omit<IUserState, 'userName'>
+
 const SignIn = () => {
-  const [userProps, setUserProps] = useState<IUserState>({
-    userName: '',
-    email: '',
-    password: '',
-  })
-  // const queryClient = useQueryClient()
-
-  // const commentCreateMutation = useMutation({
-  //   mutationFn: createCommentFetch,
-  //   onSuccess: async () => {
-  //     await queryClient.invalidateQueries({ queryKey: ['comment'] })
-  //   },
-  // })
-
-  const { handleSubmit, control, resetField } = useForm<IUserState>({
-    defaultValues: { userName: '', email: '', password: '' },
-    values: userProps,
+  const [showPassword, setShowPassword] = useState(false)
+  const { handleSubmit, control, resetField } = useForm<IUserSignInState>({
+    defaultValues: { email: '', password: '' },
+    values: { email: '', password: '' },
   })
 
   const { errors } = useFormState({ control })
 
   const loginUser: SubmitHandler<IUserState> = (data) => {
-    // commentCreateMutation.mutate({
-    //   name: data.name,
-    //   description: data.description,
-    // })
-
     console.log('data', data)
 
-    resetField('userName')
     resetField('email')
     resetField('password')
   }
@@ -50,43 +34,13 @@ const SignIn = () => {
     <div role='form'>
       <Controller
         control={control}
-        name='userName'
-        rules={{ required: 'Заполните поле!' }}
-        render={({ field: { value, onChange, onBlur } }) => (
-          <label className='form-control mt-2'>
-            <div className='label'>
-              <span className='label-text'>What is your name?</span>
-            </div>
-            <label
-              className={
-                !!errors.userName?.message
-                  ? 'input input-bordered flex items-center gap-2 input-error'
-                  : 'input input-bordered flex items-center gap-2'
-              }
-            >
-              <UserSVG className='w-4 h-4 opacity-70' />
-              <input
-                type='text'
-                className='grow'
-                placeholder='Name'
-                value={value}
-                onChange={onChange}
-                onBlur={onBlur}
-              />
-            </label>
-            <div className='label'>
-              <span className='label-text-alt text-error'>
-                {errors.userName?.message}
-              </span>
-            </div>
-          </label>
-        )}
-      />
-      <Controller
-        control={control}
         name='email'
         rules={{
-          required: 'Заполните поле!',
+          required: 'Обязательное поле для заполнения!',
+          minLength: {
+            value: 6,
+            message: `Минимум 6 символа`,
+          },
           pattern: {
             value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
             message: 'Не правильно введён email',
@@ -126,19 +80,10 @@ const SignIn = () => {
         control={control}
         name='password'
         rules={{
-          required: 'Заполните поле!',
+          required: 'Обязательное поле для заполнения!',
           minLength: {
-            value: 3,
-            message: `Минимум 3 символа`,
-          },
-          maxLength: {
-            value: 15,
-            message: `Максимум 15 символов`,
-          },
-          pattern: {
-            value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
-            message:
-              'Минимум одна заглавная буква, одна строчная буква, одна цифра и один специальный символ',
+            value: 6,
+            message: `Минимум 6 символа`,
           },
         }}
         render={({ field: { value, onChange, onBlur } }) => (
@@ -155,13 +100,24 @@ const SignIn = () => {
             >
               <KeySVG className='w-4 h-4 opacity-70' />
               <input
-                type='password'
+                type={showPassword ? 'text' : 'password'}
                 className='grow'
                 placeholder='Password'
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}
               />
+              {showPassword ? (
+                <EyeViewSVG
+                  onClick={() => setShowPassword(!showPassword)}
+                  className='w-4 h-4 opacity-70 cursor-pointer'
+                />
+              ) : (
+                <EyeSlashSVG
+                  onClick={() => setShowPassword(!showPassword)}
+                  className='w-4 h-4 opacity-70 cursor-pointer'
+                />
+              )}
             </label>
             <div className='label'>
               <span className='label-text-alt text-error'>
@@ -175,7 +131,12 @@ const SignIn = () => {
         <form method='dialog'>
           <button className='btn'>Закрыть</button>
         </form>
-        <button className='btn join-item' onClick={handleSubmit(loginUser)}>
+        <button
+          className='btn join-item'
+          // onClick={handleSubmit(userCreateClick)}
+          // disabled={userCreateMutation.isPending}
+        >
+          {/* {userCreateMutation.isPending ? 'Загрузка...' : 'Войти'} */}
           Войти
         </button>
       </div>
