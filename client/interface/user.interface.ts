@@ -3,3 +3,8 @@ export interface IUserState {
   email: string
   password: string
 }
+
+export interface IUserSignInState {
+  identifier: string
+  password: string
+}

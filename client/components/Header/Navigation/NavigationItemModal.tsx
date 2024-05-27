@@ -1,10 +1,13 @@
+import SignIn from '@/components/auth/SignIn'
+import SignUp from '@/components/auth/SignUp'
 import {
   INavigationAttrState,
   INavigationModalAttrState,
 } from '@/interface/navigation.interface'
+import { cookies } from 'next/headers'
 import { FC } from 'react'
 import NavigationLink from './NavigationItemLink'
-import Auth from '@/components/Header/Auth/Auth'
+import Logout from '@/components/auth/Logout'
 
 interface INavigationItemModal {
   modals: INavigationModalAttrState
@@ -21,12 +24,42 @@ const NavigationItemModal: FC<INavigationItemModal> = ({
   lastIndex,
   nameModal,
 }) => {
+  if (cookies().has('jwt')) return <Logout />
   return (
     <>
-      <NavigationLink modals={modals} navItem={navItem} lastIndex={lastIndex} index={index} />
-
+      <NavigationLink
+        modals={modals}
+        navItem={navItem}
+        lastIndex={lastIndex}
+        index={index}
+      />
       <dialog id={modals.modalId} className='modal'>
-        <Auth nameModal={nameModal} />
+        <div className='modal-box'>
+          <div role='tablist' className='tabs tabs-bordered'>
+            <input
+              type='radio'
+              name={nameModal}
+              role='tab'
+              className='tab'
+              aria-label='SignIn'
+              defaultChecked
+            />
+            <div role='tabpanel' className='tab-content col-span-2'>
+              <SignIn />
+            </div>
+
+            <input
+              type='radio'
+              name={nameModal}
+              role='tab'
+              className='tab'
+              aria-label='SignUp'
+            />
+            <div role='tabpanel' className='tab-content col-span-2'>
+              <SignUp />
+            </div>
+          </div>
+        </div>
       </dialog>
     </>
   )

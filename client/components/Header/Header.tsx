@@ -5,7 +5,7 @@ import ToggleTheme from './ToggleTheme'
 
 const Header = () => {
   return (
-    <header>
+    <header className='bg-secondaryLight pb-2'>
       <div className='container relative z-10 flex justify-between lg:justify-around 3xl:justify-between'>
         <Brand />
         <div className='hidden lg:flex lg:justify-center'>

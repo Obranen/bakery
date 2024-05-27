@@ -13,7 +13,6 @@ export default function ProviderLayout({ children }: { children: ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <body
         data-theme={themeColor}
-        className='bg-secondaryLight'
       >
         {children}
       </body>

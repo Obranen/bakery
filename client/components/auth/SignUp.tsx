@@ -246,7 +246,7 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
           </form>
         )}
         <button
-          className='btn join-item'
+          className={isShowCloseButton ? 'btn join-item' : 'btn join-item mx-auto'}
           onClick={handleSubmit(userCreateClick)}
           disabled={userCreateMutation.isPending}
         >

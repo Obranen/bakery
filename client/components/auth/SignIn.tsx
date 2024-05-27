@@ -1,19 +1,22 @@
 'use client'
 
-import { IUserState } from '@/interface/user.interface'
+import { userSignIn } from '@/fetch/user.fetch'
+import { IUserSignInState } from '@/interface/user.interface'
 import EmailSVG from '@/public/images/svg/EmailSVG'
 import EyeSlashSVG from '@/public/images/svg/EyeSlashSVG'
 import EyeViewSVG from '@/public/images/svg/EyeViewSVG'
 import KeySVG from '@/public/images/svg/KeySVG'
-import { FC, useState } from 'react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { setCookie } from 'cookies-next'
+import { useRouter } from 'next/navigation'
+import { FC, useEffect, useRef, useState } from 'react'
 import {
   Controller,
   SubmitHandler,
   useForm,
   useFormState,
 } from 'react-hook-form'
-
-type IUserSignInState = Omit<IUserState, 'userName'>
+import { toast } from 'react-toastify'
 
 interface ISignInProps {
   isShowCloseButton?: boolean
@@ -21,24 +24,75 @@ interface ISignInProps {
 
 const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
   const [showPassword, setShowPassword] = useState(false)
+  const queryClient = useQueryClient()
+  const router = useRouter()
+  const refCloseButton = useRef<any>(null)
+
+  const userSignInMutation = useMutation({
+    mutationFn: userSignIn,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['user'] })
+    },
+  })
+
   const { handleSubmit, control, resetField } = useForm<IUserSignInState>({
-    defaultValues: { email: '', password: '' },
-    values: { email: '', password: '' },
+    defaultValues: { identifier: '', password: '' },
+    values: { identifier: '', password: '' },
   })
 
   const { errors } = useFormState({ control })
 
-  const loginUser: SubmitHandler<IUserState> = (data) => {
-    console.log('data', data)
+  const userSignInClick: SubmitHandler<IUserSignInState> = (data) => {
+    userSignInMutation.mutate({
+      identifier: data.identifier,
+      password: data.password,
+    })
 
-    resetField('email')
+    resetField('identifier')
     resetField('password')
   }
+
+  const responseMessage = () => {
+    if (
+      userSignInMutation.data?.error &&
+      userSignInMutation.data.error.name === 'ValidationError'
+    ) {
+      const notify = () => toast.error('Не правильно введены данные!')
+      notify()
+    }
+
+    if (userSignInMutation.data?.user) {
+      const notify = () => toast.success('Вход выполнен успешно!')
+      notify()
+    }
+  }
+
+  const createCookie = () => {
+    if (!userSignInMutation.data?.jwt) return
+
+    const config = {
+      maxAge: 60 * 60 * 24 * 7,
+      path: '/',
+      domain: process.env.HOST ?? 'localhost',
+      secure: process.env.NODE_ENV === 'production',
+    }
+
+    setCookie('jwt', userSignInMutation.data?.jwt, config)
+
+    isShowCloseButton && refCloseButton.current?.click()
+    router.push('/dashboard')
+  }
+
+  useEffect(() => {
+    responseMessage()
+    createCookie()
+  }, [userSignInMutation.data])
+
   return (
     <div role='form'>
       <Controller
         control={control}
-        name='email'
+        name='identifier'
         rules={{
           required: 'Обязательное поле для заполнения!',
           minLength: {
@@ -57,7 +111,7 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
             </div>
             <label
               className={
-                !!errors.email?.message
+                !!errors.identifier?.message
                   ? 'input input-bordered flex items-center gap-2 input-error'
                   : 'input input-bordered flex items-center gap-2'
               }
@@ -74,7 +128,7 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
             </label>
             <div className='label'>
               <span className='label-text-alt text-error'>
-                {errors.email?.message}
+                {errors.identifier?.message}
               </span>
             </div>
           </label>
@@ -134,18 +188,19 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
       <div className='flex justify-between mt-4'>
         {isShowCloseButton && (
           <form method='dialog'>
-            <button className='btn'>
+            <button className='btn' ref={refCloseButton}>
               Закрыть
             </button>
           </form>
         )}
         <button
-          className='btn join-item'
-          // onClick={handleSubmit(userCreateClick)}
-          // disabled={userCreateMutation.isPending}
+          className={
+            isShowCloseButton ? 'btn join-item' : 'btn join-item mx-auto'
+          }
+          onClick={handleSubmit(userSignInClick)}
+          disabled={userSignInMutation.isPending}
         >
-          {/* {userCreateMutation.isPending ? 'Загрузка...' : 'Войти'} */}
-          Войти
+          {userSignInMutation.isPending ? 'Загрузка...' : 'Войти'}
         </button>
       </div>
     </div>
