@@ -5,7 +5,7 @@ import EmailSVG from '@/public/images/svg/EmailSVG'
 import EyeSlashSVG from '@/public/images/svg/EyeSlashSVG'
 import EyeViewSVG from '@/public/images/svg/EyeViewSVG'
 import KeySVG from '@/public/images/svg/KeySVG'
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import {
   Controller,
   SubmitHandler,
@@ -15,7 +15,11 @@ import {
 
 type IUserSignInState = Omit<IUserState, 'userName'>
 
-const SignIn = () => {
+interface ISignInProps {
+  isShowCloseButton?: boolean
+}
+
+const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
   const [showPassword, setShowPassword] = useState(false)
   const { handleSubmit, control, resetField } = useForm<IUserSignInState>({
     defaultValues: { email: '', password: '' },
@@ -128,9 +132,13 @@ const SignIn = () => {
         )}
       />
       <div className='flex justify-between mt-4'>
-        <form method='dialog'>
-          <button className='btn'>Закрыть</button>
-        </form>
+        {isShowCloseButton && (
+          <form method='dialog'>
+            <button className='btn'>
+              Закрыть
+            </button>
+          </form>
+        )}
         <button
           className='btn join-item'
           // onClick={handleSubmit(userCreateClick)}

@@ -10,7 +10,7 @@ import UserSVG from '@/public/images/svg/UserSVG'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { setCookie } from 'cookies-next'
 import { useRouter } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import {
   Controller,
   SubmitHandler,
@@ -19,7 +19,11 @@ import {
 } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-const SignUp = () => {
+interface ISignUpProps {
+  isShowCloseButton?: boolean
+}
+
+const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
   const [showPassword, setShowPassword] = useState(false)
   const queryClient = useQueryClient()
   const router = useRouter()
@@ -87,7 +91,7 @@ const SignUp = () => {
 
     setCookie('jwt', userCreateMutation.data?.jwt, config)
 
-    refCloseButton.current?.click()
+    isShowCloseButton && refCloseButton.current?.click()
     router.push('/dashboard')
   }
 
@@ -234,11 +238,13 @@ const SignUp = () => {
         )}
       />
       <div className='flex justify-between mt-4'>
-        <form method='dialog'>
-          <button className='btn' ref={refCloseButton}>
-            Закрыть
-          </button>
-        </form>
+        {isShowCloseButton && (
+          <form method='dialog'>
+            <button className='btn' ref={refCloseButton}>
+              Закрыть
+            </button>
+          </form>
+        )}
         <button
           className='btn join-item'
           onClick={handleSubmit(userCreateClick)}

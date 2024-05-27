@@ -1,8 +1,8 @@
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
+import ProviderLayout from '@/components/ProviderLayout'
 import ToastMessage from '@/components/ui/ToastMessage'
 import { useFontHook } from '@/hooks/useFont.hook'
-import ProviderLayout from '@/library/ProviderLayout'
 import './globals.css'
 
 export default function RootLayout({
