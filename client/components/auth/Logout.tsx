@@ -1,11 +1,14 @@
 'use client'
 
+import { useAuthStore } from '@/store/useAuth.store'
 import { deleteCookie } from 'cookies-next'
 import Link from 'next/link'
 
 const Logout = () => {
+  const setIsSignedIn = useAuthStore((state) => state.setIsSignedIn)
   const userLogout = () => {
     deleteCookie('jwt')
+    setIsSignedIn(false)
   }
   return (
     <>

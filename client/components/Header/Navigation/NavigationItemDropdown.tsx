@@ -1,6 +1,4 @@
-import { navigationDropdownGetAll } from '@/fetch/navigationDropdown.fetch'
 import { INavigationAttrState } from '@/interface/navigation.interface'
-import { INavigationDropdownState } from '@/interface/navigationDropdown.interface'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -12,7 +10,7 @@ interface INavigationItemDropdown {
   dropdownPosition: string
 }
 
-const NavigationItemDropdown: FC<INavigationItemDropdown> = async ({
+const NavigationItemDropdown: FC<INavigationItemDropdown> = ({
   navItem,
   lastIndex,
   index,
@@ -37,7 +35,7 @@ const NavigationItemDropdown: FC<INavigationItemDropdown> = async ({
         aria-label='Список категории - продукция.'
         className='p-2 shadow dropdown-content menu rounded-box min-w-48 bg-primaryLight z-10'
       >
-        {navItem.dropdowns.data.map((data: INavigationDropdownState) => (
+        {navItem.dropdowns.data.map((data: any) => (
           <li key={data.id}>
             <Link
               href={data.attributes.href}

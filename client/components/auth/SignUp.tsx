@@ -7,6 +7,7 @@ import EyeSlashSVG from '@/public/images/svg/EyeSlashSVG'
 import EyeViewSVG from '@/public/images/svg/EyeViewSVG'
 import KeySVG from '@/public/images/svg/KeySVG'
 import UserSVG from '@/public/images/svg/UserSVG'
+import { useAuthStore } from '@/store/useAuth.store'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { setCookie } from 'cookies-next'
 import { useRouter } from 'next/navigation'
@@ -28,6 +29,7 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
   const queryClient = useQueryClient()
   const router = useRouter()
   const refCloseButton = useRef<any>(null)
+  const setIsSignedIn = useAuthStore((state) => state.setIsSignedIn)
 
   const userCreateMutation = useMutation({
     mutationFn: userCreate,
@@ -90,7 +92,7 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
     }
 
     setCookie('jwt', userCreateMutation.data?.jwt, config)
-
+    setIsSignedIn(true)
     isShowCloseButton && refCloseButton.current?.click()
     router.push('/dashboard')
   }
@@ -246,7 +248,9 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
           </form>
         )}
         <button
-          className={isShowCloseButton ? 'btn join-item' : 'btn join-item mx-auto'}
+          className={
+            isShowCloseButton ? 'btn join-item' : 'btn join-item mx-auto'
+          }
           onClick={handleSubmit(userCreateClick)}
           disabled={userCreateMutation.isPending}
         >

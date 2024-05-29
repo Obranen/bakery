@@ -6,6 +6,7 @@ import EmailSVG from '@/public/images/svg/EmailSVG'
 import EyeSlashSVG from '@/public/images/svg/EyeSlashSVG'
 import EyeViewSVG from '@/public/images/svg/EyeViewSVG'
 import KeySVG from '@/public/images/svg/KeySVG'
+import { useAuthStore } from '@/store/useAuth.store'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { setCookie } from 'cookies-next'
 import { useRouter } from 'next/navigation'
@@ -27,6 +28,7 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
   const queryClient = useQueryClient()
   const router = useRouter()
   const refCloseButton = useRef<any>(null)
+  const setIsSignedIn = useAuthStore((state) => state.setIsSignedIn)
 
   const userSignInMutation = useMutation({
     mutationFn: userSignIn,
@@ -78,7 +80,7 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
     }
 
     setCookie('jwt', userSignInMutation.data?.jwt, config)
-
+    setIsSignedIn(true)
     isShowCloseButton && refCloseButton.current?.click()
     router.push('/dashboard')
   }

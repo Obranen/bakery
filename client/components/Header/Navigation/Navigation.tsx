@@ -1,6 +1,9 @@
+'use client'
+
 import ErrorMessage from '@/components/ui/ErrorMessage'
-import { navigationGetAll } from '@/fetch/navigation.fetch'
-import { INavigationState } from '@/interface/navigation.interface'
+import { navigationGetClient } from '@/fetch/navigation.fetch'
+import { useAuthStore } from '@/store/useAuth.store'
+import { useQuery } from '@tanstack/react-query'
 import { FC } from 'react'
 import NavigationItem from './NavigationItem'
 
@@ -9,27 +12,32 @@ interface INavigation {
   nameModal?: string
 }
 
-const Navigation: FC<INavigation> = async ({
+const Navigation: FC<INavigation> = ({
   dropdownPosition = '',
   nameModal = 'my_tabs_1',
 }) => {
-  const navigation: INavigationState = await navigationGetAll()
+  const isSignedIn = useAuthStore((state) => state.isSignedIn)
 
-  if (!navigation) {
+  const navigations = useQuery({
+    queryKey: ['navigation', isSignedIn],
+    queryFn: () => navigationGetClient(),
+  })
+
+  if (navigations.error) {
     return <ErrorMessage message={'Навигация не загрузилась!'} />
   }
 
-  const navigationSort = navigation.data.sort(
+  const navigationSort = navigations?.data?.data.sort(
     (a, b) => a.attributes.position - b.attributes.position
   )
 
   return (
     <ul className='m-[-3px]'>
-      {navigationSort.map((data, index) => (
+      {navigationSort?.map((data, index) => (
         <NavigationItem
           key={data.id}
           navItem={data.attributes}
-          lastIndex={navigation.data.length}
+          lastIndex={navigationSort.length}
           index={index}
           dropdownPosition={dropdownPosition}
           nameModal={nameModal}

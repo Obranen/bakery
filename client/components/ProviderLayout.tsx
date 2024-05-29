@@ -11,11 +11,7 @@ export default function ProviderLayout({ children }: { children: ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <body
-        data-theme={themeColor}
-      >
-        {children}
-      </body>
+      <body data-theme={themeColor}>{children}</body>
     </QueryClientProvider>
   )
 }

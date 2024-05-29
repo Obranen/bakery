@@ -1,6 +1,6 @@
 'use client'
 
-import { productGetClient } from '@/fetch/product.fetch'
+import { productGet } from '@/fetch/product.fetch'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import ErrorMessage from '../ui/ErrorMessage'
@@ -14,7 +14,7 @@ const Product = () => {
 
   const products = useQuery({
     queryKey: ['product', pageIndex],
-    queryFn: () => productGetClient(pageIndex),
+    queryFn: () => productGet(pageIndex),
   })
 
   if (products.isLoading) {

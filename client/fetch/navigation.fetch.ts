@@ -1,4 +1,4 @@
-export const navigationGetAll = async () => {
+export const navigationGetClient = async () => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/navigations/?populate=*`,

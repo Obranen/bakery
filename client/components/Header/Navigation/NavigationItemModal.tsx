@@ -4,10 +4,10 @@ import {
   INavigationAttrState,
   INavigationModalAttrState,
 } from '@/interface/navigation.interface'
-import { cookies } from 'next/headers'
+import Logout from '@/components/auth/Logout'
+import { hasCookie } from 'cookies-next'
 import { FC } from 'react'
 import NavigationLink from './NavigationItemLink'
-import Logout from '@/components/auth/Logout'
 
 interface INavigationItemModal {
   modals: INavigationModalAttrState
@@ -24,7 +24,7 @@ const NavigationItemModal: FC<INavigationItemModal> = ({
   lastIndex,
   nameModal,
 }) => {
-  if (cookies().has('jwt')) return <Logout />
+  if (hasCookie('jwt')) return <Logout />
   return (
     <>
       <NavigationLink
