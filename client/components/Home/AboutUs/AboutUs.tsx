@@ -13,7 +13,6 @@ const AboutUs = async () => {
           <Contacts />
         </div>
       </div>
-
       <Image
         src='/images/croissant.webp'
         width={760}

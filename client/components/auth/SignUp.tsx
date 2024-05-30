@@ -101,7 +101,7 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
     responseMessage()
     createCookie()
   }, [userCreateMutation.data])
-
+  
   return (
     <div role='form'>
       <Controller
