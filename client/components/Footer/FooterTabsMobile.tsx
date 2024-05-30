@@ -4,7 +4,7 @@ import MenuSVG from '@/public/images/svg/MenuSVG'
 import VectorSVG from '@/public/images/svg/VectorSVG'
 import Link from 'next/link'
 
-const TabsMobile = () => {
+const FooterTabsMobile = () => {
   return (
     <nav className='bg-primaryLight md:hidden'>
       <ul className='container flex justify-between pt-1'>
@@ -37,4 +37,4 @@ const TabsMobile = () => {
   )
 }
 
-export default TabsMobile
+export default FooterTabsMobile

@@ -1,7 +1,7 @@
 'use client'
 
-import ErrorMessage from '@/components/ui/ErrorMessage'
-import { navigationGetClient } from '@/fetch/navigation.fetch'
+import ErrorMessage from '@/components/ui/ErrorPage'
+import { navigationGet } from '@/fetch/navigation.fetch'
 import { useAuthStore } from '@/store/useAuth.store'
 import { useQuery } from '@tanstack/react-query'
 import { FC } from 'react'
@@ -20,11 +20,11 @@ const Navigation: FC<INavigation> = ({
 
   const navigations = useQuery({
     queryKey: ['navigation', isSignedIn],
-    queryFn: () => navigationGetClient(),
+    queryFn: () => navigationGet(),
   })
 
   if (navigations.error) {
-    return <ErrorMessage message={'Навигация не загрузилась!'} />
+    return <ErrorMessage message={'Не удалось получить данные навигации!'} />
   }
 
   const navigationSort = navigations?.data?.data.sort(

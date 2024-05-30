@@ -3,8 +3,8 @@
 import { productGet } from '@/fetch/product.fetch'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
-import ErrorMessage from '../ui/ErrorMessage'
-import LoadingMessage from '../ui/LoadingMessage'
+import ErrorMessage from '../ui/ErrorPage'
+import LoadingMessage from '../ui/LoadingPage'
 import Image from 'next/image'
 import Link from 'next/link'
 

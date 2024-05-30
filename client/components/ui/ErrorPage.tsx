@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 
-interface IErrorMessage {
+interface IErrorPage {
   message: string
 }
 
-const ErrorMessage: FC<IErrorMessage> = ({ message }) => {
+const ErrorPage: FC<IErrorPage> = ({ message }) => {
   return (
     <div className='toast toast-bottom toast-end'>
       <div className='alert alert-error'>
@@ -14,4 +14,4 @@ const ErrorMessage: FC<IErrorMessage> = ({ message }) => {
   )
 }
 
-export default ErrorMessage
+export default ErrorPage

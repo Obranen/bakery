@@ -1,15 +1,15 @@
 import { FaInstagram, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import { MdPhoneInTalk } from 'react-icons/md'
 
-import TabsMobile from './TabsMobile'
-import Navigation from '../Header/Navigation/Navigation'
+import TabsMobile from './FooterTabsMobile'
+import Navigation from '../navigation/Navigation'
 
 const Footer = () => {
   return (
     <footer className='bg-secondaryLight border-t-2 border-primaryLight'>
       <div className='container py-3 hidden md:justify-between md:flex'>
         <nav>
-          <Navigation dropdownPosition='dropdown-top' nameModal='my_tabs_2' />
+          {/* <Navigation dropdownPosition='dropdown-top' nameModal='my_tabs_2' /> */}
         </nav>
         <div className='flex items-center justify-center'>
           <MdPhoneInTalk className='mr-1 text-base' />

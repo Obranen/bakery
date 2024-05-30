@@ -1,6 +1,6 @@
 import Brand from './Brand'
 import FindSite from './FindSite'
-import Navigation from './Navigation/Navigation'
+import Navigation from '../navigation/Navigation'
 import ToggleTheme from './ToggleTheme'
 
 const Header = () => {

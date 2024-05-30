@@ -1,4 +1,6 @@
-export const navigationGetClient = async () => {
+import { INavigationState } from '@/interface/navigation.interface'
+
+export const navigationGet = async (): Promise<INavigationState> => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/navigations/?populate=*`,
@@ -7,8 +9,12 @@ export const navigationGetClient = async () => {
         cache: 'no-store',
       }
     )
-    return response.json()
+    if (!response.ok) {
+      throw new Error('Не удалось получить данные навигации')
+    }
+    return response.json() as Promise<INavigationState>
   } catch (error) {
     console.log(error)
+    throw error
   }
 }

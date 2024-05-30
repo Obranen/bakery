@@ -60,19 +60,21 @@ const ToggleTheme = () => {
   }
 
   return (
-    <label
-      className='mr-2 [&>svg]:hover:fill-highlightLight swap swap-rotate '
-      onKeyDown={pressKeyButton}
-    >
-      <input
-        type='checkbox'
-        ref={inputRef}
-        onClick={toggleThemeChange}
-        aria-label='Тема сайта - Светлая'
-      />
-      <SunSVG className='w-5 h-5 transition duration-150 ease-linear fill-tertiaryLight swap-on' />
-      <MoonSVG className='w-5 h-5 transition duration-150 ease-linear fill-tertiaryDark swap-off' />
-    </label>
+    <div className='tooltip tooltip-bottom mr-3 flex' data-tip='Тема'>
+      <label
+        className='[&>svg]:hover:fill-highlightLight swap swap-rotate'
+        onKeyDown={pressKeyButton}
+      >
+        <input
+          type='checkbox'
+          ref={inputRef}
+          onClick={toggleThemeChange}
+          aria-label='Тема сайта - Светлая'
+        />
+        <SunSVG className='w-5 h-5 transition duration-150 ease-linear fill-tertiaryLight swap-on' />
+        <MoonSVG className='w-5 h-5 transition duration-150 ease-linear fill-tertiaryDark swap-off' />
+      </label>
+    </div>
   )
 }
 

@@ -1,5 +1,5 @@
 import WaveSVG from '@/public/images/svg/WaveSVG'
-import FindSite from '../Header/FindSite'
+import FindSite from '../header/FindSite'
 import AboutUs from './AboutUs/AboutUs'
 import MainImg from './MainImg'
 import OurProduction from './OurProduction/OurProduction'

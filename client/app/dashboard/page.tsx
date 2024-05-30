@@ -1,9 +1,5 @@
 const DashboardPage = () => {
-  return (
-     <main>
-       DashboardPage
-     </main>
-  )
+  return <>DashboardPage</>
 }
 
 export default DashboardPage

@@ -8,6 +8,7 @@ import Logout from '@/components/auth/Logout'
 import { hasCookie } from 'cookies-next'
 import { FC } from 'react'
 import NavigationLink from './NavigationItemLink'
+import LoginButton from '@/components/auth/LoginButton'
 
 interface INavigationItemModal {
   modals: INavigationModalAttrState
@@ -24,7 +25,13 @@ const NavigationItemModal: FC<INavigationItemModal> = ({
   lastIndex,
   nameModal,
 }) => {
-  if (hasCookie('jwt')) return <Logout />
+  if (hasCookie('jwt'))
+    return (
+      <>
+        <Logout />
+        <LoginButton />
+      </>
+    )
   return (
     <>
       <NavigationLink

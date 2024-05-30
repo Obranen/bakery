@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 
-interface ILoadingMessage {
+interface ILoadingPage {
   message?: string
 }
 
-const LoadingMessage: FC<ILoadingMessage> = ({ message = 'Loading... ' }) => {
+const LoadingMessage: FC<ILoadingPage> = ({ message = 'Loading... ' }) => {
   return (
     <main className='flex items-center justify-center'>
       <span className='text-success text-2xl'>{message}</span>
