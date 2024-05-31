@@ -5,7 +5,7 @@ const DashboardMenu = () => {
     <ul className='menu bg-base-200 w-[250px] rounded-box'>
       <li>
         <Link
-          href={'/dashboard/edit-user'}
+          href={'/dashboard/user-edit'}
           className='block [&>div]:hover:opacity-100'
         >
           <span className='text-lg font-semibold'>Персональные данные</span>

@@ -7,7 +7,7 @@ const LoginButton = () => {
   return (
     <li className='inline-block text-sm font-semibold text-tertiaryLight dark:text-tertiaryDark font-robotoRegular'>
       <Link
-        href={'/dashboard/edit-user'}
+        href={'/dashboard/user-edit'}
         className='block [&>div]:hover:opacity-100 mr-2'
       >
         <div

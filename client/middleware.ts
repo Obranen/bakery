@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { userGetAuth } from './library/userGetAuth.library'
+import { userGetAuth } from './fetch/userServer.fetch'
 
 export async function middleware(request: NextRequest) {
   const user = await userGetAuth()

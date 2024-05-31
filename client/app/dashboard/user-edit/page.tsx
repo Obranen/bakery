@@ -1,4 +1,4 @@
-import EditUser from '@/components/dashboard/EditUser'
+import EditUser from '@/components/dashboard/UserEdit'
 
 const EditUserPage = () => {
   return (

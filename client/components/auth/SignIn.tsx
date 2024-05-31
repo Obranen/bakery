@@ -82,7 +82,7 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
     setCookie('jwt', userSignInMutation.data?.jwt, config)
     setIsSignedIn(true)
     isShowCloseButton && refCloseButton.current?.click()
-    router.push('/dashboard/edit-user')
+    router.push('/dashboard/user-edit')
   }
 
   useEffect(() => {
