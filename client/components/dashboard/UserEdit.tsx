@@ -1,10 +1,11 @@
 'use client'
 
-import { userGet, userUpdate } from '@/fetch/user.fetch'
+import { userGet, userUpdate, userUpload } from '@/fetch/user.fetch'
 import { IUserUpdateState } from '@/interface/user.interface'
 import EmailSVG from '@/public/images/svg/EmailSVG'
 import UserSVG from '@/public/images/svg/UserSVG'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import Image from 'next/image'
 import { useEffect } from 'react'
 import {
   Controller,
@@ -29,6 +30,13 @@ const UserEdit = () => {
     },
   })
 
+  const userUploadData = useMutation({
+    mutationFn: userUpload,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['user'] })
+    },
+  })
+
   const { handleSubmit, control, resetField } = useForm<IUserUpdateState>({
     defaultValues: { userName: '', email: '' },
     values: {
@@ -39,15 +47,25 @@ const UserEdit = () => {
 
   const { errors } = useFormState({ control })
 
-  const userUpdateClick: SubmitHandler<IUserUpdateState> = (data) => {
-    userUpdateData.mutate({
-      id: userGetData.data?.data.id,
-      userName: data.userName,
-      email: data.email,
-    })
+  const userUpdateClick: SubmitHandler<IUserUpdateState> = async (data) => {
+    const formData = new FormData()
+    formData.append('files', data.image[0])
 
-    resetField('userName')
-    resetField('email')
+    try {
+      const responseUpload = await userUploadData.mutateAsync(formData)
+
+      await userUpdateData.mutateAsync({
+        id: userGetData.data?.data.id,
+        userName: data.userName,
+        email: data.email,
+        image: responseUpload,
+      })
+
+      resetField('userName')
+      resetField('email')
+    } catch (error) {
+      console.error('Ошибка:', error)
+    }
   }
 
   const responseMessage = () => {
@@ -62,7 +80,8 @@ const UserEdit = () => {
   }, [userUpdateData.data])
 
   return (
-    <div role='form'>
+    <form onSubmit={handleSubmit(userUpdateClick)}>
+      {/* <form> */}
       <Controller
         control={control}
         name='userName'
@@ -147,16 +166,71 @@ const UserEdit = () => {
           </label>
         )}
       />
+
+      {userGetData.data?.data.image && (
+        <div className='avatar'>
+          <div className='w-32 rounded'>
+            <Image
+              src={
+                process.env.NEXT_PUBLIC_STRAPI_URL +
+                userGetData.data?.data.image.url
+              }
+              width={300}
+              height={300}
+              alt={userGetData.data?.data.image.alternativeText}
+              aria-label={userGetData.data?.data.image.alternativeText}
+              priority
+            />
+          </div>
+        </div>
+      )}
+
+      <Controller
+        control={control}
+        name='image'
+        rules={{
+          required: 'Выберите изображение!',
+        }}
+        render={({ field: { value, onChange } }) => (
+          <label className='form-control'>
+            <div className='label'>
+              <span className='label-text'>Image</span>
+            </div>
+            {/* <label
+              className={
+                !!errors.image?.message
+                  ? 'input input-bordered flex items-center gap-2 input-error'
+                  : 'input input-bordered flex items-center gap-2'
+              }
+            > */}
+            <input
+              type='file'
+              className='file-input w-full max-w-xs'
+              onChange={(event) => {
+                onChange(event.target.files)
+              }}
+            />
+            {/* </label> */}
+            {/* <div className='label'>
+              <span className='label-text-alt text-error'>
+                {errors.image?.message}
+              </span>
+            </div> */}
+          </label>
+        )}
+      />
+
       <div className='flex justify-between mt-4'>
         <button
           className={'btn join-item mx-auto'}
-          onClick={handleSubmit(userUpdateClick)}
           disabled={userUpdateData.isPending}
+          type='submit'
+          // onClick={handleSubmit(userUpdateClick)}
         >
           {userUpdateData.isPending ? 'Загрузка...' : 'Редактировать'}
         </button>
       </div>
-    </div>
+    </form>
   )
 }
 

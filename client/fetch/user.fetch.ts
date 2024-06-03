@@ -1,6 +1,10 @@
 'use client'
 
-import { IUserSignInState, IUserState, IUserUpdateState } from '@/interface/user.interface'
+import {
+  IUserSignInState,
+  IUserState,
+  IUserUpdateState,
+} from '@/interface/user.interface'
 import { getCookie } from 'cookies-next'
 
 export const userCreate = async (data: IUserState) => {
@@ -62,11 +66,36 @@ export const userUpdate = async (data: IUserUpdateState) => {
         body: JSON.stringify({
           username: data.userName,
           email: data.email,
+          image: data.image,
         }),
       }
     )
 
     return response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const userUpload = async (formData: FormData) => {
+  const authToken = getCookie('jwt')
+
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/upload`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: formData,
+      }
+    )
+
+    const responseData = await response.json()
+    const imageId = { id: responseData[0].id }
+
+    return imageId
   } catch (error) {
     console.log(error)
   }
@@ -78,7 +107,7 @@ export const userGet = async () => {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/me`,
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/me?populate=*`,
       {
         method: 'GET',
         headers: {

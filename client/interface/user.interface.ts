@@ -13,4 +13,5 @@ export interface IUserUpdateState {
   id?: string
   userName: string
   email: string
+  image?: any
 }
