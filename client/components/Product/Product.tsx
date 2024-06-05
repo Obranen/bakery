@@ -73,7 +73,7 @@ const Product = () => {
             className='join-item btn btn-xs'
             disabled={pageIndex === products.data?.meta.pagination.pageCount}
             onClick={() =>
-              // @ts-ignore
+              // @ts-ignore 
               pageIndex < products.data?.meta.pagination.pageCount &&
               setPageIndex((prev) => prev + 1)
             }
