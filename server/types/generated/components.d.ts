@@ -23,6 +23,7 @@ export interface LayoutFeaturesSection extends Schema.Component {
     description: Attribute.Text;
     feature: Attribute.Component<'components.feature', true>;
     icon: Attribute.Enumeration<['MdImportContacts']>;
+    image: Attribute.Media<'images'>;
   };
 }
 

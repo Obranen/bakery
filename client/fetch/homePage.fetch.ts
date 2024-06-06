@@ -19,11 +19,8 @@ export const homePageFeatureGet = async () => {
   const url = qs.stringify({
     populate: {
       blocks: {
-        populate: {
-          fields: ['title', 'icon'],
-          feature: true,
-        },
-      },
+        populate: '*'
+      }
     },
   })
   try {
