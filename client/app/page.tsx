@@ -1,5 +1,5 @@
 import Home from '@/components/home/Home'
-import { homePageFeatureGet, homePageGet } from '@/fetch/homePage.fetch'
+import { homePageSectionGet, homePageGet } from '@/fetch/homePage.fetch'
 import {
   HydrationBoundary,
   QueryClient,
@@ -21,7 +21,7 @@ export default async function HomePage() {
 
   await queryClient.fetchQuery({
     queryKey: ['feature'],
-    queryFn: homePageFeatureGet,
+    queryFn: homePageSectionGet,
   })
 
   return (

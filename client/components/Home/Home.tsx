@@ -1,6 +1,6 @@
 import WaveSVG from '@/public/images/svg/WaveSVG'
 import FindSite from '../header/FindSite'
-import AboutUs from './AboutUs/AboutUs'
+import AboutUs from './aboutUs/AboutUs'
 import MainImg from './MainImg'
 import OurProduction from './OurProduction/OurProduction'
 import SliderPromotion from './SliderPromotion/SliderPromotion'

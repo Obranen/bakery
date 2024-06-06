@@ -15,7 +15,7 @@ export const homePageGet = async () => {
   }
 }
 
-export const homePageFeatureGet = async () => {
+export const homePageSectionGet = async () => {
   const url = qs.stringify({
     populate: {
       blocks: {

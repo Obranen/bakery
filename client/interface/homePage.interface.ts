@@ -17,6 +17,13 @@ export interface IBlockState {
   title: string
   icon: string
   feature: IFeatureState[]
+  image: {
+    data: {
+      attributes: {
+        url: string
+      }
+    }
+  }
 }
 
 export interface IFeatureState {

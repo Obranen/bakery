@@ -1,15 +1,13 @@
 'use client'
 
-import Image from 'next/image'
-import Delivery from './Delivery'
-import Contacts from './Contacts'
-import LoadingPage from '@/components/ui/LoadingPage'
 import ErrorPage from '@/components/ui/ErrorPage'
-import { homePageFeatureGet } from '@/fetch/homePage.fetch'
-import { useQuery } from '@tanstack/react-query'
-import { MdImportContacts } from 'react-icons/md'
-import ContactsItem from './ContactsItem'
+import LoadingPage from '@/components/ui/LoadingPage'
+import { homePageSectionGet } from '@/fetch/homePage.fetch'
 import { IBlockState, IFeatureState } from '@/interface/homePage.interface'
+import { useQuery } from '@tanstack/react-query'
+import Image from 'next/image'
+import { MdImportContacts } from 'react-icons/md'
+import AboutUsItem from './AboutUsItem'
 
 const AboutUs = async () => {
   const {
@@ -18,7 +16,7 @@ const AboutUs = async () => {
     error,
   } = useQuery({
     queryKey: ['feature'],
-    queryFn: () => homePageFeatureGet(),
+    queryFn: () => homePageSectionGet(),
   })
 
   if (isLoading) {
@@ -29,18 +27,9 @@ const AboutUs = async () => {
     return <ErrorPage message={'Error product'} />
   }
 
-  // console.log('homePageData',homePageData)
-
   return (
     <div className='relative bg-secondaryLight hidden md:block'>
       <div className='container relative z-10 pb-10'>
-        {/* <div className='xl:w-6/12'>
-          <Delivery />
-        </div>
-        <div className='xl:w-6/12'>
-          <Contacts />
-        </div> */}
-
         <section className='relative mt-6 xl:mt-0'>
           <div className='flex'>
             {homePageData.data.attributes.blocks.map((item: IBlockState) => (
@@ -58,20 +47,25 @@ const AboutUs = async () => {
 
                 <div className='flex justify-between'>
                   {item.feature.map((item: IFeatureState) => (
-                    <ContactsItem key={item.id} section={item} />
+                    <AboutUsItem key={item.id} section={item} />
                   ))}
                 </div>
 
                 <div className='flex justify-center'>
-                {item.image.data?.attributes.url && <Image
-                    src={process.env.NEXT_PUBLIC_STRAPI_URL + item.image.data?.attributes.url}
-                    width={801}
-                    height={432}
-                    alt='map'
-                    className={
-                      'mt-10 opacity-85 border-4 border-primaryLight lg:w-full lg:h-full lg:mt-6 2xl:w-[801px] 2xl:h-[432px]'
-                    }
-                  />}
+                  {item.image.data?.attributes.url && (
+                    <Image
+                      src={
+                        process.env.NEXT_PUBLIC_STRAPI_URL +
+                        item.image.data?.attributes.url
+                      }
+                      width={801}
+                      height={432}
+                      alt='map'
+                      className={
+                        'mt-10 opacity-85 border-4 border-primaryLight lg:w-full lg:h-full lg:mt-6 2xl:w-[801px] 2xl:h-[432px]'
+                      }
+                    />
+                  )}
                 </div>
               </div>
             ))}
