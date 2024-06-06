@@ -30,7 +30,11 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
   const refCloseButton = useRef<any>(null)
   const setIsSignedIn = useAuthStore((state) => state.setIsSignedIn)
 
-  const userSignInMutation = useMutation({
+  const {
+    data: userData,
+    isPending,
+    mutate,
+  } = useMutation({
     mutationFn: userSignIn,
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['user'] })
@@ -45,7 +49,7 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
   const { errors } = useFormState({ control })
 
   const userSignInClick: SubmitHandler<IUserSignInState> = (data) => {
-    userSignInMutation.mutate({
+    mutate({
       identifier: data.identifier,
       password: data.password,
     })
@@ -55,22 +59,19 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
   }
 
   const responseMessage = () => {
-    if (
-      userSignInMutation.data?.error &&
-      userSignInMutation.data.error.name === 'ValidationError'
-    ) {
+    if (userData?.error && userData?.error.name === 'ValidationError') {
       const notify = () => toast.error('Не правильно введены данные!')
       notify()
     }
 
-    if (userSignInMutation.data?.user) {
+    if (userData?.user) {
       const notify = () => toast.success('Вход выполнен успешно!')
       notify()
     }
   }
 
   const createCookie = () => {
-    if (!userSignInMutation.data?.jwt) return
+    if (!userData?.jwt) return
 
     const config = {
       maxAge: 60 * 60 * 24 * 7,
@@ -79,7 +80,7 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
       secure: process.env.NODE_ENV === 'production',
     }
 
-    setCookie('jwt', userSignInMutation.data?.jwt, config)
+    setCookie('jwt', userData?.jwt, config)
     setIsSignedIn(true)
     isShowCloseButton && refCloseButton.current?.click()
     router.push('/dashboard/user-edit')
@@ -88,7 +89,7 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
   useEffect(() => {
     responseMessage()
     createCookie()
-  }, [userSignInMutation.data])
+  }, [userData])
 
   return (
     <div role='form'>
@@ -200,9 +201,9 @@ const SignIn: FC<ISignInProps> = ({ isShowCloseButton = true }) => {
             isShowCloseButton ? 'btn join-item' : 'btn join-item mx-auto'
           }
           onClick={handleSubmit(userSignInClick)}
-          disabled={userSignInMutation.isPending}
+          disabled={isPending}
         >
-          {userSignInMutation.isPending ? 'Загрузка...' : 'Войти'}
+          {isPending ? 'Загрузка...' : 'Войти'}
         </button>
       </div>
     </div>

@@ -31,7 +31,7 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
   const refCloseButton = useRef<any>(null)
   const setIsSignedIn = useAuthStore((state) => state.setIsSignedIn)
 
-  const userCreateMutation = useMutation({
+  const { data: userData, isPending, mutate} = useMutation({
     mutationFn: userCreate,
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['user'] })
@@ -46,7 +46,7 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
   const { errors } = useFormState({ control })
 
   const userCreateClick: SubmitHandler<IUserState> = (data) => {
-    userCreateMutation.mutate({
+    mutate({
       userName: data.userName,
       email: data.email,
       password: data.password,
@@ -59,8 +59,8 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
 
   const responseMessage = () => {
     if (
-      userCreateMutation.data?.error &&
-      userCreateMutation.data.error.name === 'ApplicationError'
+      userData?.error &&
+      userData?.error.name === 'ApplicationError'
     ) {
       const notify = () =>
         toast.error('Пользователь с таким email уже существует!')
@@ -68,21 +68,21 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
     }
 
     if (
-      userCreateMutation.data?.error &&
-      userCreateMutation.data.error.name === 'ValidationError'
+      userData?.error &&
+      userData?.error.name === 'ValidationError'
     ) {
       const notify = () => toast.error('Не правильно введены данные!')
       notify()
     }
 
-    if (userCreateMutation.data?.user) {
+    if (userData?.user) {
       const notify = () => toast.success('Регистрация прошла успешно!')
       notify()
     }
   }
 
   const createCookie = () => {
-    if (!userCreateMutation.data?.jwt) return
+    if (!userData?.jwt) return
 
     const config = {
       maxAge: 60 * 60 * 24 * 7,
@@ -91,7 +91,7 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
       secure: process.env.NODE_ENV === 'production',
     }
 
-    setCookie('jwt', userCreateMutation.data?.jwt, config)
+    setCookie('jwt', userData?.jwt, config)
     setIsSignedIn(true)
     isShowCloseButton && refCloseButton.current?.click()
     router.push('/dashboard/user-edit')
@@ -100,7 +100,7 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
   useEffect(() => {
     responseMessage()
     createCookie()
-  }, [userCreateMutation.data])
+  }, [userData])
   
   return (
     <div role='form'>
@@ -252,9 +252,9 @@ const SignUp: FC<ISignUpProps> = ({ isShowCloseButton = true }) => {
             isShowCloseButton ? 'btn join-item' : 'btn join-item mx-auto'
           }
           onClick={handleSubmit(userCreateClick)}
-          disabled={userCreateMutation.isPending}
+          disabled={isPending}
         >
-          {userCreateMutation.isPending ? 'Загрузка...' : 'Регистрация'}
+          {isPending ? 'Загрузка...' : 'Регистрация'}
         </button>
       </div>
     </div>
