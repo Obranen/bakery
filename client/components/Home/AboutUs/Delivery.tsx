@@ -35,3 +35,6 @@ const Delivery = () => {
 }
 
 export default Delivery
+function homeGet(): any {
+  throw new Error('Function not implemented.')
+}

@@ -8,7 +8,7 @@ export interface ComponentsFeature extends Schema.Component {
   };
   attributes: {
     icon: Attribute.Enumeration<['BsClock', 'FaMapMarkerAlt', 'MdPhoneInTalk']>;
-    subHeading: Attribute.Blocks;
+    subHeading: Attribute.String;
   };
 }
 

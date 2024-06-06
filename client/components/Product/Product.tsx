@@ -33,7 +33,7 @@ const Product = () => {
 
   return (
     <main>
-      {products.data?.data.map((product) => (
+      {products.data?.data.map((product: any) => (
         <div key={product.id} className='border-b-2 mb-4 border-red-500'>
           <h2>
             <Link href={'/product/' + product.attributes.slug}>
@@ -73,7 +73,7 @@ const Product = () => {
             className='join-item btn btn-xs'
             disabled={pageIndex === products.data?.meta.pagination.pageCount}
             onClick={() =>
-              // @ts-ignore 
+              // @ts-ignore
               pageIndex < products.data?.meta.pagination.pageCount &&
               setPageIndex((prev) => prev + 1)
             }

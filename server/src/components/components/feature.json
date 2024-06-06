@@ -15,7 +15,8 @@
       ]
     },
     "subHeading": {
-      "type": "blocks"
+      "type": "string",
+      "required": false
     }
   }
 }

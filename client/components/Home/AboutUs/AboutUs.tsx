@@ -3,14 +3,29 @@ import Delivery from './Delivery'
 import Contacts from './Contacts'
 
 const AboutUs = async () => {
+  // const feature = useQuery({
+  //   queryKey: ['feature'],
+  //   queryFn: () => homePageFeatureGet(),
+  // })
+
+  // if (feature.isLoading) {
+  //   return <LoadingMessage />
+  // }
+
+  // if (feature.error) {
+  //   return <ErrorMessage message={'Error product'} />
+  // }
+
+  // console.log('feature',feature)
+
   return (
     <div className='relative bg-secondaryLight hidden md:block'>
       <div className='container relative z-10 pb-10 xl:flex md:mt-10 lg:pt-4 lg:pb-6'>
         <div className='xl:w-6/12'>
-          <Delivery />
+          {/* <Delivery /> */}
         </div>
         <div className='xl:w-6/12'>
-          <Contacts />
+          {/* <Contacts /> */}
         </div>
       </div>
       <Image

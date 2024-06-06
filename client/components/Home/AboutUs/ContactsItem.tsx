@@ -25,13 +25,7 @@ const ContactsItem: FC<IContactsItemProps> = ({ section }) => {
   return (
     <div className='flex items-center'>
       {currentIcon()}
-      <div className='flex flex-col'>
-        {
-          subHeading.map((item) => (
-            <span>{item.children[0].text}</span>
-          ))
-        }
-      </div>
+      <div className='flex flex-col'>{subHeading}</div>
     </div>
   )
 }

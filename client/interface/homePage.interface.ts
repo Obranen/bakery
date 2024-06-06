@@ -22,13 +22,5 @@ export interface IBlockState {
 export interface IFeatureState {
   id: string
   icon: string
-  subHeading: ISubHeadingState[]
-}
-
-export interface ISubHeadingState {
-  children: IChildrenState[]
-}
-
-export interface IChildrenState {
-  text: string
+  subHeading: string
 }
