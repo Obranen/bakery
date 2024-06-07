@@ -974,37 +974,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
-export interface ApiProductPageProductPage extends Schema.SingleType {
-  collectionName: 'product_pages';
-  info: {
-    singularName: 'product-page';
-    pluralName: 'product-pages';
-    displayName: 'Product Page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::product-page.product-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::product-page.product-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1028,7 +997,6 @@ declare module '@strapi/types' {
       'api::modal.modal': ApiModalModal;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::product.product': ApiProductProduct;
-      'api::product-page.product-page': ApiProductPageProductPage;
     }
   }
 }

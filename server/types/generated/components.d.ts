@@ -3,7 +3,7 @@ import type { Schema, Attribute } from '@strapi/strapi';
 export interface ComponentsFeature extends Schema.Component {
   collectionName: 'components_components_features';
   info: {
-    displayName: 'Feature';
+    displayName: 'Section';
     description: '';
   };
   attributes: {
@@ -15,14 +15,14 @@ export interface ComponentsFeature extends Schema.Component {
 export interface LayoutFeaturesSection extends Schema.Component {
   collectionName: 'components_layout_features_sections';
   info: {
-    displayName: 'Features Section';
+    displayName: 'Section';
     description: '';
   };
   attributes: {
     title: Attribute.String;
     description: Attribute.Text;
-    feature: Attribute.Component<'components.feature', true>;
-    icon: Attribute.Enumeration<['MdImportContacts']>;
+    section: Attribute.Component<'components.feature', true>;
+    icon: Attribute.Enumeration<['MdImportContacts', 'GrDeliver']>;
     image: Attribute.Media<'images'>;
   };
 }

@@ -1,7 +1,7 @@
 {
   "collectionName": "components_layout_features_sections",
   "info": {
-    "displayName": "Features Section",
+    "displayName": "Section",
     "description": ""
   },
   "options": {},
@@ -12,7 +12,7 @@
     "description": {
       "type": "text"
     },
-    "feature": {
+    "section": {
       "displayName": "Feature",
       "type": "component",
       "repeatable": true,
@@ -21,7 +21,8 @@
     "icon": {
       "type": "enumeration",
       "enum": [
-        "MdImportContacts"
+        "MdImportContacts",
+        "GrDeliver"
       ]
     },
     "image": {
