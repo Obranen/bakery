@@ -16,7 +16,7 @@ export interface IBlockState {
   id: string
   title: string
   icon: string
-  feature: IFeatureState[]
+  section: ISectionState[]
   image: {
     data: {
       attributes: {
@@ -26,7 +26,7 @@ export interface IBlockState {
   }
 }
 
-export interface IFeatureState {
+export interface ISectionState {
   id: string
   icon: string
   subHeading: string

@@ -2,12 +2,13 @@
 
 import ErrorPage from '@/components/ui/ErrorPage'
 import LoadingPage from '@/components/ui/LoadingPage'
-import { homePageSectionGet } from '@/fetch/homePage.fetch'
-import { IBlockState, IFeatureState } from '@/interface/homePage.interface'
+import { IBlockState, ISectionState } from '@/interface/homePage.interface'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { MdImportContacts } from 'react-icons/md'
 import AboutUsItem from './AboutUsItem'
+import { sectionGet } from '@/fetch/section.fetch'
+import AboutUsTitleItem from './AboutUsTitleItem'
 
 const AboutUs = async () => {
   const {
@@ -16,7 +17,7 @@ const AboutUs = async () => {
     error,
   } = useQuery({
     queryKey: ['feature'],
-    queryFn: () => homePageSectionGet(),
+    queryFn: () => sectionGet(),
   })
 
   if (isLoading) {
@@ -37,16 +38,13 @@ const AboutUs = async () => {
                 <div className='flex justify-center mb-5'>
                   <div className='flex items-center text-center rounded-3xl w-28 h-28 bg-primaryLight xl:mt-6'>
                     <h2 className='text-2xl font-semibold font-caveatRegular'>
-                      {item.icon === 'MdImportContacts' && (
-                        <MdImportContacts className='inline-block text-3xl text-highlightLight' />
-                      )}
-                      {item.title}
+                      <AboutUsTitleItem item={item} />
                     </h2>
                   </div>
                 </div>
 
                 <div className='flex justify-between'>
-                  {item.feature.map((item: IFeatureState) => (
+                  {item.section.map((item: ISectionState) => (
                     <AboutUsItem key={item.id} section={item} />
                   ))}
                 </div>
