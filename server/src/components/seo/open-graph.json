@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_seo_open_graphs",
+  "info": {
+    "displayName": "OpenGraph",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    },
+    "siteName": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "locale": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_seo_alternates",
+  "info": {
+    "displayName": "Alternates"
+  },
+  "options": {},
+  "attributes": {
+    "canonical": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "string"
+    },
+    "languagesUrl": {
+      "type": "string"
+    },
+    "mediaKey": {
+      "type": "string"
+    },
+    "mediaValue": {
+      "type": "string"
+    },
+    "typesKey": {
+      "type": "string"
+    },
+    "typesValue": {
+      "type": "string"
+    }
+  }
+}

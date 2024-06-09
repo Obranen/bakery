@@ -15,14 +15,15 @@
     "title": {
       "type": "string"
     },
-    "description": {
-      "type": "text"
-    },
     "blocks": {
       "type": "dynamiczone",
       "components": [
         "layout.features-section"
       ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }

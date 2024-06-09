@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_seo_verifications",
+  "info": {
+    "displayName": "Verification"
+  },
+  "options": {},
+  "attributes": {
+    "google": {
+      "type": "text"
+    },
+    "yahoo": {
+      "type": "text"
+    },
+    "otherMe": {
+      "type": "text"
+    }
+  }
+}

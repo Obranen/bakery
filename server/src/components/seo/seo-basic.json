@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_components_seo_basics",
+  "info": {
+    "displayName": "Basic",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "generator": {
+      "type": "string"
+    },
+    "applicationName": {
+      "type": "string"
+    },
+    "referrer": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "text"
+    },
+    "creator": {
+      "type": "string"
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "authorsName": {
+      "type": "string"
+    },
+    "authorsUrl": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "themeColorLight": {
+      "type": "string"
+    },
+    "themeColorDark": {
+      "type": "string"
+    },
+    "manifest": {
+      "type": "string"
+    }
+  }
+}

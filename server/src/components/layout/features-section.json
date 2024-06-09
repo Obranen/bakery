@@ -16,7 +16,7 @@
       "displayName": "Feature",
       "type": "component",
       "repeatable": true,
-      "component": "components.feature"
+      "component": "section.feature"
     },
     "icon": {
       "type": "enumeration",

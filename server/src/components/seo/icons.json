@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_seo_icons",
+  "info": {
+    "displayName": "Icons",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string"
+    },
+    "shortcut": {
+      "type": "string"
+    },
+    "apple": {
+      "type": "string"
+    },
+    "otherRel": {
+      "type": "string"
+    },
+    "otherUrl": {
+      "type": "string"
+    }
+  }
+}

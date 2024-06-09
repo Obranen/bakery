@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_seo_robots",
+  "info": {
+    "displayName": "Robots",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "index": {
+      "type": "boolean",
+      "default": false
+    },
+    "follow": {
+      "type": "boolean",
+      "default": true
+    },
+    "nocache": {
+      "type": "boolean",
+      "default": true
+    },
+    "googleBotIndex": {
+      "type": "boolean",
+      "default": true
+    },
+    "googleBotFollow": {
+      "type": "boolean",
+      "default": false
+    },
+    "googleBotNoimageindex": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

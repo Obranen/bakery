@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_seo_viewports",
+  "info": {
+    "displayName": "Viewport"
+  },
+  "options": {},
+  "attributes": {
+    "width": {
+      "type": "string"
+    },
+    "initialScale": {
+      "type": "integer"
+    },
+    "maximumScale": {
+      "type": "integer"
+    },
+    "userScalable": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
