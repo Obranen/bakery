@@ -362,6 +362,203 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiDropdownDropdown extends Schema.CollectionType {
+  collectionName: 'dropdowns';
+  info: {
+    singularName: 'dropdown';
+    pluralName: 'dropdowns';
+    displayName: 'Dropdown';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    href: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    navigation: Attribute.Relation<
+      'api::dropdown.dropdown',
+      'manyToOne',
+      'api::navigation.navigation'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::dropdown.dropdown',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::dropdown.dropdown',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
+  info: {
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'Home Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    blocks: Attribute.DynamicZone<['layout.features-section']>;
+    slug: Attribute.UID<'api::home-page.home-page', 'title'>;
+    ckEditor: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    reactIcon: Attribute.String &
+      Attribute.CustomField<'plugin::react-icons.icon'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiModalModal extends Schema.CollectionType {
+  collectionName: 'modals';
+  info: {
+    singularName: 'modal';
+    pluralName: 'modals';
+    displayName: 'Modal';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    modalId: Attribute.String & Attribute.Required;
+    navigation: Attribute.Relation<
+      'api::modal.modal',
+      'manyToOne',
+      'api::navigation.navigation'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::modal.modal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::modal.modal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNavigationNavigation extends Schema.CollectionType {
+  collectionName: 'navigations';
+  info: {
+    singularName: 'navigation';
+    pluralName: 'navigations';
+    displayName: 'Navigation';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    href: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    dropdowns: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToMany',
+      'api::dropdown.dropdown'
+    >;
+    modals: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToMany',
+      'api::modal.modal'
+    >;
+    position: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Product';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    code: Attribute.BigInteger & Attribute.Required & Attribute.Unique;
+    price: Attribute.Integer & Attribute.DefaultTo<0>;
+    stock: Attribute.Integer & Attribute.DefaultTo<100>;
+    description: Attribute.Text;
+    slug: Attribute.UID<'api::product.product', 'title'> & Attribute.Required;
+    image: Attribute.Media<'images'>;
+    comments: Attribute.JSON &
+      Attribute.CustomField<'plugin::comments.comments'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -877,157 +1074,65 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiDropdownDropdown extends Schema.CollectionType {
-  collectionName: 'dropdowns';
+export interface PluginCommentsComment extends Schema.CollectionType {
+  collectionName: 'comments_comment';
   info: {
-    singularName: 'dropdown';
-    pluralName: 'dropdowns';
-    displayName: 'Dropdown';
-    description: '';
+    tableName: 'plugin-comments-comments';
+    singularName: 'comment';
+    pluralName: 'comments';
+    displayName: 'Comment';
+    description: 'Comment content type';
+    kind: 'collectionType';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
   };
   attributes: {
-    href: Attribute.String & Attribute.Required;
-    title: Attribute.String & Attribute.Required;
-    navigation: Attribute.Relation<
-      'api::dropdown.dropdown',
-      'manyToOne',
-      'api::navigation.navigation'
+    content: Attribute.Text & Attribute.Required;
+    blocked: Attribute.Boolean & Attribute.DefaultTo<false>;
+    blockedThread: Attribute.Boolean & Attribute.DefaultTo<false>;
+    blockReason: Attribute.String;
+    authorUser: Attribute.Relation<
+      'plugin::comments.comment',
+      'oneToOne',
+      'plugin::users-permissions.user'
     >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::dropdown.dropdown',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::dropdown.dropdown',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiHomePageHomePage extends Schema.SingleType {
-  collectionName: 'home_pages';
-  info: {
-    singularName: 'home-page';
-    pluralName: 'home-pages';
-    displayName: 'Home Page';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    blocks: Attribute.DynamicZone<['layout.features-section']>;
-    slug: Attribute.UID<'api::home-page.home-page', 'title'>;
-    ckEditor: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      >;
-    reactIcon: Attribute.String &
-      Attribute.CustomField<'plugin::react-icons.icon'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::home-page.home-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::home-page.home-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiModalModal extends Schema.CollectionType {
-  collectionName: 'modals';
-  info: {
-    singularName: 'modal';
-    pluralName: 'modals';
-    displayName: 'Modal';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    modalId: Attribute.String & Attribute.Required;
-    navigation: Attribute.Relation<
-      'api::modal.modal',
-      'manyToOne',
-      'api::navigation.navigation'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::modal.modal',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::modal.modal',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiNavigationNavigation extends Schema.CollectionType {
-  collectionName: 'navigations';
-  info: {
-    singularName: 'navigation';
-    pluralName: 'navigations';
-    displayName: 'Navigation';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    href: Attribute.String & Attribute.Required;
-    title: Attribute.String & Attribute.Required;
-    dropdowns: Attribute.Relation<
-      'api::navigation.navigation',
+    authorId: Attribute.String;
+    authorName: Attribute.String;
+    authorEmail: Attribute.Email;
+    authorAvatar: Attribute.String;
+    isAdminComment: Attribute.Boolean;
+    removed: Attribute.Boolean;
+    approvalStatus: Attribute.String;
+    related: Attribute.String;
+    reports: Attribute.Relation<
+      'plugin::comments.comment',
       'oneToMany',
-      'api::dropdown.dropdown'
+      'plugin::comments.comment-report'
     >;
-    modals: Attribute.Relation<
-      'api::navigation.navigation',
-      'oneToMany',
-      'api::modal.modal'
+    threadOf: Attribute.Relation<
+      'plugin::comments.comment',
+      'oneToOne',
+      'plugin::comments.comment'
     >;
-    position: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::navigation.navigation',
+      'plugin::comments.comment',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::navigation.navigation',
+      'plugin::comments.comment',
       'oneToOne',
       'admin::user'
     > &
@@ -1035,36 +1140,48 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
   };
 }
 
-export interface ApiProductProduct extends Schema.CollectionType {
-  collectionName: 'products';
+export interface PluginCommentsCommentReport extends Schema.CollectionType {
+  collectionName: 'comments_comment-report';
   info: {
-    singularName: 'product';
-    pluralName: 'products';
-    displayName: 'Product';
-    description: '';
+    tableName: 'plugin-comments-reports';
+    singularName: 'comment-report';
+    pluralName: 'comment-reports';
+    displayName: 'Reports';
+    description: 'Reports content type';
+    kind: 'collectionType';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
   };
   attributes: {
-    title: Attribute.String & Attribute.Required & Attribute.Unique;
-    code: Attribute.BigInteger & Attribute.Required & Attribute.Unique;
-    price: Attribute.Integer & Attribute.DefaultTo<0>;
-    stock: Attribute.Integer & Attribute.DefaultTo<100>;
-    description: Attribute.Text;
-    slug: Attribute.UID<'api::product.product', 'title'> & Attribute.Required;
-    image: Attribute.Media<'images'>;
+    content: Attribute.Text;
+    reason: Attribute.Enumeration<['BAD_LANGUAGE', 'DISCRIMINATION', 'OTHER']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'OTHER'>;
+    resolved: Attribute.Boolean & Attribute.DefaultTo<false>;
+    related: Attribute.Relation<
+      'plugin::comments.comment-report',
+      'manyToOne',
+      'plugin::comments.comment'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::product.product',
+      'plugin::comments.comment-report',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::product.product',
+      'plugin::comments.comment-report',
       'oneToOne',
       'admin::user'
     > &
@@ -1082,6 +1199,11 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::dropdown.dropdown': ApiDropdownDropdown;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::modal.modal': ApiModalModal;
+      'api::navigation.navigation': ApiNavigationNavigation;
+      'api::product.product': ApiProductProduct;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -1092,11 +1214,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::dropdown.dropdown': ApiDropdownDropdown;
-      'api::home-page.home-page': ApiHomePageHomePage;
-      'api::modal.modal': ApiModalModal;
-      'api::navigation.navigation': ApiNavigationNavigation;
-      'api::product.product': ApiProductProduct;
+      'plugin::comments.comment': PluginCommentsComment;
+      'plugin::comments.comment-report': PluginCommentsCommentReport;
     }
   }
 }

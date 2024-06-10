@@ -9,6 +9,7 @@ import colorPicker from "@strapi/plugin-color-picker/strapi-admin";
 import i18N from "@strapi/plugin-i18n/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import strapiAdvancedUuid from "strapi-advanced-uuid/strapi-admin";
+import comments from "strapi-plugin-comments/strapi-admin";
 import entityRelationshipChart from "strapi-plugin-entity-relationship-chart/strapi-admin";
 import multiSelect from "strapi-plugin-multi-select/strapi-admin";
 import reactIcons from "strapi-plugin-react-icons/strapi-admin";
@@ -28,6 +29,7 @@ renderAdmin(document.getElementById("strapi"), {
     i18n: i18N,
     "users-permissions": usersPermissions,
     "strapi-advanced-uuid": strapiAdvancedUuid,
+    comments: comments,
     "entity-relationship-chart": entityRelationshipChart,
     "multi-select": multiSelect,
     "react-icons": reactIcons,
