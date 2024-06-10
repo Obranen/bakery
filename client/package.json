@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@loadable/component": "^5.16.4",
     "@tanstack/react-query": "^5.40.1",
+    "@types/loadable__component": "^5.13.9",
     "@types/qs": "^6.9.15",
     "classnames": "^2.5.1",
     "cookies-next": "^4.2.1",

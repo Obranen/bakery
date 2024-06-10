@@ -929,6 +929,15 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     title: Attribute.String;
     blocks: Attribute.DynamicZone<['layout.features-section']>;
     slug: Attribute.UID<'api::home-page.home-page', 'title'>;
+    ckEditor: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    reactIcon: Attribute.String &
+      Attribute.CustomField<'plugin::react-icons.icon'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
