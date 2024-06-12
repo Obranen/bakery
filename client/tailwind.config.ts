@@ -47,7 +47,7 @@ const config: Config = {
     },
   },
   darkMode: ['selector', '[data-theme="dark"]'],
-  plugins: [require('daisyui')],
+  plugins: [require('daisyui'), require('@tailwindcss/typography')],
   daisyui: {
     themes: [
       {

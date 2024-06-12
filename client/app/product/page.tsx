@@ -1,4 +1,6 @@
 import Product from '@/components/product/Product'
+import { productGet } from '@/fetch/product.fetch'
+import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -6,9 +8,18 @@ export const metadata: Metadata = {
   description: 'Product page',
 }
 
-const ProductPage = () => {
+const ProductPage = async () => {
+  const queryClient = new QueryClient()
+
+  await queryClient.fetchQuery({
+    queryKey: ['product'],
+    queryFn: productGet,
+  })
+
   return (
-    <Product />
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Product />
+    </HydrationBoundary>
   )
 }
 

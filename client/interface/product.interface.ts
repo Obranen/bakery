@@ -11,10 +11,9 @@ export interface IProductState {
 }
 
 export interface IProductAttrState {
-  id: string
   price: number
   stock: number
-  description: string
+  description: any[]
   title: string
   slug: string
   code: number

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gallaries",
+  "info": {
+    "singularName": "gallary",
+    "pluralName": "gallaries",
+    "displayName": "Gallery",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

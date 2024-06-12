@@ -7,7 +7,7 @@ import SliderPromotion from './SliderPromotion/SliderPromotion'
 
 const Home = () => {
   return (
-    <main className='lg:bg-primaryLight'>
+    <div className='lg:bg-primaryLight'>
       <div className='relative lg:h-[459px] lg:-mt-10 xl:h-[555px] lg:bg-secondaryLight 2xl:h-[650px] 2xl:mt-[-30px] 3xl:h-[886px] 3xl:mt-[-93px]'>
         <div className='container'>
           <SliderPromotion />
@@ -20,7 +20,7 @@ const Home = () => {
       <WaveSVG className='w-full xl:-m-0.5' fill='#f6eee8' />
       <OurProduction />
       <AboutUs />
-    </main>
+    </div>
   )
 }
 

@@ -1,5 +1,9 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+// @ts-check
+import withPlaiceholder from '@plaiceholder/next'
+/**
+ * @type {import('next').NextConfig}
+ */
+const config = {
   images: {
     remotePatterns: [
       {
@@ -8,7 +12,8 @@ const nextConfig = {
         port: '1337',
       },
     ],
+    deviceSizes: [320, 576, 768, 992, 1200, 1400, 1686, 1920],
   },
 }
 
-export default nextConfig
+export default withPlaiceholder(config)

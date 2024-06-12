@@ -8,7 +8,9 @@ const MainImg = () => {
       priority
       layout='fill'
       objectFit='contain'
-      quality={100}
+      // placeholder='blur'
+      // sizes='(min-width: 1400px) 1400px, 100vw'
+      // quality={100}
       className='opacity-90 !hidden lg:!block'
     />
   )

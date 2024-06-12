@@ -17,7 +17,6 @@ const SliderPromotionItem: FC<ISliderPromotionItem> = ({ sliderItem }) => {
         'h-40 rounded-md border-[2px] border-primaryLight md:border-[4px] sm:w-full sm:h-full 3xl:h-[386px] 3xl:rounded-none'
       }
       aria-label={sliderItem.alt}
-      priority
     />
   )
 }

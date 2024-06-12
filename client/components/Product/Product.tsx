@@ -1,21 +1,29 @@
 'use client'
 
-import { productGet } from '@/fetch/product.fetch'
+import { productGet, productGetId } from '@/fetch/product.fetch'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import ErrorMessage from '../ui/ErrorPage'
+import LoadingSkeleton from '../ui/LoadingSkeleton'
+import ProductItem from './ProductItem'
 import LoadingMessage from '../ui/LoadingPage'
-import Image from 'next/image'
-import Link from 'next/link'
 
 const Product = () => {
-  const [pageIndex, setPageIndex] = useState(1)
-  let pages = []
+// const Product = async () => {
+  // const [pageIndex, setPageIndex] = useState(8)
+  // let pages = []
+
+  // const products = await productGet()
 
   const products = useQuery({
-    queryKey: ['product', pageIndex],
-    queryFn: () => productGet(pageIndex),
+    queryKey: ['product'],
+    queryFn: productGet,
   })
+
+  // const products = useQuery({
+  //   queryKey: ['product', pageIndex],
+  //   queryFn: () => productGetId(pageIndex),
+  // })
 
   if (products.isLoading) {
     return <LoadingMessage />
@@ -25,42 +33,25 @@ const Product = () => {
     return <ErrorMessage message={'Error product'} />
   }
 
-  if (products.data?.meta.pagination.pageCount) {
-    for (let i = 1; i <= products.data?.meta.pagination.pageCount; i++) {
-      pages.push(i)
-    }
-  }
+  // console.log('products',products.data)
+
+  // if (products.data?.meta.pagination.pageCount) {
+  //   for (let i = 1; i <= products.data?.meta.pagination.pageCount; i++) {
+  //     pages.push(i)
+  //   }
+  // }
 
   return (
-    <main>
-      {products.data?.data.map((product: any) => (
-        <div key={product.id} className='border-b-2 mb-4 border-red-500'>
-          <h2>
-            <Link href={'/product/' + product.attributes.slug}>
-              {product.attributes.title}
-            </Link>
-          </h2>
-          {product.attributes.image.data !== null && (
-            <Image
-              src={
-                process.env.NEXT_PUBLIC_STRAPI_URL +
-                product.attributes.image.data.attributes.url
-              }
-              width={238}
-              height={205}
-              alt={product.attributes.image.data.attributes.alternativeText}
-              className={''}
-              priority
-            />
-          )}
-          <p>{product.attributes.description}</p>
-          <p>{product.attributes.price}</p>
-        </div>
+    <>
+      {/* {products.data.map((product: any) => ( */}
+       {products.data?.data.map((product: any) => (
+        <ProductItem key={product.id} product={product.attributes} />
+        // <></>
       ))}
 
       <div className='flex justify-around'>
         {/* Pagination variant one */}
-        <div className='join'>
+        {/* <div className='join'>
           <button
             className='join-item btn btn-xs'
             disabled={pageIndex === 1}
@@ -84,10 +75,10 @@ const Product = () => {
           <button className='join-item btn btn-xs'>
             {products.data?.meta.pagination.total}
           </button>
-        </div>
+        </div> */}
 
         {/* Pagination variant two */}
-        <div className='join'>
+        {/* <div className='join'>
           {pages.map((page) => (
             <button
               key={page}
@@ -101,9 +92,9 @@ const Product = () => {
               {page}
             </button>
           ))}
-        </div>
+        </div> */}
       </div>
-    </main>
+    </>
   )
 }
 

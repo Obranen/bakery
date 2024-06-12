@@ -20,7 +20,7 @@ export default function RootLayout({
     >
       <ProviderLayout>
         <Header />
-        {children}
+        <main>{children}</main>
         <ToastMessage />
         <Footer />
       </ProviderLayout>
