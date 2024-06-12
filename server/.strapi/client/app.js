@@ -3,7 +3,6 @@
  * Any modifications made will be discarded.
  */
 import ckeditor5 from "@_sh/strapi-plugin-ckeditor/strapi-admin";
-import awesomeHelp from "@exfabrica/strapi-plugin-awesome-help/strapi-admin";
 import strapiCloud from "@strapi/plugin-cloud/strapi-admin";
 import colorPicker from "@strapi/plugin-color-picker/strapi-admin";
 import i18N from "@strapi/plugin-i18n/strapi-admin";
@@ -23,7 +22,6 @@ renderAdmin(document.getElementById("strapi"), {
 
   plugins: {
     ckeditor5: ckeditor5,
-    "awesome-help": awesomeHelp,
     "strapi-cloud": strapiCloud,
     "color-picker": colorPicker,
     i18n: i18N,

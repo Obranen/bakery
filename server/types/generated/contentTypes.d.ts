@@ -635,50 +635,6 @@ export interface PluginReactIconsIconlibrary extends Schema.CollectionType {
   };
 }
 
-export interface PluginAwesomeHelpHelp extends Schema.CollectionType {
-  collectionName: 'helps';
-  info: {
-    singularName: 'help';
-    pluralName: 'helps';
-    displayName: 'help';
-  };
-  options: {
-    draftAndPublish: false;
-    comment: '';
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    contentType: Attribute.String;
-    path: Attribute.String;
-    helpContent: Attribute.String;
-    fieldName: Attribute.String;
-    containerType: Attribute.String;
-    zoneName: Attribute.String;
-    componentName: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::awesome-help.help',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::awesome-help.help',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -1114,15 +1070,6 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
         };
       }>;
     slug: Attribute.UID<'api::home-page.home-page', 'title'>;
-    ckEditor: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      >;
-    reactIcon: Attribute.String &
-      Attribute.CustomField<'plugin::react-icons.icon'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1372,7 +1319,6 @@ declare module '@strapi/types' {
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::react-icons.iconlibrary': PluginReactIconsIconlibrary;
-      'plugin::awesome-help.help': PluginAwesomeHelpHelp;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
