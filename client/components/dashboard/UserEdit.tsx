@@ -1,6 +1,6 @@
 'use client'
 
-import { userGet, userUpdate, userUpload } from '@/fetch/user.fetch'
+import { userGet, userUpdate, userUpload } from '@/routes/user.fetch'
 import { IUserUpdateState } from '@/interface/user.interface'
 import EmailSVG from '@/public/images/svg/EmailSVG'
 import UserSVG from '@/public/images/svg/UserSVG'

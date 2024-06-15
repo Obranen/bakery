@@ -1,6 +1,6 @@
 'use client'
 
-import { productGet, productGetId } from '@/fetch/product.fetch'
+import { productGet, productGetId } from '@/routes/product.route'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import ErrorMessage from '../ui/ErrorPage'

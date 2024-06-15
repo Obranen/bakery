@@ -1,7 +1,7 @@
 'use client'
 
 import ErrorMessage from '@/components/ui/ErrorPage'
-import { navigationGet } from '@/fetch/navigation.fetch'
+import { navigationGet } from '@/routes/navigation.route'
 import { useAuthStore } from '@/store/useAuth.store'
 import { useQuery } from '@tanstack/react-query'
 import { FC } from 'react'

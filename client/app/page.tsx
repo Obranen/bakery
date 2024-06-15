@@ -1,6 +1,6 @@
 import Home from '@/components/home/Home'
-import { homePageGet } from '@/fetch/homePage.fetch'
-import { sectionGet } from '@/fetch/section.fetch'
+import { homePageGet } from '@/routes/homePage.fetch'
+import { sectionGet } from '@/routes/section.route'
 import {
   HydrationBoundary,
   QueryClient,

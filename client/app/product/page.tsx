@@ -1,5 +1,5 @@
 import Product from '@/components/product/Product'
-import { productGet } from '@/fetch/product.fetch'
+import { productGet } from '@/routes/product.route'
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query'
 import { Metadata } from 'next'
 

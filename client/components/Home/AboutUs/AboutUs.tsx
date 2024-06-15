@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { MdImportContacts } from 'react-icons/md'
 import AboutUsItem from './AboutUsItem'
-import { sectionGet } from '@/fetch/section.fetch'
+import { sectionGet } from '@/routes/section.route'
 import AboutUsTitleItem from './AboutUsTitleItem'
 
 const AboutUs = async () => {
