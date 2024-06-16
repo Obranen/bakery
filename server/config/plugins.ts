@@ -30,4 +30,16 @@ export default ({ env }) => ({
       ],
     },
   },
+  email: {
+    config: {
+      provider: "sendgrid",
+      providerOptions: {
+        apiKey: env("SENDGRID_API_KEY"),
+      },
+      settings: {
+        defaultFrom: "dimakrah88@gmail.com",
+        defaultReplyTo: "dimakrah88@gmail.com",
+      },
+    },
+  },
 });
