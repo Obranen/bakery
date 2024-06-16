@@ -1,4 +1,4 @@
-import { galleryGet } from '@/routes/gallery.fetch'
+import { galleryGet } from '@/routes/gallery.route'
 import ErrorPage from '../ui/ErrorPage'
 import GalleryItem from './GalleryItem'
 
