@@ -1,6 +1,6 @@
 'use client'
 
-import { userSignIn } from '@/routes/user.fetch'
+import { userSignIn } from '@/routes/user.route'
 import { IUserSignInState } from '@/interface/user.interface'
 import EmailSVG from '@/public/images/svg/EmailSVG'
 import EyeSlashSVG from '@/public/images/svg/EyeSlashSVG'
