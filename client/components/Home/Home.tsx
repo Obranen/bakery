@@ -2,8 +2,8 @@ import WaveSVG from '@/public/images/svg/WaveSVG'
 import FindSite from '../header/FindSite'
 import AboutUs from './aboutUs/AboutUs'
 import MainImg from './MainImg'
-import OurProduction from './OurProduction/OurProduction'
-import SliderPromotion from './SliderPromotion/SliderPromotion'
+import OurProduction from './ourProduction/OurProduction'
+import SliderPromotion from './sliderPromotion/SliderPromotion'
 
 const Home = () => {
   return (
@@ -19,7 +19,7 @@ const Home = () => {
       </div>
       <WaveSVG className='w-full xl:-m-0.5' fill='#f6eee8' />
       <OurProduction />
-      <AboutUs />
+      {/* <AboutUs /> */}
     </div>
   )
 }

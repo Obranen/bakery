@@ -5,10 +5,10 @@ import LoadingPage from '@/components/ui/LoadingPage'
 import { IBlockState, ISectionState } from '@/interface/homePage.interface'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
-import { MdImportContacts } from 'react-icons/md'
-import AboutUsItem from './AboutUsItem'
+
 import { sectionGet } from '@/routes/section.route'
 import AboutUsTitleItem from './AboutUsTitleItem'
+import AboutUsItem from './AboutUsItem'
 
 const AboutUs = async () => {
   const {
