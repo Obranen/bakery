@@ -26,8 +26,9 @@ export default async function HomePage() {
   })
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <Home />
-    </HydrationBoundary>
+    // <HydrationBoundary state={dehydrate(queryClient)}>
+    //   <Home />
+    // </HydrationBoundary>
+    <h1>Hello!</h1>
   )
 }
