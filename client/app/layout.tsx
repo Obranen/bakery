@@ -19,10 +19,10 @@ export default function RootLayout({
       className={`${robotoSerifRegular.variable} ${abrilFatface.variable} ${caveatRegular.variable} ${robotoRegular.variable}`}
     >
       <ProviderLayout>
-        <Header />
+        {/* <Header /> */}
         <main>{children}</main>
         <ToastMessage />
-        <Footer />
+        {/* <Footer /> */}
       </ProviderLayout>
     </html>
   )
