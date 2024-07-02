@@ -9,8 +9,9 @@ import { getCookie } from 'cookies-next'
 
 export const userCreate = async (data: IUserState) => {
   try {
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/auth/local/register`,
+      `${url}/api/auth/local/register`,
       {
         method: 'POST',
         headers: {
@@ -32,8 +33,9 @@ export const userCreate = async (data: IUserState) => {
 
 export const userSignIn = async (data: IUserSignInState) => {
   try {
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/auth/local`,
+      `${url}/api/auth/local`,
       {
         method: 'POST',
         headers: {
@@ -55,8 +57,9 @@ export const userSignIn = async (data: IUserSignInState) => {
 export const userUpdate = async (data: IUserUpdateState) => {
   const authToken = getCookie('jwt')
   try {
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/${data.id}`,
+      `${url}/api/users/${data.id}`,
       {
         method: 'PUT',
         headers: {
@@ -81,8 +84,9 @@ export const userUpload = async (formData: FormData) => {
   const authToken = getCookie('jwt')
 
   try {
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/upload`,
+      `${url}/api/upload`,
       {
         method: 'POST',
         headers: {
@@ -106,15 +110,18 @@ export const userGet = async () => {
   if (!authToken) return { ok: false, data: null, error: null }
 
   try {
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+    const cacheControl =
+      process.env.NODE_ENV === 'production' ? 'default' : 'no-cache'
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/me?populate=*`,
+      `${url}/api/users/me?populate=*`,
       {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${authToken}`,
         },
-        cache: 'no-cache',
+        cache: cacheControl,
       }
     )
     const data = await response.json()

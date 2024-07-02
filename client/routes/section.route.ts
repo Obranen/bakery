@@ -1,21 +1,21 @@
 import qs from 'qs'
 
 export const sectionGet = async () => {
-  const url = qs.stringify({
+  const urlQS = qs.stringify({
     populate: {
       blocks: {
-        populate: '*'
-      }
+        populate: '*',
+      },
     },
   })
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/home-page?${url}`,
-      {
-        method: 'GET',
-        cache: 'no-store',
-      }
-    )
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+    const cacheControl =
+      process.env.NODE_ENV === 'production' ? 'default' : 'no-cache'
+    const response = await fetch(`${url}/api/home-page?${urlQS}`, {
+      method: 'GET',
+      cache: cacheControl,
+    })
     return response.json()
   } catch (error) {
     console.log(error)
