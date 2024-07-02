@@ -1,6 +1,6 @@
 import { galleryGet } from '@/routes/gallery.route'
 import ErrorPage from '../ui/ErrorPage'
-import GalleryItem from './GalleryItem'
+// import GalleryItem from './GalleryItem'
 
 const Gallery = async () => {
   const gallery = await galleryGet()
@@ -11,14 +11,14 @@ const Gallery = async () => {
 
   return (
     <div>
-      {gallery.data.map((item: any) => (
+      {/* {gallery.data.map((item: any) => (
         <div key={item.id}>
           <h1>{item.attributes.title}</h1>
           {item.attributes.images.data.map((item: any) => (
             <GalleryItem key={item.id} item={item.attributes} />
           ))}
         </div>
-      ))}
+      ))} */}
     </div>
   )
 }

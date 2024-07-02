@@ -1,21 +1,21 @@
 import React, {FC} from 'react'
-import Image from 'next/image'
-import { getBlurData } from '@/library/blurDataGenerator.library'
+// import Image from 'next/image'
+// import { getBlurData } from '@/library/blurDataGenerator.library'
 
 interface IGalleryItemProps {
   item: any
 }
 
 const GalleryItem: FC<IGalleryItemProps> = async ({item})  => {
-  const { url, alternativeText} = item
+  // const { url, alternativeText} = item
 
-  const { base64 } = await getBlurData(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`
-  )
+  // const { base64 } = await getBlurData(
+  //   `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`
+  // )
 
   return (
      <>
-       <Image
+       {/* <Image
           src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`}
           width={238}
           height={205}
@@ -23,7 +23,7 @@ const GalleryItem: FC<IGalleryItemProps> = async ({item})  => {
           className={`${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`}
           placeholder='blur'
           blurDataURL={base64}
-        />
+        /> */}
      </>
   )
 }
