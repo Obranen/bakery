@@ -1,4 +1,4 @@
-import Home from '@/components/home/Home'
+// import Home from '@/components/home/Home'
 import { homePageGet } from '@/routes/homePage.route'
 import { sectionGet } from '@/routes/section.route'
 import {
