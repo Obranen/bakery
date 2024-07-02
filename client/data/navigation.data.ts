@@ -1,6 +1,6 @@
-// import { INavigationState } from '@/interface/navigation.interface'
+// import { INavigationData } from '@/interface/navigation.interface'
 
-// export const navigation: INavigationState[] = [
+// export const navigation: INavigationData[] = [
 //   {
 //     id: '1',
 //     href: '#',

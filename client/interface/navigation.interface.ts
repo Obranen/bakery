@@ -41,3 +41,12 @@ export interface INavigationModalState {
 export interface INavigationModalAttrState {
   modalId: string
 }
+
+// export interface INavigationData {
+//   id: string
+//   href: string
+//   title: string
+//   position: number
+//   isDropdown: boolean
+//   modals: INavigationModalState
+// }

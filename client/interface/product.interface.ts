@@ -32,3 +32,17 @@ export interface IProductImageAttrState {
   url: string
   alternativeText: string
 }
+
+//data
+export interface IProductData {
+  id: string
+  price: number
+  stock: number
+  description: string
+  title: string
+  slug: string
+  code: number
+  src: string
+  alt: string
+}
+
