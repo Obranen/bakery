@@ -6,9 +6,14 @@ import withPlaiceholder from '@plaiceholder/next'
 const config = {
   images: {
     remotePatterns: [
+      // {
+      //   protocol: 'http',
+      //   hostname: 'localhost',
+      //   port: '1337',
+      // },
       {
-        protocol: 'http',
-        hostname: 'localhost',
+        protocol: 'https',
+        hostname: 'bakery-server-w2iq.onrender.com',
         port: '1337',
       },
     ],
