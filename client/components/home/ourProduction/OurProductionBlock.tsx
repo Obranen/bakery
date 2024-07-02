@@ -1,12 +1,12 @@
-import { product } from '@/data/product.data'
-import OurProductionItem from './OurProductionItem'
-import Link from 'next/link'
-import OurProductionNav from './OurProductionNav'
+// import { product } from '@/data/product.data'
+// import OurProductionItem from './OurProductionItem'
+// import Link from 'next/link'
+// import OurProductionNav from './OurProductionNav'
 
 const OurProductBlock = () => {
   return (
     <>
-      <OurProductionNav />
+      {/* <OurProductionNav />
 
       <div className='mt-2.5 lg:flex lg:space-x-2 2xl:space-x-4 3xl:space-x-10'>
         {product.map(
@@ -22,7 +22,7 @@ const OurProductBlock = () => {
         >
           Дивитись все...
         </Link>
-      </div>
+      </div> */}
     </>
   )
 }
