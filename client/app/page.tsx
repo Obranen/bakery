@@ -1,4 +1,4 @@
-// import Home from '@/components/home/Home'
+import Home from '@/components/home/Home'
 import { homePageGet } from '@/routes/homePage.route'
 import { sectionGet } from '@/routes/section.route'
 import {
@@ -26,9 +26,8 @@ export default async function HomePage() {
   })
 
   return (
-    // <HydrationBoundary state={dehydrate(queryClient)}>
-    //   <Home />
-    // </HydrationBoundary>
-    <h1>Hello!</h1>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Home />
+    </HydrationBoundary>
   )
 }
