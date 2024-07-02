@@ -17,9 +17,10 @@ const ProductPage = async () => {
   })
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <Product />
-    </HydrationBoundary>
+    // <HydrationBoundary state={dehydrate(queryClient)}>
+    //   <Product />
+    // </HydrationBoundary>
+    <></>
   )
 }
 
