@@ -1,20 +1,20 @@
 'use client'
 
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
+// import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { A11y, Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { sliderPromotion } from '../../../data/sliderPromotion.data'
+// import { sliderPromotion } from '../../../data/sliderPromotion.data'
 import './SliderPromotion.css'
-import SliderPromotionItem from './SliderPromotionItem'
+// import SliderPromotionItem from './SliderPromotionItem'
 
 const SliderPromotion = () => {
   return (
     <section className='relative z-10 mt-4 md:mx-auto md:w-[659px] md:rounded-none lg:mt-0 lg:w-[467px] lg:translate-x-[-128px] lg:translate-y-[170px] xl:w-[560px] xl:translate-y-[230px] xl:translate-x-[-165px] 2xl:translate-y-[286px] 3xl:translate-y-[378px] 3xl:translate-x-[-350px] 3xl:w-[661px]'>
-      <h2
+      {/* <h2
         aria-label='Акции и новости'
         tabIndex={0}
         className='text-center font-semibold -translate-x-1 -translate-y-2.5 font-caveatRegular text-[26px] hidden lg:block lg:translate-y-0.5 3xl:-translate-y-2.5'
@@ -87,7 +87,7 @@ const SliderPromotion = () => {
             }
           />
         </button>
-      </div>
+      </div> */}
     </section>
   )
 }
