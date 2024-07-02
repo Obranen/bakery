@@ -1,15 +1,15 @@
 'use client'
 
-import { product } from '@/data/product.data'
-import 'swiper/css'
-import { A11y } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import OurProductionItem from './OurProductionItem'
+// import { product } from '@/data/product.data'
+// import 'swiper/css'
+// import { A11y } from 'swiper/modules'
+// import { Swiper, SwiperSlide } from 'swiper/react'
+// import OurProductionItem from './OurProductionItem'
 
 const OurProductionCarousel = () => {
   return (
     <div className='relative overflow-hidden'>
-      <Swiper
+      {/* <Swiper
         className='our-production-carousel w-[120%] [&>.swiper-wrapper]:w-[83%]'
         modules={[A11y]}
         spaceBetween={10}
@@ -26,7 +26,7 @@ const OurProductionCarousel = () => {
             <OurProductionItem product={item} key={item.id} />
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
     </div>
   )
 }

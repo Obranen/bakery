@@ -1,6 +1,6 @@
 import { IProductState } from '@/interface/product.interface'
-import Image from 'next/image'
-import Link from 'next/link'
+// import Image from 'next/image'
+// import Link from 'next/link'
 import { FC } from 'react'
 
 interface IOurProductionItem {
@@ -10,7 +10,7 @@ interface IOurProductionItem {
 const OurProductionItem: FC<IOurProductionItem> = ({ product }) => {
   return (
     <div className='p-1 rounded-md border-[1px] border-primaryLight lg:bg-secondaryLight '>
-      <div className='px-0 border-primaryLight lg:border-b-2 lg:px-2'>
+      {/* <div className='px-0 border-primaryLight lg:border-b-2 lg:px-2'>
         <Image
           src={product.src}
           alt={product.alt}
@@ -29,7 +29,7 @@ const OurProductionItem: FC<IOurProductionItem> = ({ product }) => {
       </div>
       <button className='w-full h-[60px] text-base font-bold rounded-t-none btn btn-ghost font-robotoRegular hover:bg-opacity-5 hover:bg-tertiaryLight rounded-b-xl hidden lg:display'>
         Детальніше...
-      </button>
+      </button> */}
     </div>
   )
 }
