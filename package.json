@@ -1,0 +1,15 @@
+{
+  "name": "bakery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "update": "concurrently \"cd server && npm run build && pm2 restart server\" \"cd client && npm run build && pm2 restart client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
