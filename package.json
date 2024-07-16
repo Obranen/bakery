@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "update": "concurrently \"cd server && npm run build && pm2 restart server\" \"cd client && npm run build && pm2 restart client\""
+    "update": "concurrently \"git pull\" \"cd server && npm run build && pm2 restart server\" \"cd client && npm run build && pm2 restart client\""
   },
   "keywords": [],
   "author": "",
