@@ -10,7 +10,7 @@ const Home = () => {
     <div className='lg:bg-primaryLight'>
       <div className='relative lg:h-[459px] lg:-mt-10 xl:h-[555px] lg:bg-secondaryLight 2xl:h-[650px] 2xl:mt-[-30px] 3xl:h-[886px] 3xl:mt-[-93px]'>
         <div className='container'>
-          <h1>Testing pull request - New data!</h1>
+          <h1>Изменил данные!</h1>
           <SliderPromotion />
           <div className='md:mt-6 lg:hidden'>
             <FindSite />
