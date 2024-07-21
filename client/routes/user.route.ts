@@ -9,7 +9,7 @@ import { getCookie } from 'cookies-next'
 
 export const userCreate = async (data: IUserState) => {
   try {
-    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL
     const response = await fetch(
       `${url}/api/auth/local/register`,
       {
@@ -33,7 +33,7 @@ export const userCreate = async (data: IUserState) => {
 
 export const userSignIn = async (data: IUserSignInState) => {
   try {
-    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL
     const response = await fetch(
       `${url}/api/auth/local`,
       {
@@ -57,7 +57,7 @@ export const userSignIn = async (data: IUserSignInState) => {
 export const userUpdate = async (data: IUserUpdateState) => {
   const authToken = getCookie('jwt')
   try {
-    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL
     const response = await fetch(
       `${url}/api/users/${data.id}`,
       {
@@ -84,7 +84,7 @@ export const userUpload = async (formData: FormData) => {
   const authToken = getCookie('jwt')
 
   try {
-    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL
     const response = await fetch(
       `${url}/api/upload`,
       {
@@ -110,7 +110,7 @@ export const userGet = async () => {
   if (!authToken) return { ok: false, data: null, error: null }
 
   try {
-    const url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL
     const cacheControl =
       process.env.NODE_ENV === 'production' ? 'default' : 'no-cache'
     const response = await fetch(
